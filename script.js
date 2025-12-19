@@ -107,12 +107,14 @@ function loadUnits(subject) {
         .catch(() => {
             // If no index.html, fall back to showing unit buttons
             unitList.innerHTML = '';
-            for (let i = 1; i <= 4; i++) {
-                const btn = document.createElement('button');
-                btn.textContent = `Unit ${i}`;
-                btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
-                btn.onclick = () => loadLesson(subject, i);
-                unitList.appendChild(btn);
+const unitNames = ['Unit 1: Introduction & Circle', 'Unit 2: Parabola & Ellipse', 'Unit 3: Hyperbola', 'Unit 4: Review & Applications'];
+for (let i = 1; i <= 4; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = unitNames[i-1];
+    btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
+    btn.onclick = () => loadLesson(subject, i);
+    unitList.appendChild(btn);
+};
             }
             lessonContent.innerHTML = '<p>Select a unit above to begin.</p>';
         });
