@@ -3,71 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online SHS - Grade 11 STEM</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Online SHS - Education is Meant to be Free</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
-
-    <!-- Dark overlay when sidebar is open (tap to close) -->
-    <div class="overlay" onclick="toggleSidebar()"></div>
-
-    <div class="sidebar">
-        <h2>Free Online School</h2>
-        <h3>Grade 11 STEM</h3>
-        <ul>
-            <li onclick="showTab('my-page')">📊 My Page</li>
-            <li onclick="showTab('lessons')">📚 Lessons</li>
-            <li onclick="showTab('activities')">✍️ Activities / Quizzes</li>
-            <li onclick="showTab('tests')">📝 Tests</li>
-        </ul>
+    <div id="sidebar">
+        <button onclick="showTab('myPage')">My Page</button>
+        <button onclick="showTab('lessons')">Lessons</button>
+        <button onclick="showTab('quizzes')">Activity/Quiz</button>
+        <button onclick="showTab('tests')">Tests</button>
+        <button onclick="toggleSidebar()">Hide Sidebar</button>
     </div>
-
-    <div class="content">
-        <div id="my-page" class="tab active">
+    <div id="content">
+        <div id="myPage" class="tab">
             <h1>Welcome Back!</h1>
-            <div class="motto">
-                <h2 style="font-size: 28px; color: #e74c3c; text-align: center; margin: 20px 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
-                    "EDUCATION IS MEANT TO BE FREE"
-                </h2>
-            </div>
-            <p>This is your personal dashboard. Your progress, scores, and study time will appear here as you complete lessons and assessments.</p>
-            <div id="progress-summary">
-                <h2>Your Progress</h2>
-                <ul id="subject-progress"></ul>
-            </div>
-            <h2>Total Study Time: <span id="total-time">0</span> minutes</h2>
+            <h2>"EDUCATION IS MEANT TO BE FREE"</h2>
+            <h3>Your Progress</h3>
+            <div id="progress-charts"></div>
+            <p id="points">Points: 0 / 1000 (Aim for 800 to pass)</p>
+            <p id="study-time">Study Time: 0 minutes</p>
+            <div id="lesson-times"></div>
         </div>
-
-        <div id="lessons" class="tab">
+        <div id="lessons" class="tab" style="display:none;">
             <h1>Lessons</h1>
-            <p>Choose a subject to start learning:</p>
-         <div class="subject-grid">
-    <a href="subjects/precalc/index.html" class="subject-card">Pre-Calculus</a>
-    <a href="subjects/genbio1/index.html" class="subject-card">General Biology 1</a>
-    <a href="subjects/genchem1/index.html" class="subject-card">General Chemistry 1</a>
-    <a href="subjects/genphys1/index.html" class="subject-card">General Physics 1</a>
-    <a href="subjects/earthscience/index.html" class="subject-card">Earth Science</a>
-</div>
+            <select id="subject-select" onchange="loadUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="unit-list"></div>
+            <div id="lesson-content"></div>
         </div>
-
-        <div id="activities" class="tab">
-    <h1>Activities & Quizzes</h1>
-    <p>10 questions • 15 minutes • Auto-graded with explanations</p>
-    <p>One quiz per unit. Complete them to track progress!</p>
-
-    <h2>Pre-Calculus Quizzes</h2>
-    <div class="subject-grid">
-        <a href="quizzes/precalc-q1.html" class="subject-card">Quiz 1: Analytic Geometry (Conic Sections)</a>
-        <a href="quizzes/precalc-q2.html" class="subject-card">Quiz 2: Series & Sequences</a>
-        <a href="quizzes/precalc-q3.html" class="subject-card">Quiz 3: Trigonometry</a>
-    </div>
-
-    <p>More subjects coming soon!</p>
-</div>
+        <div id="quizzes" class="tab" style="display:none;">
+            <h1>Activity/Quiz</h1>
+            <select id="quiz-subject" onchange="loadQuizUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="quiz-list"></div>
+            <div id="quiz-content"></div>
+        </div>
+        <div id="tests" class="tab" style="display:none;">
+            <h1>Tests</h1>
+            <select id="test-subject" onchange="loadTestUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="test-list"></div>
+            <div id="test-content"></div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
