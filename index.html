@@ -52,9 +52,25 @@
       </div>
 
       <div class="card">
+        <h3>Study Time</h3>
+        <p style="font-size:1.5rem; text-align:center; margin:20px 0; font-weight:600;">
+          Total time spent: <span id="studyTimeDisplay">00:00:00</span>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Your Bulletin Board</h3>
+        <p style="color:var(--text-light); margin-bottom:10px;">
+          Write personal memos, reminders, or notes here. They are saved automatically.
+        </p>
+        <textarea id="memosTextarea" rows="8" style="width:100%; padding:12px; border:1px solid var(--border); border-radius:8px; font-family:inherit; font-size:1rem;"></textarea>
+        <button id="saveMemosBtn" style="margin-top:12px; padding:10px 20px; background:var(--accent); color:white; border:none; border-radius:8px; cursor:pointer;">Save Memos</button>
+      </div>
+
+      <div class="card">
         <h3>Your Progress Overview</h3>
         <p style="color:var(--text-light); margin-top:10px;">
-          Progress charts, scores, study time, and personal memos will appear here as you start learning.
+          Progress charts, scores, and subject details will appear here as you complete lessons, quizzes, and tests.
         </p>
       </div>
     </div>
@@ -99,6 +115,7 @@
     </div>
   </div>
 
+  <script src="script.js"></script>
   <script>
     const menuBtn = document.getElementById('menuBtn');
     const sidebar = document.getElementById('sidebar');
