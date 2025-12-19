@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     color: #333;
     line-height: 1.6;
 }
@@ -10,33 +10,32 @@ body {
     transition: left 0.3s ease;
     z-index: 1000;
     width: 200px;
+    background: #343a40; /* Dark gray for consistency */
 }
 
-.sidebar ul li button:hover, .sidebar ul li a:hover {
-    background-color: #495057;
-    color: #ffc107 !important;
+.sidebar button {
+    color: white !important; /* Forces white text */
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+.sidebar button:hover {
+    background-color: #495057 !important;
+    color: #ffc107 !important; /* Yellow hover for contrast */
 }
 
 .sidebar.show {
     left: 0;
 }
 
-.nav-link:hover {
-    color: #d1c8ab !important;
-}
-
-.btn:focus {
-    box-shadow: 0 0 0 .25rem rgba(108, 117, 125, .5) !important;
-}
-
-.btn-primary:focus {
-    box-shadow: 0 0 0 .25rem rgba(13, 110, 253, .5) !important;
-}
-
 .main-content {
     margin-left: 0;
     transition: margin-left 0.3s ease;
-    padding-top: 60px; /* For fixed navbar */
+    padding-top: 60px;
 }
 
 .sidebar.show + .main-content {
@@ -48,7 +47,7 @@ body {
         margin-left: 0;
     }
     .sidebar {
-        width: 250px; /* Slightly wider on small screens when toggled */
+        width: 250px;
         left: -250px;
     }
     .sidebar.show {
@@ -57,7 +56,7 @@ body {
 }
 
 h1, h2 {
-    color: #007bff;
+    color: #198754; /* Soft green for headings */
 }
 
 select.form-select {
@@ -70,13 +69,13 @@ select.form-select {
 }
 
 .progress-bar {
-    background: linear-gradient(to right, #007bff, #00c6ff);
+    background: linear-gradient(to right, #198754, #2ca25f); /* Green gradient */
     transition: width 0.5s ease;
 }
 
 #unit-list button, #quiz-list button, #test-list button {
     padding: 10px 20px;
-    background: #007bff;
+    background: #198754; /* Green buttons */
     color: white;
     border: none;
     border-radius: 5px;
@@ -84,7 +83,7 @@ select.form-select {
 }
 
 #unit-list button:hover, #quiz-list button:hover, #test-list button:hover {
-    background: #0056b3;
+    background: #157347; /* Darker green hover */
     transform: scale(1.05);
 }
 
@@ -113,7 +112,7 @@ select.form-select {
 
 .timer {
     font-weight: bold;
-    color: #007bff;
+    color: #198754; /* Green timer */
     font-size: 18px;
     margin-bottom: 20px;
 }
