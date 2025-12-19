@@ -98,9 +98,8 @@ function loadUnits(subject) {
     const lessonContent = document.getElementById('lesson-content');
     const unitList = document.getElementById('unit-list');
     
-    const folder = (subject === 'PreCalculus') ? 'precalc' : subject;
-    
-    fetch(`lessons/${folder}/index.html`)
+    // Change path here to subjects/precalc/
+    fetch(`subjects/precalc/index.html`)
         .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
             lessonContent.innerHTML = data;
@@ -128,15 +127,14 @@ function loadUnits(subject) {
 function loadLesson(subject, unit) {
     const lessonContent = document.getElementById('lesson-content');
     
-    const folder = (subject === 'PreCalculus') ? 'precalc' : subject;
-    
     let fileName = '';
     if (unit === 1) fileName = 'unit1-conic.html';
     else if (unit === 2) fileName = 'unit2-parabola.html';
     else if (unit === 3) fileName = 'unit3-hyperbola.html';
     else if (unit === 4) fileName = 'unit4-review.html';
     
-    fetch(`lessons/${folder}/${fileName}`)
+    // Change path here to subjects/precalc/
+    fetch(`subjects/precalc/${fileName}`)
         .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
             lessonContent.innerHTML = data;
@@ -156,7 +154,7 @@ function loadLesson(subject, unit) {
             lessonContent.appendChild(completeBtn);
         })
         .catch(() => {
-            lessonContent.innerHTML = '<p class="text-danger fs-4 text-center">Lesson file not found.</p>';
+            lessonContent.innerHTML = '<p class="text-danger fs-4 text-center">Lesson file not found. Check path or file name.</p>';
         });
 }
 
