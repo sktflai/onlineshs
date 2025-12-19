@@ -1,3 +1,4 @@
+/* styles.css - Updated for Better Mobile View in Lessons Tab */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
@@ -10,11 +11,11 @@ body {
     transition: left 0.3s ease;
     z-index: 1000;
     width: 200px;
-    background: #343a40; /* Dark gray for consistency */
+    background: #343a40;
 }
 
 .sidebar button {
-    color: white !important; /* Forces white text */
+    color: white !important;
     background: transparent;
     border: none;
     text-align: left;
@@ -25,7 +26,7 @@ body {
 
 .sidebar button:hover {
     background-color: #495057 !important;
-    color: #ffc107 !important; /* Yellow hover for contrast */
+    color: #ffc107 !important;
 }
 
 .sidebar.show {
@@ -42,6 +43,7 @@ body {
     margin-left: 200px;
 }
 
+/* Mobile Improvements */
 @media (max-width: 992px) {
     .sidebar.show + .main-content {
         margin-left: 0;
@@ -53,55 +55,61 @@ body {
     .sidebar.show {
         left: 0;
     }
+    
+    /* Lessons Tab Specific Mobile Fixes */
+    #lessons .form-select {
+        width: 100% !important; /* Full width dropdown on mobile */
+        font-size: 1rem;
+    }
+    
+    #unit-list {
+        justify-content: center !important; /* Center buttons */
+        flex-direction: column !important; /* Stack buttons vertically */
+        align-items: center;
+    }
+    
+    #unit-list button {
+        width: 90% !important; /* Wider buttons for easy tap */
+        margin-bottom: 15px !important;
+        font-size: 1.1rem;
+        padding: 15px !important;
+    }
+    
+    #lesson-content {
+        padding: 20px !important; /* More breathing room */
+    }
+    
+    #lesson-content iframe {
+        height: 250px !important; /* Smaller videos on mobile */
+    }
+    
+    .unit-grid { /* For index.html cards on mobile */
+        grid-template-columns: 1fr !important; /* Single column cards */
+        padding: 0 10px;
+    }
+    
+    .unit-card button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2rem;
+    }
 }
 
 h1, h2 {
-    color: #198754 !important; /* Soft green for headings */
-}
-
-select.form-select {
-    max-width: 300px;
-}
-
-#progress-charts .progress {
-    height: 25px;
-    border-radius: 12px;
+    color: #198754 !important;
 }
 
 .progress-bar {
-    background: linear-gradient(to right, #198754, #2ca25f) !important; /* Green gradient override */
-    transition: width 0.5s ease;
+    background: linear-gradient(to right, #198754, #2ca25f) !important;
 }
 
-.btn-primary {
-    background-color: #198754 !important; /* Override Bootstrap blue buttons to green */
-    border-color: #198754 !important;
-    color: white !important;
-}
-
-.btn-primary:hover {
-    background-color: #157347 !important; /* Darker green hover */
-    border-color: #157347 !important;
-    transform: scale(1.05);
-}
-
-.btn-success {
-    background-color: #198754 !important; /* Ensure success buttons match green scheme */
+.btn-success, .btn-primary {
+    background-color: #198754 !important;
     border-color: #198754 !important;
 }
 
-#unit-list button, #quiz-list button, #test-list button {
-    padding: 10px 20px;
-    background: #198754; /* Green buttons */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    transition: background 0.3s, transform 0.2s;
-}
-
-#unit-list button:hover, #quiz-list button:hover, #test-list button:hover {
-    background: #157347; /* Darker green hover */
-    transform: scale(1.05);
+.btn-success:hover, .btn-primary:hover {
+    background-color: #157347 !important;
 }
 
 .question {
@@ -110,26 +118,21 @@ select.form-select {
     border-radius: 8px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s;
-}
-
-.question:hover {
-    transform: translateY(-5px);
 }
 
 .feedback {
-    color: #28a745;
+    color: #28a745 !important;
     font-weight: bold;
 }
 
 .error {
-    color: #dc3545;
+    color: #dc3545 !important;
     font-weight: bold;
 }
 
 .timer {
     font-weight: bold;
-    color: #198754 !important; /* Green timer */
+    color: #198754 !important;
     font-size: 18px;
     margin-bottom: 20px;
 }
