@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online SHS - Grade 11 STEM</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Additional styles for subject grid - clean and elegant */
+    .subjects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .subject-card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .subject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+    .subject-card h3 {
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+    .subject-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+  </style>
 </head>
 <body>
   <!-- Sidebar -->
@@ -78,13 +109,57 @@
     <!-- Lessons Tab -->
     <div id="lessons" class="tab-content">
       <div class="card">
-        <h2>Lessons</h2>
-        <p style="color:var(--text-light); margin-top:10px;">
-          Select a subject below to begin or continue your lessons.
+        <h2>Select a Subject</h2>
+        <p style="color:var(--text-light); margin-top:10px; text-align:center;">
+          Choose a subject to view units and detailed lessons.
         </p>
-        <p style="margin-top:20px; text-align:center; color:var(--text-light);">
-          Lesson pages will be added here step by step.
-        </p>
+
+        <div class="subjects-grid">
+          <a href="lessons/General_Mathematics/index.html" class="subject-card">
+            <h3>General Mathematics</h3>
+            <p>Functions, rational equations, exponential & logarithmic functions, business math, logic</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Statistics and Probability</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Pre-Calculus</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Basic Calculus</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>General Physics 1</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>General Chemistry 1</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Earth and Life Science</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Physical Science</h3>
+            <p>Coming soon...</p>
+          </a>
+
+          <a href="#" class="subject-card" style="opacity:0.6;">
+            <h3>Filipino sa Piling Larangan (Akademik)</h3>
+            <p>Coming soon... (in Filipino)</p>
+          </a>
+        </div>
       </div>
     </div>
 
@@ -136,18 +211,15 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
 
-        // Update active link
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         link.classList.add('active');
 
-        // Show corresponding tab
         const tabId = link.getAttribute('data-tab');
         document.querySelectorAll('.tab-content').forEach(tab => {
           tab.classList.remove('active');
         });
         document.getElementById(tabId).classList.add('active');
 
-        // Close sidebar on mobile after selection
         if (window.innerWidth <= 768) {
           sidebar.classList.remove('open');
           overlay.classList.remove('active');
