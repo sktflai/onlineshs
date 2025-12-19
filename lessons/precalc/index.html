@@ -1,3 +1,4 @@
+<!-- lessons/precalc/index.html - Only for Pre-Calculus: Bigger Cards, Perfectly Centered -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,44 +45,52 @@
         .overview ul li {
             margin-bottom: 15px;
         }
-        .unit-list { 
+        .unit-grid { 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Bigger cards */
+            gap: 40px; 
             width: 100%;
-            max-width: 500px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 30px; 
+            max-width: 1200px; /* Wider grid for larger cards */
+            justify-items: center; /* Perfect centering */
         }
-        .unit-button { 
-            width: 100%; 
+        .unit-card { 
+            width: 100%;
+            max-width: 500px; /* Bigger individual cards */
+            background: #f8f9fa; 
+            padding: 50px; 
+            border-radius: 25px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
+            text-align: center; 
+            transition: transform 0.3s ease; 
+        }
+        .unit-card:hover { 
+            transform: translateY(-10px); 
+        }
+        .unit-card h4 { 
+            font-size: 2rem; 
+            margin-bottom: 15px; 
+        }
+        .unit-card p { 
+            font-size: 1.4rem; 
+            margin-bottom: 35px; 
+        }
+        .unit-card button { 
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 22px; 
-            border-radius: 15px; 
-            font-size: 1.2rem; 
-            text-align: center; 
+            padding: 18px 60px; 
+            border-radius: 40px; 
+            font-size: 1.4rem; 
             cursor: pointer; 
-            transition: background 0.3s, transform 0.2s; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: background 0.3s; 
         }
-        .unit-button:hover { 
+        .unit-card button:hover { 
             background: #157347; 
-            transform: translateY(-3px); 
-        }
-        .unit-button h4 { 
-            margin: 0 0 10px 0; 
-            font-size: 1.5rem; 
-        }
-        .unit-button p { 
-            margin: 0; 
-            font-size: 1.1rem; 
-            opacity: 0.9; 
         }
         .video-section { 
             width: 100%;
             max-width: 900px; 
-            margin-top: 70px; 
+            margin-top: 80px; 
             text-align: center; 
             padding: 40px; 
             background: #f0f8f0; 
@@ -90,17 +99,26 @@
         }
         iframe { 
             width: 100%; 
-            height: 400px; 
-            border-radius: 12px; 
+            height: 450px; 
+            border-radius: 15px; 
+        }
+        @media (max-width: 992px) {
+            .unit-grid { 
+                grid-template-columns: 1fr; /* Single column on tablet/mobile */
+            }
+            .unit-card { 
+                max-width: 100%; 
+                padding: 40px; 
+            }
         }
         @media (max-width: 480px) {
             .main-container { padding: 30px 15px; }
             .overview { padding: 30px 15px; }
-            .overview p, .overview ul { font-size: 1.1rem; }
-            .unit-list { max-width: 100%; gap: 25px; }
-            .unit-button { padding: 20px; }
-            .unit-button h4 { font-size: 1.4rem; }
-            iframe { height: 220px; }
+            .unit-card { padding: 30px; }
+            .unit-card h4 { font-size: 1.8rem; }
+            .unit-card p { font-size: 1.3rem; }
+            .unit-card button { padding: 16px 50px; font-size: 1.3rem; }
+            iframe { height: 250px; }
         }
     </style>
 </head>
@@ -121,23 +139,27 @@
         </div>
 
         <h2>Choose a Unit</h2>
-        <div class="unit-list">
-            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 1)">
+        <div class="unit-grid">
+            <div class="unit-card">
                 <h4>Unit 1</h4>
                 <p>Introduction to Conic Sections & the Circle</p>
-            </button>
-            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 2)">
+                <button onclick="parent.loadLesson('PreCalculus', 1)">Start</button>
+            </div>
+            <div class="unit-card">
                 <h4>Unit 2</h4>
                 <p>Parabola & Ellipse</p>
-            </button>
-            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 3)">
+                <button onclick="parent.loadLesson('PreCalculus', 2)">Start</button>
+            </div>
+            <div class="unit-card">
                 <h4>Unit 3</h4>
                 <p>Hyperbola</p>
-            </button>
-            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 4)">
+                <button onclick="parent.loadLesson('PreCalculus', 3)">Start</button>
+            </div>
+            <div class="unit-card">
                 <h4>Unit 4</h4>
                 <p>Review, Systems & Applications</p>
-            </button>
+                <button onclick="parent.loadLesson('PreCalculus', 4)">Start</button>
+            </div>
         </div>
 
         <div class="video-section">
