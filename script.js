@@ -195,4 +195,30 @@ window.onload = () => {
     startStudyTimer();
     // Auto-open My Page on start
     document.querySelector('.nav-link[data-tab="mypage"]').click();
+// Your existing code here (progress, charts, load functions, etc.) - keep it all
+
+// === FIXED SIDEBAR TOGGLE (add this at the very end) ===
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('sidebarOverlay');
+const toggleBtn = document.getElementById('toggleSidebar');
+
+function toggleSidebar() {
+    sidebar.classList.toggle('show');
+    overlay.classList.toggle('show');
+}
+
+toggleBtn.addEventListener('click', toggleSidebar);
+overlay.addEventListener('click', toggleSidebar);
+
+// Close on link click (mobile only)
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+        if (window.innerWidth < 768) {
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+
+});
+
+
 };
