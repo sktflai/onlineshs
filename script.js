@@ -124,12 +124,13 @@ for (let i = 1; i <= 4; i++) {
 function loadLesson(subject, unit) {
     const lessonContent = document.getElementById('lesson-content');
     let fileName;
-    if (unit === 1) fileName = 'unit1-conic.html';
-    else if (unit === 2) fileName = 'unit2-parabola.html'; // Change to your actual name
-    else if (unit === 3) fileName = 'unit3-hyperbola.html'; // Change to your actual name
-    else if (unit === 4) fileName = 'unit4-review.html'; // Change to your actual name
+if (unit === 1) fileName = 'unit1-conic.html';
+else if (unit === 2) fileName = 'unit2-parabola.html';
+else if (unit === 3) fileName = 'unit3-hyperbola.html';
+else if (unit === 4) fileName = 'unit4-review.html';
 
-    fetch(`lessons/${subject}/${fileName}`)
+fetch(`lessons/${subject}/${fileName}`)
+    // rest of the function remains the same
         .then(response => {
             if (!response.ok) throw new Error('File not found');
             return response.text();
