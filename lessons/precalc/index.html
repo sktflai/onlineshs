@@ -1,4 +1,4 @@
-<!-- lessons/precalc/index.html - Updated: Simple Text Buttons (No Cards) -->
+<!-- lessons/precalc/index.html - Fixed: No Stuck Sidebar, Perfect Mobile Layout -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +10,22 @@
             font-family: 'Roboto', sans-serif; 
             padding: 0; 
             margin: 0; 
-            background: white; /* Full white background */
+            background: white; 
             color: #333; 
             line-height: 1.6; 
+            overflow-x: hidden; /* Prevent any horizontal scroll */
         }
         .main-container {
             padding: 40px 20px; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Everything centered */
+            align-items: center; 
         }
         h1, h2, h3 { color: #198754; text-align: center; }
         .overview { 
             width: 100%;
-            max-width: 800px; /* Big overview */
+            max-width: 800px; 
             text-align: center; 
             margin-bottom: 60px; 
             padding: 30px; 
@@ -37,18 +38,18 @@
         }
         .unit-list { 
             width: 100%;
-            max-width: 500px; /* Narrow for perfect centering */
+            max-width: 500px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 20px; 
+            gap: 25px; 
         }
         .unit-button { 
             width: 100%; 
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 20px; 
+            padding: 22px; 
             border-radius: 15px; 
             font-size: 1.2rem; 
             text-align: center; 
@@ -84,8 +85,8 @@
         @media (max-width: 480px) {
             .main-container { padding: 30px 15px; }
             .overview { padding: 25px 15px; }
-            .unit-list { max-width: 100%; padding: 0 10px; gap: 18px; }
-            .unit-button { padding: 18px; font-size: 1.1rem; }
+            .unit-list { max-width: 100%; gap: 20px; }
+            .unit-button { padding: 20px; }
             .unit-button h4 { font-size: 1.3rem; }
             iframe { height: 220px; }
         }
@@ -107,7 +108,7 @@
             </ul>
         </div>
 
-        <h2 style="margin-bottom: 30px;">Choose a Unit</h2>
+        <h2>Choose a Unit</h2>
         <div class="unit-list">
             <button class="unit-button" onclick="loadLesson('PreCalculus', 1)">
                 <h4>Unit 1</h4>
