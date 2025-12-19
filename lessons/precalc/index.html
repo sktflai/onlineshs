@@ -1,4 +1,3 @@
-<!-- lessons/precalc/index.html - Updated Style + Fixed Clickable Buttons -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,31 +14,31 @@
             line-height: 1.6; 
         }
         .main-container {
-            padding: 40px 20px; 
+            padding: 50px 20px; 
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center; 
         }
-        h1, h2, h3 { color: #198754; text-align: center; margin-bottom: 25px; }
+        h1, h2, h3 { color: #198754; text-align: center; }
         .overview { 
             width: 100%;
             max-width: 900px; 
             text-align: center; 
-            margin-bottom: 60px; 
-            padding: 35px; 
+            margin-bottom: 70px; 
+            padding: 40px; 
             background: #f0f8f0; 
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .overview p { 
-            font-size: 1.25rem; 
+            font-size: 1.3rem; 
             margin-bottom: 30px;
         }
         .overview ul { 
             text-align: left; 
             display: inline-block; 
-            font-size: 1.2rem; 
+            font-size: 1.3rem; 
             padding-left: 40px; 
         }
         .overview ul li {
@@ -47,7 +46,7 @@
         }
         .unit-list { 
             width: 100%;
-            max-width: 650px; 
+            max-width: 500px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
@@ -58,25 +57,25 @@
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 30px; 
-            border-radius: 20px; 
-            font-size: 1.3rem; 
+            padding: 22px; 
+            border-radius: 15px; 
+            font-size: 1.2rem; 
             text-align: center; 
             cursor: pointer; 
-            transition: background 0.3s, transform 0.3s; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: background 0.3s, transform 0.2s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .unit-button:hover { 
             background: #157347; 
-            transform: translateY(-5px); 
+            transform: translateY(-3px); 
         }
         .unit-button h4 { 
-            margin: 0 0 12px 0; 
-            font-size: 1.8rem; 
+            margin: 0 0 10px 0; 
+            font-size: 1.5rem; 
         }
         .unit-button p { 
             margin: 0; 
-            font-size: 1.3rem; 
+            font-size: 1.1rem; 
             opacity: 0.9; 
         }
         .video-section { 
@@ -84,34 +83,23 @@
             max-width: 900px; 
             margin-top: 70px; 
             text-align: center; 
-            padding: 35px; 
+            padding: 40px; 
             background: #f0f8f0; 
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .video-section p { 
-            font-size: 1.2rem; 
-            margin-bottom: 20px;
-        }
         iframe { 
             width: 100%; 
-            height: 450px; 
-            border-radius: 15px; 
-        }
-        @media (max-width: 768px) {
-            .main-container { padding: 30px 15px; }
-            .overview { padding: 30px 20px; }
-            .overview p, .overview ul { font-size: 1.1rem; }
-            .unit-list { max-width: 100%; gap: 25px; }
-            .unit-button { padding: 25px; }
-            .unit-button h4 { font-size: 1.6rem; }
-            .unit-button p { font-size: 1.2rem; }
-            iframe { height: 280px; }
+            height: 400px; 
+            border-radius: 12px; 
         }
         @media (max-width: 480px) {
-            .overview ul { padding-left: 30px; }
-            .unit-button { padding: 22px; }
-            .unit-button h4 { font-size: 1.5rem; }
+            .main-container { padding: 30px 15px; }
+            .overview { padding: 30px 15px; }
+            .overview p, .overview ul { font-size: 1.1rem; }
+            .unit-list { max-width: 100%; gap: 25px; }
+            .unit-button { padding: 20px; }
+            .unit-button h4 { font-size: 1.4rem; }
             iframe { height: 220px; }
         }
     </style>
@@ -161,9 +149,8 @@
     </div>
 
     <script>
-        // Fallback if parent.loadLesson not available
         if (typeof parent.loadLesson === 'undefined') {
-            function loadLesson(subject, unit) {
+            window.loadLesson = function(subject, unit) {
                 let fileName = '';
                 if (unit === 1) fileName = 'unit1-conic.html';
                 else if (unit === 2) fileName = 'unit2-parabola.html';
@@ -174,11 +161,8 @@
                     .then(response => response.text())
                     .then(data => {
                         parent.document.getElementById('lesson-content').innerHTML = data;
-                    })
-                    .catch(() => {
-                        parent.document.getElementById('lesson-content').innerHTML = '<p class="text-danger">Error loading lesson.</p>';
                     });
-            }
+            };
         }
     </script>
 </body>
