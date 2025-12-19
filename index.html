@@ -3,178 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 11 STEM Learning</title>
+<title>Grade 11 STEM Online Learning</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background:#f7f7f7; }
-  header { background:#0073e6; color:white; padding:10px; text-align:center; }
-  nav { display:flex; justify-content:space-around; background:#005bb5; }
-  nav button { flex:1; padding:10px; border:none; background:#005bb5; color:white; font-size:16px; }
-  nav button.active { background:#003f7f; }
-  section { padding:10px; display:none; }
-  section.active { display:block; }
-  .lesson, .activity, .quiz { background:white; margin:10px 0; padding:10px; border-radius:5px; }
-  button { cursor:pointer; }
-  input[type="radio"] { margin-right:5px; }
-  .summary-video { width:100%; height:200px; margin:10px 0; }
-  .score { font-weight:bold; margin-top:10px; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
+header { background:#0073e6; color:white; text-align:center; padding:15px 0; font-size:1.5em; }
+nav { display:flex; flex-wrap:wrap; background:#005bb5; }
+nav button { flex:1; padding:12px; border:none; background:#005bb5; color:white; font-size:16px; cursor:pointer; }
+nav button.active { background:#003f7f; }
+section { display:none; padding:10px; }
+section.active { display:block; }
+.lesson, .activity, .quiz, .summary { background:white; margin:10px 0; padding:10px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);}
+h3 { margin-top:0; }
+button { cursor:pointer; }
+input[type="radio"] { margin-right:5px; }
+.summary-video { width:100%; height:200px; margin:10px 0; }
+.score { font-weight:bold; margin-top:10px; }
+@media (max-width:600px){ nav button { font-size:14px; padding:10px; } }
 </style>
 </head>
 <body>
 
-<header><h1>Grade 11 STEM Learning</h1></header>
+<header>Grade 11 STEM Online Learning</header>
 <nav>
-  <button class="tab-btn active" data-tab="lessons">Lessons</button>
-  <button class="tab-btn" data-tab="activities">Activities</button>
-  <button class="tab-btn" data-tab="quizzes">Quizzes</button>
-  <button class="tab-btn" data-tab="summaries">Summaries</button>
-  <button class="tab-btn" data-tab="mypage">My Page</button>
+<button class="tab-btn active" data-tab="lessons">Lessons</button>
+<button class="tab-btn" data-tab="activities">Activities</button>
+<button class="tab-btn" data-tab="quizzes">Quizzes</button>
+<button class="tab-btn" data-tab="tests">Tests</button>
+<button class="tab-btn" data-tab="summaries">Summaries</button>
+<button class="tab-btn" data-tab="mypage">My Page</button>
 </nav>
 
 <section id="lessons" class="active">
-  <div id="lesson-content"></div>
+<div id="lesson-content"></div>
 </section>
 
 <section id="activities">
-  <div id="activity-content"></div>
+<div id="activity-content"></div>
 </section>
 
 <section id="quizzes">
-  <div id="quiz-content"></div>
+<div id="quiz-content"></div>
+</section>
+
+<section id="tests">
+<div id="test-content"></div>
 </section>
 
 <section id="summaries">
-  <div id="summary-content"></div>
+<div id="summary-content"></div>
 </section>
 
 <section id="mypage">
-  <h3>My Progress</h3>
-  <div id="progress-content"></div>
+<h3>My Progress</h3>
+<div id="progress-content"></div>
 </section>
 
 <script>
-// ======== Tabs ========
+// ====== Tab Navigation ======
 const tabs = document.querySelectorAll('.tab-btn');
 const sections = document.querySelectorAll('section');
-
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    tabs.forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    sections.forEach(s => s.classList.remove('active'));
-    document.getElementById(tab.dataset.tab).classList.add('active');
-  });
+tab.addEventListener('click', () => {
+tabs.forEach(t => t.classList.remove('active'));
+tab.classList.add('active');
+sections.forEach(s => s.classList.remove('active'));
+document.getElementById(tab.dataset.tab).classList.add('active');
+});
 });
 
-// ======== Data ========
-const lessons = [
-  {
-    title: "Lesson 1: Kinematics",
-    content: `<p>Kinematics is the study of motion without considering its causes...</p>
-              <p><b>Example:</b> A car moves at 60 km/h...</p>`
-  },
-  {
-    title: "Lesson 2: Dynamics",
-    content: `<p>Dynamics is the study of forces and why objects move...</p>`
-  }
-];
+// ====== Subjects Data ======
+const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Earth & Life Science"];
 
-const activities = [
-  {
-    title: "Activity 1: Motion Graphs",
-    content: "Draw a distance-time graph for a car moving at 50 km/h for 2 hours."
-  }
-];
+// ====== Lessons ======
+const lessons = {
+"Physics":[
+{section:"Kinematics", content:"<p>Kinematics is the study of motion without considering forces...</p><p><b>Example:</b> A car moves at 60 km/h for 2 hours. Distance = speed x time.</p>"},
+{section:"Dynamics", content:"<p>Dynamics deals with the forces causing motion...</p><p><b>Example:</b> F = m*a (Newton's 2nd Law)</p>"},
+{section:"Work & Energy", content:"<p>Work and energy concepts involve the ability to do work...</p>"},
+{section:"Momentum", content:"<p>Momentum is the product of mass and velocity...</p>"}
+],
+"Chemistry":[
+{section:"Atomic Structure", content:"<p>Atoms consist of protons, neutrons, and electrons...</p>"},
+{section:"Chemical Bonding", content:"<p>Chemical bonds hold atoms together...</p>"},
+{section:"Stoichiometry", content:"<p>Stoichiometry is the calculation of reactants/products...</p>"},
+{section:"Acids & Bases", content:"<p>Acids donate H+, bases accept H+...</p>"}
+],
+"Biology":[
+{section:"Cell Biology", content:"<p>Cells are the basic unit of life...</p>"},
+{section:"Genetics", content:"<p>Genetics studies heredity and genes...</p>"},
+{section:"Human Anatomy", content:"<p>Human body systems: circulatory, respiratory...</p>"},
+{section:"Ecology", content:"<p>Ecology studies interactions of organisms and environment...</p>"}
+],
+"Mathematics":[
+{section:"Functions", content:"<p>Functions relate input to output...</p>"},
+{section:"Algebra", content:"<p>Algebra involves solving equations and inequalities...</p>"},
+{section:"Trigonometry", content:"<p>Trigonometry studies relations of angles and sides...</p>"},
+{section:"Calculus", content:"<p>Calculus includes differentiation and integration...</p>"}
+],
+"Statistics":[
+{section:"Descriptive Statistics", content:"<p>Summarizes data using mean, median, mode...</p>"},
+{section:"Probability", content:"<p>Probability measures chance of events...</p>"},
+{section:"Distributions", content:"<p>Normal, binomial, Poisson distributions...</p>"},
+{section:"Inferential Statistics", content:"<p>Draw conclusions from sample to population...</p>"}
+],
+"Earth & Life Science":[
+{section:"Earth Structure", content:"<p>Earth layers: crust, mantle, core...</p>"},
+{section:"Rocks & Minerals", content:"<p>Types: igneous, sedimentary, metamorphic...</p>"},
+{section:"Plate Tectonics", content:"<p>Movement of Earth's plates causes earthquakes...</p>"},
+{section:"Environment & Sustainability", content:"<p>Human impact, conservation, sustainability...</p>"}
+]
+};
 
-const quizzes = [
-  {
-    question: "What is the formula for velocity?",
-    options: ["v = d/t", "v = t/d", "v = m*a"],
-    answer: 0,
-    explanation: "Velocity is distance over time (v = d/t)."
-  }
-];
-
-const summaries = [
-  {
-    title: "Kinematics Summary",
-    content: "Kinematics deals with motion. Key formulas: v=d/t, a=Δv/Δt.",
-    video: "https://www.youtube.com/embed/kT5wXoNfi0A"
-  }
-];
-
-// ======== Load Content ========
+// ====== Load Lessons ======
 const lessonContainer = document.getElementById('lesson-content');
-lessons.forEach(l => {
+for(const sub of subjects){
   const div = document.createElement('div');
-  div.className = "lesson";
-  div.innerHTML = `<h3>${l.title}</h3>${l.content}`;
+  div.className="lesson";
+  div.innerHTML=`<h3>${sub}</h3>`;
+  lessons[sub].forEach(sec=>{
+    div.innerHTML+=`<h4>${sec.section}</h4>${sec.content}`;
+  });
   lessonContainer.appendChild(div);
-});
+}
+
+// ====== Activities ======
+const activities = {
+"Physics":["Draw a distance-time graph for a moving car.","Calculate force given mass and acceleration.","Solve work and energy problems.","Calculate momentum of objects."],
+"Chemistry":["Draw Bohr diagrams.","Identify types of chemical bonds.","Balance chemical equations.","Perform acid-base titration calculations."],
+"Biology":["Observe cell structures under microscope.","Solve genetics Punnett squares.","Label human body systems.","Identify interactions in an ecosystem."],
+"Mathematics":["Plot functions on graph.","Solve algebraic equations.","Solve trigonometric problems.","Differentiate simple functions."],
+"Statistics":["Compute mean, median, mode.","Calculate probability of events.","Identify distributions.","Perform sample inference."],
+"Earth & Life Science":["Draw Earth layers.","Classify rocks and minerals.","Map plate boundaries.","Analyze human impact on environment."]
+};
 
 const activityContainer = document.getElementById('activity-content');
-activities.forEach(a => {
+for(const sub of subjects){
   const div = document.createElement('div');
-  div.className = "activity";
-  div.innerHTML = `<h3>${a.title}</h3><p>${a.content}</p>`;
+  div.className="activity";
+  div.innerHTML=`<h3>${sub}</h3>`;
+  activities[sub].forEach((act,i)=>{
+    div.innerHTML+=`<p><b>Activity ${i+1}:</b> ${act}</p>`;
+  });
   activityContainer.appendChild(div);
-});
+}
 
+// ====== Quizzes ======
+const quizzes = {
+"Physics":[
+{q:"Formula for velocity?",options:["v=d/t","v=t/d","v=m*a"],a:0,exp:"Velocity is distance over time."},
+{q:"Newton's 2nd Law?",options:["F=m/a","F=m*a","F=a/m"],a:1,exp:"Force equals mass times acceleration."},
+{q:"Unit of force?",options:["Newton","Joule","Pascal"],a:0,exp:"Newton is the SI unit of force."},
+{q:"Acceleration formula?",options:["a=v/t","a=vt","a=d/t"],a:0,exp:"a = Δv / t."},
+{q:"Work formula?",options:["W=F*d","W=F/d","W=F+d"],a:0,exp:"Work = Force × Distance."},
+{q:"Kinetic energy?",options:["KE=1/2mv^2","KE=mv","KE=mv^2"],a:0,exp:"KE = 1/2 * m * v^2."},
+{q:"Potential energy?",options:["PE=mgh","PE=mg","PE=gh"],a:0,exp:"PE = mass × gravity × height."},
+{q:"Momentum?",options:["p=mv","p=m/v","p=v/m"],a:0,exp:"Momentum = mass × velocity."},
+{q:"Unit of energy?",options:["Joule","Newton","Watt"],a:0,exp:"Joule is the SI unit of energy."},
+{q:"Newton's 1st Law?",options:["Law of Inertia","F=ma","Action=Reaction"],a:0,exp:"An object remains at rest or in motion unless acted upon."}
+]
+};
+
+// ====== Load Quizzes ======
 const quizContainer = document.getElementById('quiz-content');
-quizzes.forEach((q,i) => {
+for(const sub of subjects){
+  if(!quizzes[sub]) continue;
   const div = document.createElement('div');
-  div.className = "quiz";
-  div.innerHTML = `<p><b>${q.question}</b></p>
-    ${q.options.map((o, idx) => `<label><input type="radio" name="q${i}" value="${idx}">${o}</label><br>`).join('')}
-    <button onclick="checkAnswer(${i})">Submit</button>
-    <p class="score" id="score${i}"></p>`;
+  div.className="quiz";
+  div.innerHTML=`<h3>${sub} Quizzes</h3>`;
+  quizzes[sub].forEach((q,i)=>{
+    div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-q${i}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkQuiz('${sub}',${i})">Submit</button><p class="score" id="${sub}-score${i}"></p>`;
+  });
   quizContainer.appendChild(div);
 });
 
-// ======== Quiz Logic ========
-function checkAnswer(index) {
-  const q = quizzes[index];
-  const options = document.getElementsByName(`q${index}`);
-  let selected = -1;
-  options.forEach(o => { if(o.checked) selected = parseInt(o.value); });
-  const scoreEl = document.getElementById(`score${index}`);
-  if(selected === -1) { scoreEl.innerHTML = "Please select an answer."; return; }
-  if(selected === q.answer) {
-    scoreEl.innerHTML = `Correct! ✅ ${q.explanation}`;
-    saveProgress(index, true);
-  } else {
-    scoreEl.innerHTML = `Wrong ❌ ${q.explanation}`;
-    saveProgress(index, false);
-  }
+// ====== Quiz Logic ======
+function checkQuiz(sub,index){
+  const q=quizzes[sub][index];
+  const opts=document.getElementsByName(`${sub}-q${index}`);
+  let selected=-1;
+  opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
+  const scoreEl=document.getElementById(`${sub}-score${index}`);
+  if(selected===-1){scoreEl.innerHTML="Please select an answer.";return;}
+  if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`; saveProgress(`${sub}-q${index}`,true);} 
+  else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`; saveProgress(`${sub}-q${index}`,false);}
 }
 
-// ======== Summaries ========
-const summaryContainer = document.getElementById('summary-content');
-summaries.forEach(s => {
-  const div = document.createElement('div');
-  div.className = "summary";
-  div.innerHTML = `<h3>${s.title}</h3><p>${s.content}</p>
-  <iframe class="summary-video" src="${s.video}" frameborder="0" allowfullscreen></iframe>`;
-  summaryContainer.appendChild(div);
+// ====== Tests (simplified example, you can expand questions) ======
+const tests={
+"Physics":[
+{q:"Test Q1: v=d/t?",options:["v=d/t","v=t/d","v=m*a"],a:0},
+{q:"Test Q2: F=m*a?",options:["F=m/a","F=m*a","F=a/m"],a:1}
+]};
+
+// ====== Load Tests ======
+const testContainer=document.getElementById('test-content');
+for(const sub of subjects){
+  if(!tests[sub]) continue;
+  const div=document.createElement('div');
+  div.className="quiz";
+  div.innerHTML=`<h3>${sub} Tests</h3>`;
+  tests[sub].forEach((q,i)=>{
+    div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-t${i}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkTest('${sub}',${i})">Submit</button><p class="score" id="${sub}-tscore${i}"></p>`;
+  });
+  testContainer.appendChild(div);
 });
 
-// ======== Progress Tracking ========
-function saveProgress(quizIndex, correct) {
-  let progress = JSON.parse(localStorage.getItem('progress') || '{}');
-  progress[`quiz${quizIndex}`] = correct;
-  localStorage.setItem('progress', JSON.stringify(progress));
+// ====== Test Logic ======
+function checkTest(sub,index){
+  const q=tests[sub][index];
+  const opts=document.getElementsByName(`${sub}-t${index}`);
+  let selected=-1;
+  opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
+  const scoreEl=document.getElementById(`${sub}-tscore${index}`);
+  if(selected===-1){scoreEl.innerHTML="Please select an answer.";return;}
+  if(selected===q.a){scoreEl.innerHTML=`Correct! ✅`; saveProgress(`${sub}-t${index}`,true);}
+  else{scoreEl.innerHTML=`Wrong ❌`; saveProgress(`${sub}-t${index}`,false);}
+}
+
+// ====== Summaries ======
+const summaries={
+"Physics":[
+{section:"Kinematics","content":"Kinematics studies motion. Key formulas: v=d/t, a=Δv/Δt.","video":"https://www.youtube.com/embed/kT5wXoNfi0A"},
+{section:"Dynamics","content":"Dynamics involves forces and motion.","video":"https://www.youtube.com/embed/dynamics_video"},
+{section:"Work & Energy","content":"Work and energy concepts.","video":"https://www.youtube.com/embed/work_energy_video"},
+{section:"Momentum","content":"Momentum = mass * velocity.","video":"https://www.youtube.com/embed/momentum_video"}
+]
+};
+
+// ====== Load Summaries ======
+const summaryContainer=document.getElementById('summary-content');
+for(const sub of subjects){
+  if(!summaries[sub]) continue;
+  const div=document.createElement('div');
+  div.className="summary";
+  div.innerHTML=`<h3>${sub} Summaries</h3>`;
+  summaries[sub].forEach(s=>{
+    div.innerHTML+=`<h4>${s.section}</h4><p>${s.content}</p><iframe class="summary-video" src="${s.video}" frameborder="0" allowfullscreen></iframe>`;
+  });
+  summaryContainer.appendChild(div);
+}
+
+// ====== Progress Tracking ======
+function saveProgress(item,correct){
+  let progress=JSON.parse(localStorage.getItem('progress')||'{}');
+  progress[item]=correct;
+  localStorage.setItem('progress',JSON.stringify(progress));
   loadProgress();
 }
-
-function loadProgress() {
-  let progress = JSON.parse(localStorage.getItem('progress') || '{}');
-  const progressEl = document.getElementById('progress-content');
-  progressEl.innerHTML = Object.keys(progress).length ? 
-    Object.keys(progress).map(k => `${k}: ${progress[k] ? "✅ Correct" : "❌ Wrong"}`).join('<br>') 
-    : "No progress yet.";
+function loadProgress(){
+  let progress=JSON.parse(localStorage.getItem('progress')||'{}');
+  const progressEl=document.getElementById('progress-content');
+  progressEl.innerHTML=Object.keys(progress).length?Object.keys(progress).map(k=>`${k}: ${progress[k]?"✅ Correct":"❌ Wrong"}`).join('<br>'):"No progress yet.";
 }
-
 loadProgress();
-</script>
 
+</script>
 </body>
 </html>
