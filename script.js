@@ -1,16 +1,19 @@
 function toggleSidebar() {
     const sidebar = document.querySelector('.sidebar');
-    sidebar.style.left = sidebar.style.left === '0px' ? '-300px' : '0px';
+    const overlay = document.querySelector('.overlay');
+    const body = document.body;
+    
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('active');
+    body.classList.toggle('sidebar-open'); // This triggers the push/dim effect
 }
 
 function showTab(tabId) {
     document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
-    toggleSidebar();
-    if (tabId === 'my-page') updateMyPage();
+    toggleSidebar(); // Close sidebar after picking a tab
 }
 
-let sessionStart = new Date();
 let totalTime = parseInt(localStorage.getItem('totalStudyTime') || '0');
 
 function updateMyPage() {
@@ -27,7 +30,6 @@ function updateMyPage() {
     });
 }
 
-// Update total time every minute
 setInterval(() => {
     totalTime++;
     localStorage.setItem('totalStudyTime', totalTime);
@@ -36,5 +38,4 @@ setInterval(() => {
     }
 }, 60000);
 
-// Run on load
 updateMyPage();
