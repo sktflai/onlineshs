@@ -1,50 +1,131 @@
-<!-- unit1-conic.html - Full Code with Working Images -->
-<h2>Unit 1: Introduction to Conic Sections and the Circle</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Calculus - Unit 1: Conic Sections</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px;
+            line-height: 1.8;
+            background: #ffffff;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        h1 {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            margin: 25px 0;
+            display: block;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            margin: 30px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .example {
+            background: #f0f8ff;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        ul {
+            padding-left: 25px;
+        }
+        hr {
+            border: none;
+            border-top: 2px solid #eee;
+            margin: 40px 0;
+        }
+        .note {
+            font-style: italic;
+            color: #2980b9;
+            font-size: 1.1em;
+            text-align: center;
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
 
-<h3>Learning Objectives</h3>
-<ul>
-    <li>Identify and illustrate the four conic sections.</li>
-    <li>Derive the standard equation of a circle.</li>
-    <li>Determine the center and radius from the equation.</li>
-    <li>Graph circles and solve related problems.</li>
-</ul>
+    <h1>Unit 1: Conic Sections</h1>
 
-<h3>Detailed Explanation</h3>
-<p>Conic sections are curves obtained by intersecting a plane with a double cone. The four types are:</p>
-<ul>
-    <li><strong>Circle</strong>: Plane perpendicular to the cone axis.</li>
-    <li><strong>Ellipse</strong>: Plane tilted but not parallel to generator.</li>
-    <li><strong>Parabola</strong>: Plane parallel to generator.</li>
-    <li><strong>Hyperbola</strong>: Plane steeper than generator.</li>
-</ul>
+    <h2>Learning Objectives</h2>
+    <ul>
+        <li>Understand how conic sections are formed by intersecting a plane with a double cone</li>
+        <li>Identify and distinguish the four types of conic sections</li>
+        <li>Write and recognize the standard equations of circles and ellipses</li>
+        <li>Determine key features: center, radius (circle), major/minor axes, foci (ellipse)</li>
+        <li>Apply basic concepts to graphing and real-world contexts</li>
+    </ul>
 
-<p style="text-align:center;">
-    <img src="https://mathbitsnotebook.com/Geometry/Conics/conicplane.png" alt="Conic sections formation" style="max-width:100%; height:auto; border-radius:8px;" loading="lazy">
-</p>
+    <h2>Introduction to Conic Sections</h2>
+    <p>Conic sections are curves obtained by intersecting a plane with a double-napped cone. The four types are circle, ellipse, parabola, and hyperbola, depending on the plane's angle.</p>
 
-<p>The standard equation of a <strong>circle</strong> with center (h, k) and radius r is:</p>
-<p><strong>(x - h)² + (y - k)² = r²</strong></p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Conic_sections_with_plane.svg" alt="Conic sections formed by plane intersecting a double cone">
 
-<h3>Examples</h3>
-<p><strong>Example 1:</strong> Find the equation of a circle with center (-2, 3) and radius 7.</p>
-<p>Solution: (x + 2)² + (y - 3)² = 49</p>
+    <h2>1. The Circle</h2>
+    <div class="example">
+        <strong>Standard Equation:</strong> (x − h)² + (y − k)² = r²<br>
+        Center: (h, k) &nbsp;&nbsp; Radius: r
+    </div>
+    <p><strong>Example:</strong> (x + 1)² + (y − 4)² = 25 → Center: (−1, 4), Radius: 5</p>
 
-<p><strong>Example 2:</strong> Find center and radius of x² + y² + 8x - 6y + 16 = 0.</p>
-<p>Complete the square: (x + 4)² + (y - 3)² = 9 → Center (-4, 3), radius 3.</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Circle-withlabels.svg" alt="Labeled circle with center and radius">
 
-<h3>Interesting Facts</h3>
-<ul>
-    <li>A circle has eccentricity e = 0 (most "round" conic).</li>
-    <li>Real-life uses: Wheels, planetary orbits (approximately circular), optical lenses.</li>
-</ul>
+    <h2>2. The Ellipse</h2>
+    <div class="example">
+        <strong>Standard Equation (horizontal major axis):</strong><br>
+        \frac{(x - h)^2}{a^2} + \frac{(y - k)^2}{b^2} = 1 &nbsp;&nbsp; (a > b)<br>
+        Center: (h, k) &nbsp;&nbsp; Vertices: (±a from center along major axis)
+    </div>
+    <p>The sum of distances from any point on the ellipse to the two foci is constant.</p>
 
-<p style="text-align:center;">
-    <img src="https://mathbitsnotebook.com/Geometry/Conics/coniccircle.png" alt="Circle equation and graph" style="max-width:100%; height:auto; border-radius:8px;" loading="lazy">
-</p>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Ellipse-def.svg" alt="Ellipse with labeled foci, major and minor axes">
 
-<h3>Helpful Videos</h3>
-<p><a href="https://www.youtube.com/watch?v=Awdxh3QdLv8" target="_blank">Introduction to Conic Sections (DepEd TV)</a></p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/Awdxh3QdLv8" frameborder="0" allowfullscreen loading="lazy"></iframe>
+    <hr>
 
-<p><a href="https://www.youtube.com/watch?v=TyqgjnnHYk4" target="_blank">Circles in Pre-Calculus (Filipino Explanation)</a></p>
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/TyqgjnnHYk4" frameborder="0" allowfullscreen loading="lazy"></iframe>
+    <h2>Recommended Video Lessons</h2>
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/9542q70a8g8" title="Introduction to Conic Sections - Clear Overview" allowfullscreen></iframe>
+    </div>
+
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/L13sX6jR9rA" title="Conic Sections in Filipino/Tagalog Explanation" allowfullscreen></iframe>
+    </div>
+
+    <hr>
+
+    <p class="note">
+        Study the diagrams and standard equations well.<br>
+        Parabola and hyperbola will be covered in the next units.<br>
+        When ready, return to the Pre-Calculus menu and open Unit 2: Parabola.<br>
+        Your progress is saved automatically!
+    </p>
+
+</body>
+</html>
