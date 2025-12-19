@@ -1,191 +1,107 @@
-<!-- lessons/precalc/index.html - Only for Pre-Calculus: Bigger Cards, Perfectly Centered -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Calculus - Grade 11 STEM</title>
+    <title>Pre-Calculus Lessons</title>
     <style>
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            padding: 0; 
-            margin: 0; 
-            background: white; 
-            color: #333; 
-            line-height: 1.6; 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px;
+            background: #f8f9fa;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .main-container {
-            padding: 50px 20px; 
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center; 
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
         }
-        h1, h2, h3 { color: #198754; text-align: center; }
-        .overview { 
-            width: 100%;
-            max-width: 900px; 
-            text-align: center; 
-            margin-bottom: 70px; 
-            padding: 40px; 
-            background: #f0f8f0; 
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        .unit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
-        .overview p { 
-            font-size: 1.3rem; 
-            margin-bottom: 30px;
+        .unit-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .overview ul { 
-            text-align: left; 
-            display: inline-block; 
-            font-size: 1.3rem; 
-            padding-left: 40px; 
+        .unit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
-        .overview ul li {
+        .unit-card h3 {
+            color: #3498db;
             margin-bottom: 15px;
         }
-        .unit-grid { 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Bigger cards */
-            gap: 40px; 
-            width: 100%;
-            max-width: 1200px; /* Wider grid for larger cards */
-            justify-items: center; /* Perfect centering */
+        .unit-card a {
+            display: block;
+            padding: 15px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: background 0.3s;
         }
-        .unit-card { 
-            width: 100%;
-            max-width: 500px; /* Bigger individual cards */
-            background: #f8f9fa; 
-            padding: 50px; 
-            border-radius: 25px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12); 
-            text-align: center; 
-            transition: transform 0.3s ease; 
+        .unit-card a:hover {
+            background: #2980b9;
         }
-        .unit-card:hover { 
-            transform: translateY(-10px); 
-        }
-        .unit-card h4 { 
-            font-size: 2rem; 
-            margin-bottom: 15px; 
-        }
-        .unit-card p { 
-            font-size: 1.4rem; 
-            margin-bottom: 35px; 
-        }
-        .unit-card button { 
-            background: #198754; 
-            color: white; 
-            border: none; 
-            padding: 18px 60px; 
-            border-radius: 40px; 
-            font-size: 1.4rem; 
-            cursor: pointer; 
-            transition: background 0.3s; 
-        }
-        .unit-card button:hover { 
-            background: #157347; 
-        }
-        .video-section { 
-            width: 100%;
-            max-width: 900px; 
-            margin-top: 80px; 
-            text-align: center; 
-            padding: 40px; 
-            background: #f0f8f0; 
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        iframe { 
-            width: 100%; 
-            height: 450px; 
-            border-radius: 15px; 
-        }
-        @media (max-width: 992px) {
-            .unit-grid { 
-                grid-template-columns: 1fr; /* Single column on tablet/mobile */
-            }
-            .unit-card { 
-                max-width: 100%; 
-                padding: 40px; 
-            }
-        }
-        @media (max-width: 480px) {
-            .main-container { padding: 30px 15px; }
-            .overview { padding: 30px 15px; }
-            .unit-card { padding: 30px; }
-            .unit-card h4 { font-size: 1.8rem; }
-            .unit-card p { font-size: 1.3rem; }
-            .unit-card button { padding: 16px 50px; font-size: 1.3rem; }
-            iframe { height: 250px; }
+        .note {
+            margin-top: 60px;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 1.1em;
         }
     </style>
 </head>
 <body>
-    <div class="main-container">
-        <div class="overview">
-            <h1>Pre-Calculus (Grade 11 STEM)</h1>
-            <p><strong>Overview:</strong> This course introduces analytic geometry, focusing on conic sections—their definitions, equations, graphs, and real-world applications. It strengthens algebraic and geometric skills essential for calculus.</p>
 
-            <h2>Course Learning Objectives</h2>
-            <ul>
-                <li>Illustrate the formation of conic sections from a double cone.</li>
-                <li>Derive, transform, and graph standard/general equations of circles, parabolas, ellipses, and hyperbolas.</li>
-                <li>Determine key elements (center, vertices, foci, directrix, asymptotes).</li>
-                <li>Solve situational problems involving conic sections.</li>
-                <li>Recognize degenerate cases and solve systems of conics.</li>
-            </ul>
+    <h1>Pre-Calculus<br>Grade 11 STEM</h1>
+    <p class="lead" style="font-size: 1.3em; margin-bottom: 40px;">
+        Select a unit to start learning. All lessons include detailed explanations, examples, diagrams, and video resources.
+    </p>
+
+    <div class="unit-grid">
+        <div class="unit-card">
+            <h3>Unit 1</h3>
+            <p>Introduction to Conic Sections<br>(Overview, Circle, Ellipse)</p>
+            <a href="unit1-conic.html" target="_self">Open Unit 1</a>
         </div>
 
-        <h2>Choose a Unit</h2>
-        <div class="unit-grid">
-            <div class="unit-card">
-                <h4>Unit 1</h4>
-                <p>Introduction to Conic Sections & the Circle</p>
-                <button onclick="parent.loadLesson('PreCalculus', 1)">Start</button>
-            </div>
-            <div class="unit-card">
-                <h4>Unit 2</h4>
-                <p>Parabola & Ellipse</p>
-                <button onclick="parent.loadLesson('PreCalculus', 2)">Start</button>
-            </div>
-            <div class="unit-card">
-                <h4>Unit 3</h4>
-                <p>Hyperbola</p>
-                <button onclick="parent.loadLesson('PreCalculus', 3)">Start</button>
-            </div>
-            <div class="unit-card">
-                <h4>Unit 4</h4>
-                <p>Review, Systems & Applications</p>
-                <button onclick="parent.loadLesson('PreCalculus', 4)">Start</button>
-            </div>
+        <div class="unit-card">
+            <h3>Unit 2</h3>
+            <p>Parabola<br>(Standard Forms, Properties, Applications)</p>
+            <a href="unit2-parabola.html" target="_self">Open Unit 2</a>
         </div>
 
-        <div class="video-section">
-            <h2>Recommended Playlists</h2>
-            <p>These DepEd-aligned playlists provide clear Filipino explanations with examples.</p>
-            <p><a href="https://www.youtube.com/playlist?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" target="_blank">Primary Playlist: Grade 11 Pre-Calculus (STEM) Complete Coverage</a></p>
-            <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
+        <div class="unit-card">
+            <h3>Unit 3</h3>
+            <p>Hyperbola<br>(Standard Forms, Asymptotes, Applications)</p>
+            <a href="unit3-hyperbola.html" target="_self">Open Unit 3</a>
+        </div>
+
+        <div class="unit-card">
+            <h3>Unit 4</h3>
+            <p>Comprehensive Review<br>(All Conics, Mixed Problems, Situational Tasks)</p>
+            <a href="unit4-review.html" target="_self">Open Unit 4</a>
         </div>
     </div>
 
-    <script>
-        if (typeof parent.loadLesson === 'undefined') {
-            window.loadLesson = function(subject, unit) {
-                let fileName = '';
-                if (unit === 1) fileName = 'unit1-conic.html';
-                else if (unit === 2) fileName = 'unit2-parabola.html';
-                else if (unit === 3) fileName = 'unit3-hyperbola.html';
-                else if (unit === 4) fileName = 'unit4-review.html';
-                
-                fetch(`lessons/precalc/${fileName}`)
-                    .then(response => response.text())
-                    .then(data => {
-                        parent.document.getElementById('lesson-content').innerHTML = data;
-                    });
-            };
-        }
-    </script>
+    <p class="note">
+        "EDUCATION IS MEANT TO BE FREE"<br>
+        Progress is automatically saved when you open any unit.<br>
+        After studying, test yourself in the Activity/Quiz tab!
+    </p>
+
 </body>
 </html>
