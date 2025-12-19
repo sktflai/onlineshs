@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 3: Operations on Functions - Online SHS</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <style>
+    .back-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .example {
+      background: #f1f2f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .practice {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .practice h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .practice p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+    .practice ol {
+      margin-left: 35px;
+      line-height: 1.8;
+    }
+    .practice li {
+      margin-bottom: 18px;
+    }
+    .answer {
+      margin-top: 25px;
+      padding: 20px;
+      background: #dfe6e9;
+      border-radius: 8px;
+      display: none;
+      line-height: 1.8;
+    }
+    .show-answer {
+      display: block;
+      margin: 25px auto 0;
+      padding: 10px 30px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 20px auto;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table th, table td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: center;
+    }
+    table th {
+      background: var(--accent-light);
+      color: white;
+    }
+    .complete-btn {
+      display: block;
+      margin: 50px auto;
+      padding: 14px 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Back to Unit 1</a>
+
+    <div class="card">
+      <h2 style="text-align:center; color:var(--accent);">Lesson 3: Operations on Functions</h2>
+      <p style="text-align:center; color:var(--text-light);">
+        Unit 1: Functions and Their Graphs | General Mathematics - Grade 11 STEM
+      </p>
+    </div>
+
+    <div class="card section">
+      <h3>Learning Objectives</h3>
+      <ul style="margin-left:20px; line-height:1.8; color:var(--text-light);">
+        <li>Perform addition, subtraction, multiplication, and division on functions</li>
+        <li>Find the domain of the resulting function</li>
+        <li>Perform composition of functions (f ∘ g)(x)</li>
+        <li>Solve real-life problems involving operations on functions</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>Arithmetic Operations on Functions</h3>
+      <p>For functions f(x) and g(x), with domain intersection D:</p>
+      <ul style="margin-left:20px; line-height:1.8;">
+        <li>(f + g)(x) = f(x) + g(x)</li>
+        <li>(f - g)(x) = f(x) - g(x)</li>
+        <li>(f · g)(x) = f(x) · g(x)</li>
+        <li>(f / g)(x) = f(x) / g(x), g(x) ≠ 0</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>Examples of Arithmetic Operations</h3>
+
+      <div class="example">
+        Let f(x) = 2x + 1 and g(x) = x² - 3<br><br>
+        (f + g)(x) = (2x + 1) + (x² - 3) = x² + 2x - 2<br>
+        (f - g)(x) = (2x + 1) - (x² - 3) = -x² + 2x + 4<br>
+        (f · g)(x) = (2x + 1)(x² - 3) = 2x³ - 6x + x² - 3 = 2x³ + x² - 6x - 3<br>
+        (f / g)(x) = (2x + 1)/(x² - 3), x² ≠ 3
+      </div>
+
+      <img src="https://saylordotorg.github.io/text_intermediate-algebra/section_05/0ae2c1dfd4af8723fa52d9b5ae6dabf3.png" alt="Example Graphs of Operations on Functions">
+    </div>
+
+    <div class="card section">
+      <h3>Composition of Functions</h3>
+      <p>Composition is "function of a function": (f ∘ g)(x) = f(g(x))<br>
+      Order matters: (f ∘ g) ≠ (g ∘ f) generally</p>
+
+      <div class="example">
+        Let f(x) = 3x - 2 and g(x) = x²<br><br>
+        (f ∘ g)(x) = f(g(x)) = 3(x²) - 2 = 3x² - 2<br>
+        (g ∘ f)(x) = g(f(x)) = (3x - 2)² = 9x² - 12x + 4
+      </div>
+
+      <img src="https://pressbooks.bccampus.ca/algebraintermediate/wp-content/uploads/sites/599/2018/12/CNX_IntAlg_Figure_09_06_015_img_new.jpg" alt="Composition Diagram Example">
+    </div>
+
+    <div class="card section">
+      <h3>Real-Life Application</h3>
+      <p>Cost example: Fixed cost f(x) = 5000, variable cost g(x) = 20x (x = units produced)<br>
+      Total cost C(x) = f(x) + g(x) = 5000 + 20x</p>
+    </div>
+
+    <div class="card section">
+      <h3>Recommended Videos (Philippine Teachers)</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/5t1HfD9Ywvw" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">OPERATIONS ON FUNCTIONS || GRADE 11 GENERAL MATHEMATICS Q1 (Excellent clear examples)</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/TA2Wk-01DK8" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">Operations on Functions | General Mathematics | Grade 11</p>
+    </div>
+
+    <div class="card practice">
+      <h3>Practice Exercises</h3>
+      <p>Test your skills.</p>
+      <ol>
+        <li>Let f(x) = x + 4, g(x) = 2x - 1. Find (f + g)(x) and (f - g)(x).</li>
+        <li>Find (f · g)(x) for the same functions.</li>
+        <li>Find (f ∘ g)(x) and (g ∘ f)(x).</li>
+        <li>Real-life: Revenue R(x) = 50x, Cost C(x) = 20x + 1000. Find profit P(x) = R(x) - C(x).</li>
+      </ol>
+
+      <button class="show-answer">Show Answers</button>
+      <div class="answer">
+        <strong>Answers:</strong><br><br>
+        1. (f + g)(x) = 3x + 3, (f - g)(x) = -x + 5<br>
+        2. (f · g)(x) = 2x² + 6x - 4<br>
+        3. (f ∘ g)(x) = 2x + 3, (g ∘ f)(x) = 2x + 7<br>
+        4. P(x) = 30x - 1000
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="complete-btn" onclick="alert('Fantastic! You mastered operations on functions.')">
+        Mark as Complete
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.show-answer').addEventListener('click', function() {
+      this.style.display = 'none';
+      this.nextElementSibling.style.display = 'block';
+    });
+  </script>
+  <script src="../../../script.js"></script>
+</body>
+</html>
