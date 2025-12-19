@@ -1,4 +1,4 @@
-// script.js (Full Updated - Uses lessons/precalc/)
+// script.js - Updated: Fixed Sidebar Stuck on Mobile + Better Mobile Support
 const subjects = ['PreCalculus', 'GeneralBiology1', 'GeneralChemistry1', 'GeneralPhysics1', 'EarthScience'];
 
 const sidebar = document.getElementById('sidebar');
@@ -11,13 +11,17 @@ function isMobile() {
 
 function setInitialSidebarState() {
     sidebar.classList.remove('show');
+    document.body.classList.remove('sidebar-open');
     mainContent.style.marginLeft = '0';
 }
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('show');
+    document.body.classList.toggle('sidebar-open'); // Prevents background scroll on mobile
     if (!isMobile()) {
-        mainContent.style.marginLeft = sidebar.classList.contains('show') ? '200px' : '0';
+        mainContent.style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
+    } else {
+        mainContent.style.marginLeft = '0'; // Always overlay on mobile
     }
 });
 
@@ -27,7 +31,10 @@ setInitialSidebarState();
 function showTab(tabId) {
     document.querySelectorAll('.tab').forEach(tab => tab.style.display = 'none');
     document.getElementById(tabId).style.display = 'block';
-    if (isMobile()) sidebar.classList.remove('show');
+    if (isMobile()) {
+        sidebar.classList.remove('show');
+        document.body.classList.remove('sidebar-open');
+    }
     if (tabId === 'myPage') loadProgress();
 }
 
@@ -75,7 +82,9 @@ function startStudyTimer(subject, unit) {
         let time = parseInt(localStorage.getItem('studyTime') || 0);
         time++;
         localStorage.setItem('studyTime', time);
-        document.getElementById('study-time').textContent = `Study Time: ${time} minutes`;
+        if (document.getElementById('study-time')) {
+            document.getElementById('study-time').textContent = `Study Time: ${time} minutes`;
+        }
     }, 60000);
 }
 
@@ -90,7 +99,6 @@ function loadUnits(subject) {
     const lessonContent = document.getElementById('lesson-content');
     const unitList = document.getElementById('unit-list');
     
-    // Special path for PreCalculus
     const folder = (subject === 'PreCalculus') ? 'precalc' : subject;
     
     fetch(`lessons/${folder}/index.html`)
@@ -155,6 +163,6 @@ function loadLesson(subject, unit) {
 
 function throwError() { throw new Error(); }
 
-// Keep your quiz/test functions here if you have them (or add later)
+// Quiz and Test functions (add your previous ones here if needed)
 
 showTab('myPage');
