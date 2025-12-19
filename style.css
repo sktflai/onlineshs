@@ -1,16 +1,183 @@
-body { font-family: Arial, sans-serif; background: #f8f9fa; color: #333; margin: 0; padding: 0; }
-#sidebar { position: fixed; left: 0; top: 0; height: 100%; width: 200px; background: #007bff; color: white; padding: 20px; box-sizing: border-box; transition: left 0.3s; }
-#sidebar button { display: block; width: 100%; margin-bottom: 10px; padding: 10px; background: white; color: #007bff; border: none; cursor: pointer; }
-#content { margin-left: 200px; padding: 20px; }
-.tab { display: block; }
-h1, h2 { color: #007bff; }
-select { padding: 10px; margin-bottom: 10px; }
-#progress-charts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; }
-.progress-bar { background: #ddd; height: 20px; border-radius: 10px; }
-.progress-fill { background: #007bff; height: 100%; border-radius: 10px; }
-.hidden { left: -200px; }
-@media (max-width: 600px) { #sidebar { width: 100%; left: 0; height: auto; position: relative; } #content { margin-left: 0; } #sidebar.hidden { display: none; } #sidebar button { margin-bottom: 5px; } }
-.question { margin-bottom: 20px; }
-.feedback { color: green; }
-.error { color: red; }
-.timer { font-weight: bold; color: #007bff; }
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+#sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 250px;
+    background: linear-gradient(to bottom, #007bff, #0056b3);
+    color: white;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    transition: left 0.3s ease, width 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    font-size: 16px;
+}
+
+#sidebar button:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateX(5px);
+}
+
+#content {
+    margin-left: 250px;
+    padding: 40px;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+}
+
+.tab {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+h1, h2 {
+    color: #007bff;
+    font-weight: 500;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+select {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+}
+
+#progress-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.progress-bar {
+    background: #e9ecef;
+    height: 25px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    height: 100%;
+    transition: width 0.5s ease;
+}
+
+#unit-list, #quiz-list, #test-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#unit-list button, #quiz-list button, #test-list button {
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#unit-list button:hover, #quiz-list button:hover, #test-list button:hover {
+    background: #0056b3;
+}
+
+.question {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.feedback {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.error {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+.timer {
+    font-weight: bold;
+    color: #007bff;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    left: -250px;
+    width: 0;
+    padding: 0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        padding: 20px;
+        transition: none;
+    }
+    
+    #sidebar.hidden {
+        display: none;
+    }
+    
+    #content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    #sidebar button {
+        margin-bottom: 10px;
+    }
+    
+    select {
+        width: 100%;
+    }
+}
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
