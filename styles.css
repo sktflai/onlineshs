@@ -1,8 +1,4 @@
-body { 
-    font-family: 'Segoe UI', sans-serif; 
-    background: #f8f9fa; 
-    margin: 0; 
-}
+body { font-family: 'Segoe UI', sans-serif; background: #f8f9fa; margin: 0; }
 
 .sidebar { 
     position: fixed; 
@@ -13,25 +9,24 @@ body {
     background: #343a40; 
     transition: left 0.3s ease; 
     z-index: 1000; 
+    overflow-y: auto;
 }
 
-.sidebar.show { 
-    left: 0; 
-}
+.sidebar.show { left: 0; }
 
 .sidebar .nav-link { 
     color: white; 
     padding: 15px; 
+    display: block;
 }
 
-.sidebar .nav-link:hover, .sidebar .nav-link.active { 
-    background: #495057; 
-}
+.sidebar .nav-link:hover, .sidebar .nav-link.active { background: #495057; }
 
-#toggleSidebar { 
+.toggle-btn { 
     position: absolute; 
     bottom: 20px; 
-    left: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
     background: none; 
     border: none; 
     color: white; 
@@ -58,33 +53,11 @@ body {
     z-index: 999; 
 }
 
-.sidebar-overlay.show { 
-    opacity: 1; 
-    visibility: visible; 
-}
+.sidebar-overlay.show { opacity: 1; visibility: visible; }
 
-/* Desktop: always show sidebar */
-@media (min-width: 768px) { 
-    .sidebar { 
-        left: 0; 
-    } 
-    .main-content { 
-        margin-left: 250px; 
-    } 
-    .sidebar-overlay, #toggleSidebar { 
-        display: none; 
-    } 
-}
-
-/* Mobile adjustments */
-@media (max-width: 767px) { 
-    .sidebar { 
-        left: -250px; 
-    } 
-    .sidebar.show { 
-        left: 0; 
-    } 
-    .main-content { 
-        margin-left: 0; 
-    } 
+/* Desktop */
+@media (min-width: 768px) {
+    .sidebar { left: 0; }
+    .main-content { margin-left: 250px; }
+    .toggle-btn, .sidebar-overlay { display: none; }
 }
