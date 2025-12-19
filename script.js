@@ -161,7 +161,6 @@ function loadLesson(subject, unit) {
         });
 }
 
-// Quiz and Test functions remain the same as before (omitted for brevity, but include them from previous version)
-// ... (copy the loadQuizUnits, loadQuiz, showQuestion, nextQuestion, submitQuiz, startTimer, loadTestUnits, loadTest, etc. from the previous script.js I provided)
+// Quiz/Test functions (keep from previous version - omitted here for brevity but include them fully when pasting)
 
 showTab('myPage');
