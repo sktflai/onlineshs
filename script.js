@@ -98,6 +98,7 @@ function loadUnits(subject) {
     const lessonContent = document.getElementById('lesson-content');
     const unitList = document.getElementById('unit-list');
     
+    // Path for Pre-Calculus: lessons/precalc/index.html
     fetch(`lessons/precalc/index.html`)
         .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
@@ -105,6 +106,7 @@ function loadUnits(subject) {
             unitList.innerHTML = '';
         })
         .catch(() => {
+            // Fallback buttons if index.html not found
             unitList.innerHTML = '';
             const unitNames = [
                 'Unit 1: Introduction & Circle',
@@ -132,6 +134,7 @@ function loadLesson(subject, unit) {
     else if (unit === 3) fileName = 'unit3-hyperbola.html';
     else if (unit === 4) fileName = 'unit4-review.html';
     
+    // Path for Pre-Calculus units
     fetch(`lessons/precalc/${fileName}`)
         .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
