@@ -1,69 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online SHS - Education is Meant to be Free</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div id="sidebar">
-        <button onclick="showTab('myPage')">My Page</button>
-        <button onclick="showTab('lessons')">Lessons</button>
-        <button onclick="showTab('quizzes')">Activity/Quiz</button>
-        <button onclick="showTab('tests')">Tests</button>
-        <button onclick="toggleSidebar()">Hide Sidebar</button>
-    </div>
-    <div id="content">
-        <div id="myPage" class="tab">
-            <h1>Welcome Back!</h1>
-            <h2>"EDUCATION IS MEANT TO BE FREE"</h2>
-            <h3>Your Progress</h3>
-            <div id="progress-charts"></div>
-            <p id="points">Points: 0 / 1000 (Aim for 800 to pass)</p>
-            <p id="study-time">Study Time: 0 minutes</p>
-            <div id="lesson-times"></div>
+<div class="container mt-4">
+    <h3>Pre-Calculus Index</h3>
+    <p><strong>Course Overview:</strong> This covers analytic geometry, symmetries, tessellations, the golden ratio, Fibonacci sequences, matrices, and linear programming as per the Philippine Grade 11 STEM curriculum.</p>
+    
+    <div class="row g-3 mt-3">
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm">
+                <h5>Unit 1: Symmetries and Transformations</h5>
+                <p>Learning Objectives: Understand types of symmetries, transformations, and their applications.</p>
+                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 1)">Start Unit 1</button>
+            </div>
         </div>
-        <div id="lessons" class="tab" style="display:none;">
-            <h1>Lessons</h1>
-            <select id="subject-select" onchange="loadUnits(this.value)">
-                <option value="">Select Subject</option>
-                <option value="PreCalculus">Pre-Calculus</option>
-                <option value="GeneralBiology1">General Biology 1</option>
-                <option value="GeneralChemistry1">General Chemistry 1</option>
-                <option value="GeneralPhysics1">General Physics 1</option>
-                <option value="EarthScience">Earth Science</option>
-            </select>
-            <div id="unit-list"></div>
-            <div id="lesson-content"></div>
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm">
+                <h5>Unit 2: Tessellations and Frieze Patterns</h5>
+                <p>Learning Objectives: Explore tiling patterns, frieze groups, and real-world designs.</p>
+                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 2)">Start Unit 2</button>
+            </div>
         </div>
-        <div id="quizzes" class="tab" style="display:none;">
-            <h1>Activity/Quiz</h1>
-            <select id="quiz-subject" onchange="loadQuizUnits(this.value)">
-                <option value="">Select Subject</option>
-                <option value="PreCalculus">Pre-Calculus</option>
-                <option value="GeneralBiology1">General Biology 1</option>
-                <option value="GeneralChemistry1">General Chemistry 1</option>
-                <option value="GeneralPhysics1">General Physics 1</option>
-                <option value="EarthScience">Earth Science</option>
-            </select>
-            <div id="quiz-list"></div>
-            <div id="quiz-content"></div>
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm">
+                <h5>Unit 3: Golden Ratio and Fibonacci Sequence</h5>
+                <p>Learning Objectives: Study the golden ratio, Fibonacci numbers, and their occurrences in nature/art.</p>
+                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 3)">Start Unit 3</button>
+            </div>
         </div>
-        <div id="tests" class="tab" style="display:none;">
-            <h1>Tests</h1>
-            <select id="test-subject" onchange="loadTestUnits(this.value)">
-                <option value="">Select Subject</option>
-                <option value="PreCalculus">Pre-Calculus</option>
-                <option value="GeneralBiology1">General Biology 1</option>
-                <option value="GeneralChemistry1">General Chemistry 1</option>
-                <option value="GeneralPhysics1">General Physics 1</option>
-                <option value="EarthScience">Earth Science</option>
-            </select>
-            <div id="test-list"></div>
-            <div id="test-content"></div>
+        <div class="col-md-6">
+            <div class="card p-3 shadow-sm">
+                <h5>Unit 4: Matrices and Linear Programming</h5>
+                <p>Learning Objectives: Master matrix operations, systems of equations, and optimization problems.</p>
+                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 4)">Start Unit 4</button>
+            </div>
         </div>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+    
+    <div class="mt-4">
+        <p><strong>Resources:</strong> Khan Academy Pre-Calculus videos, YouTube searches for "Philippine DepEd Pre-Calculus".</p>
+    </div>
+</div>
