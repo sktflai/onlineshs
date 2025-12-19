@@ -1,85 +1,96 @@
-let currentTab = 'lessons';
+// Get DOM elements
+const lessonTitle = document.getElementById("lessonTitle");
+const lessonContent = document.getElementById("lessonContent");
+const summaryContent = document.getElementById("summaryContent");
+const videoLink = document.getElementById("videoLink");
+const quizContainer = document.getElementById("quizContainer");
+const progressText = document.getElementById("progressText");
+const navItems = document.querySelectorAll(".nav-item");
+const activityContent = document.getElementById("activityContent");
 
-function showTab(tab) {
-  currentTab = tab;
-  const main = document.getElementById('main-content');
-  main.innerHTML = '';
+let currentLesson = null;
+let userProgress = {};
 
-  if (tab === 'lessons') {
-    for (const key in lessons) {
-      const subj = lessons[key];
-      const div = document.createElement('div');
-      div.innerHTML = `<h2>${subj.title}</h2>
-                       <p>${subj.lesson}</p>
-                       <a href="${subj.video}" target="_blank">Watch Video</a>`;
-      main.appendChild(div);
-    }
-  }
-
-  if (tab === 'summaries') {
-    for (const key in lessons) {
-      const subj = lessons[key];
-      const div = document.createElement('div');
-      div.innerHTML = `<h2>${subj.title}</h2>
-                       <p>${subj.summary}</p>
-                       <a href="${subj.video}" target="_blank">Watch Video</a>`;
-      main.appendChild(div);
-    }
-  }
-
-  if (tab === 'quizzes') {
-    for (const key in lessons) {
-      const subj = lessons[key];
-      const div = document.createElement('div');
-      div.innerHTML = `<h2>${subj.title} Quiz</h2>`;
-      subj.quiz.forEach((q, idx) => {
-        const qDiv = document.createElement('div');
-        qDiv.innerHTML = `<p class="quiz-question">${q.question}</p>`;
-        q.choices.forEach((choice, i) => {
-          qDiv.innerHTML += `<label class="quiz-choice">
-                               <input type="radio" name="${key}_${idx}" value="${i}"> ${choice}
-                             </label>`;
-        });
-        div.appendChild(qDiv);
-      });
-      div.innerHTML += `<button onclick="submitQuiz('${key}')">Submit Quiz</button>
-                        <div id="${key}_feedback"></div>`;
-      main.appendChild(div);
-    }
-  }
-
-  if (tab === 'activities') {
-    main.innerHTML = '<p>Interactive activities coming soon...</p>';
-  }
-
-  if (tab === 'progress') {
-    const scores = Object.keys(lessons).map(key => {
-      const score = localStorage.getItem(key + "_score") || 0;
-      return `<p>${lessons[key].title}: ${score} / ${lessons[key].quiz.length}</p>`;
-    }).join('');
-    main.innerHTML = `<h2>My Progress</h2>${scores}`;
-  }
+// Initialize all lessons progress to 0
+for (let key in lessons) {
+  userProgress[key] = {
+    completed: false,
+    score: 0
+  };
 }
 
-function submitQuiz(subject) {
-  const quiz = lessons[subject].quiz;
-  const userAnswers = quiz.map((q, i) => {
-    const radios = document.getElementsByName(subject + '_' + i);
-    for (const r of radios) if (r.checked) return parseInt(r.value);
-    return -1; // Not answered
-  });
+// Switch tabs
+navItems.forEach(item => {
+  item.addEventListener("click", () => {
+    const tab = item.dataset.tab;
+    document.querySelectorAll(".tab").forEach(t => t.style.display = "none");
+    document.getElementById(tab).style.display = "block";
 
-  let score = 0;
-  let feedbackHtml = '';
-  quiz.forEach((q, i) => {
-    const correct = userAnswers[i] === q.answer;
-    if (correct) score++;
-    feedbackHtml += `<p>${q.question} - ${correct ? 'Correct' : 'Wrong'}<br>Explanation: ${q.explanation}</p>`;
+    if(tab === "progressTab") updateProgress();
   });
+});
 
-  localStorage.setItem(subject + "_score", score);
-  document.getElementById(subject + "_feedback").innerHTML = `<p>Score: ${score} / ${quiz.length}</p>${feedbackHtml}`;
+// Load lesson
+function loadLesson(key) {
+  currentLesson = key;
+  const lesson = lessons[key];
+  lessonTitle.textContent = lesson.title;
+  lessonContent.innerHTML = lesson.lesson;
+  summaryContent.innerHTML = lesson.summary;
+  videoLink.href = lesson.video;
+  loadQuiz(lesson.quiz);
 }
 
-// Initialize first tab
-showTab('lessons');
+// Load quiz
+function loadQuiz(quizArray) {
+  quizContainer.innerHTML = "";
+  quizArray.forEach((q, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.classList.add("quiz-question");
+    qDiv.innerHTML = `<p>${index+1}. ${q.question}</p>`;
+    q.choices.forEach((choice, i) => {
+      const btn = document.createElement("button");
+      btn.textContent = choice;
+      btn.addEventListener("click", () => checkAnswer(index, i, q));
+      qDiv.appendChild(btn);
+    });
+    quizContainer.appendChild(qDiv);
+  });
+}
+
+// Check answer
+function checkAnswer(index, choiceIndex, quizItem) {
+  if(choiceIndex === quizItem.answer) {
+    alert(`Correct! ✅\n${quizItem.explanation}`);
+    userProgress[currentLesson].score++;
+  } else {
+    alert(`Incorrect ❌\n${quizItem.explanation}`);
+  }
+
+  // Mark lesson completed if all questions answered
+  const totalQuestions = lessons[currentLesson].quiz.length;
+  const currentScore = userProgress[currentLesson].score;
+  if(currentScore >= totalQuestions) userProgress[currentLesson].completed = true;
+  updateProgress();
+}
+
+// Update progress
+function updateProgress() {
+  let totalLessons = Object.keys(lessons).length;
+  let completedLessons = 0;
+  let totalScore = 0;
+  for(let key in userProgress) {
+    if(userProgress[key].completed) completedLessons++;
+    totalScore += userProgress[key].score;
+  }
+  let percent = Math.round((completedLessons/totalLessons)*100);
+  progressText.textContent = `Lessons completed: ${completedLessons}/${totalLessons} (${percent}%)\nTotal quiz score: ${totalScore}`;
+}
+
+// Load activity content (placeholder)
+function loadActivity(content) {
+  activityContent.innerHTML = content;
+}
+
+// Initially load first lesson
+loadLesson(Object.keys(lessons)[0]);
