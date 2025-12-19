@@ -4,7 +4,6 @@ body {
     background: linear-gradient(to bottom, #e0f7fa, #ffffff);
     color: #2c3e50;
     overflow-x: hidden;
-    transition: filter 0.4s ease;
 }
 
 .toggle-btn {
@@ -24,7 +23,7 @@ body {
 
 .sidebar {
     position: fixed;
-    left: -300px;
+    left: -300px; /* Fully hidden off-screen */
     top: 0;
     width: 280px;
     height: 100%;
@@ -37,7 +36,7 @@ body {
 }
 
 .sidebar.open {
-    left: 0;
+    left: 0; /* Only appears when menu clicked */
 }
 
 .sidebar h2, .sidebar h3 {
@@ -67,8 +66,6 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     min-height: 100vh;
-    position: relative;
-    z-index: 1;
 }
 
 .overlay {
@@ -84,11 +81,6 @@ body {
 
 .overlay.active {
     display: block;
-}
-
-/* Dim the main content when sidebar is open */
-body.sidebar-open .content {
-    filter: brightness(0.7);
 }
 
 h1 {
@@ -140,7 +132,6 @@ h1 {
     box-shadow: 0 16px 30px rgba(0,0,0,0.25);
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
     .content {
         padding: 100px 15px 40px;
