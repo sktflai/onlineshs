@@ -1,14 +1,67 @@
-<section id="lessons" class="active">
-  <h2>Lessons</h2>
-  <p>Select a subject to view its lessons:</p>
-  <ul>
-    <li><a href="lessons/physics.html" target="lesson-frame">Physics</a></li>
-    <li><a href="lessons/chemistry.html" target="lesson-frame">Chemistry</a></li>
-    <li><a href="lessons/biology.html" target="lesson-frame">Biology</a></li>
-    <li><a href="lessons/mathematics.html" target="lesson-frame">Mathematics</a></li>
-    <li><a href="lessons/statistics.html" target="lesson-frame">Statistics</a></li>
-    <li><a href="lessons/earth_life_science.html" target="lesson-frame">Earth & Life Science</a></li>
-  </ul>
-  
-  <iframe name="lesson-frame" style="width:100%; height:600px; border:1px solid #ccc;"></iframe>
-</section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online SHS - Grade 11 STEM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
+
+    <div class="sidebar">
+        <h2>Free Online School</h2>
+        <h3>Grade 11 STEM</h3>
+        <ul>
+            <li onclick="showTab('my-page')">📊 My Page</li>
+            <li onclick="showTab('lessons')">📚 Lessons</li>
+            <li onclick="showTab('activities')">✍️ Activities / Quizzes</li>
+            <li onclick="showTab('tests')">📝 Tests</li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <div id="my-page" class="tab active">
+            <h1>Welcome Back!</h1>
+            <p>This is your personal dashboard. Your progress, scores, and study time will appear here as you complete lessons and assessments.</p>
+            <div id="progress-summary">
+                <h2>Your Progress</h2>
+                <ul id="subject-progress"></ul>
+            </div>
+            <h2>Total Study Time: <span id="total-time">0</span> minutes</h2>
+        </div>
+
+        <div id="lessons" class="tab">
+            <h1>Lessons</h1>
+            <p>Choose a subject to start learning:</p>
+            <div class="subject-grid">
+                <a href="lessons/precalc.html" class="subject-card">Pre-Calculus</a>
+                <a href="lessons/genbio1.html" class="subject-card">General Biology 1</a>
+                <a href="lessons/genchem1.html" class="subject-card">General Chemistry 1</a>
+                <a href="lessons/genphys1.html" class="subject-card">General Physics 1</a>
+                <a href="lessons/earthscience.html" class="subject-card">Earth Science</a>
+            </div>
+        </div>
+
+        <div id="activities" class="tab">
+            <h1>Activities & Quizzes</h1>
+            <p>Practice with 10-question quizzes (15 minutes each).</p>
+            <div class="subject-grid">
+                <a href="quizzes/precalc-q1.html" class="subject-card">Pre-Calculus Quiz 1</a>
+                <!-- We will add more as we create them -->
+            </div>
+        </div>
+
+        <div id="tests" class="tab">
+            <h1>Tests</h1>
+            <p>Full exams with 50 questions (90 minutes each).</p>
+            <div class="subject-grid">
+                <!-- We will add links later -->
+                <p>Tests will appear here after quizzes are completed.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
