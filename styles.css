@@ -1,4 +1,4 @@
-/* styles.css - Updated */
+/* styles.css - Complete Fixed Version */
 body {
     font-family: 'Roboto', sans-serif;
     background: #f8f9fa;
@@ -25,7 +25,7 @@ body {
     left: 0;
 }
 
-.sidebar button {
+.sidebar .nav-link {
     color: white !important;
     background: transparent;
     border: none;
@@ -35,7 +35,8 @@ body {
     font-size: 16px;
 }
 
-.sidebar button:hover {
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
     background-color: #495057 !important;
     color: #ffc107 !important;
 }
@@ -43,17 +44,8 @@ body {
 .main-content {
     margin-left: 0;
     transition: margin-left 0.3s ease;
-    padding-top: 70px;
+    padding-top: 20px;
     min-height: 100vh;
-}
-
-@media (max-width: 992px) {
-    .sidebar.show + .main-content {
-        margin-left: 0 !important;
-    }
-    body.sidebar-open {
-        overflow: hidden;
-    }
 }
 
 h1, h2, h3, h4 {
@@ -80,4 +72,43 @@ h1, h2, h3, h4 {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+/* Toggle button */
+#toggleSidebar {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Overlay */
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Desktop: always show sidebar */
+@media (min-width: 993px) {
+    .sidebar {
+        left: 0 !important;
+    }
+    .sidebar-overlay {
+        display: none;
+    }
+    #toggleSidebar i::before {
+        content: "\ebec"; /* ri-menu-unfold-line for close icon on desktop if desired */
+    }
+}
