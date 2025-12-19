@@ -121,8 +121,17 @@ function loadUnits(subject) {
 
 function loadLesson(subject, unit) {
     const lessonContent = document.getElementById('lesson-content');
-    fetch(`lessons/${subject}/unit${unit}.html`)
-        .then(response => response.text())
+    let fileName;
+    if (unit === 1) fileName = 'unit1-conic.html';
+    else if (unit === 2) fileName = 'unit2-parabola.html'; // Change to your actual name
+    else if (unit === 3) fileName = 'unit3-hyperbola.html'; // Change to your actual name
+    else if (unit === 4) fileName = 'unit4-review.html'; // Change to your actual name
+
+    fetch(`lessons/${subject}/${fileName}`)
+        .then(response => {
+            if (!response.ok) throw new Error('File not found');
+            return response.text();
+        })
         .then(data => {
             lessonContent.innerHTML = data;
             startStudyTimer(subject, `unit${unit}`);
@@ -137,7 +146,11 @@ function loadLesson(subject, unit) {
                 loadProgress();
             };
             lessonContent.appendChild(completeBtn);
+        })
+        .catch(err => {
+            lessonContent.innerHTML = '<p>Lesson file not found. Check file name.</p>';
         });
+
 }
 
 function loadQuizUnits(subject) {
