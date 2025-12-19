@@ -5,23 +5,18 @@ const toggleBtn = document.getElementById('sidebarToggle');
 const mainContent = document.querySelector('.main-content');
 
 function isMobile() {
-    return window.innerWidth <= 768;
+    return window.innerWidth <= 992;
 }
 
 function setInitialSidebarState() {
-    if (isMobile()) {
-        sidebar.classList.remove('show');
-        mainContent.style.marginLeft = '0';
-    } else {
-        sidebar.classList.add('show');
-        mainContent.style.marginLeft = '250px';
-    }
+    sidebar.classList.remove('show');
+    mainContent.style.marginLeft = '0';
 }
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('show');
     if (!isMobile()) {
-        mainContent.style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
+        mainContent.style.marginLeft = sidebar.classList.contains('show') ? '200px' : '0';
     }
 });
 
@@ -36,9 +31,6 @@ function showTab(tabId) {
     }
     if (tabId === 'myPage') loadProgress();
 }
-
-// Rest of your original script.js code remains the same below (loadProgress, studyTimer, loadUnits, loadLesson, etc.)
-// I've omitted repeating it here for brevity, but copy your full original script.js and insert this new toggle logic at the top.
 
 function loadProgress() {
     const progressCharts = document.getElementById('progress-charts');
@@ -79,6 +71,7 @@ function startStudyTimer(subject, unit) {
         let time = parseInt(localStorage.getItem('studyTime') || 0);
         time++;
         localStorage.setItem('studyTime', time);
+        document.getElementById('study-time').textContent = `Study Time: ${time} minutes`;
     }, 60000);
 }
 
@@ -92,47 +85,48 @@ function loadUnits(subject) {
     const lessonContent = document.getElementById('lesson-content');
     const unitList = document.getElementById('unit-list');
     
-    // Try to load the subject index first
+    // First try to load index.html if it exists
     fetch(`lessons/${subject}/index.html`)
         .then(response => {
-            if (response.ok) {
-                return response.text();
-            }
-            throw new Error('No index');
+            if (response.ok) return response.text();
+            throw new Error();
         })
         .then(data => {
             lessonContent.innerHTML = data;
-            unitList.innerHTML = ''; // Hide unit buttons since index has its own
+            unitList.innerHTML = '';
         })
         .catch(() => {
-            // If no index.html, fall back to showing unit buttons
+            // Fallback: show unit buttons with descriptive names
             unitList.innerHTML = '';
-const unitNames = ['Unit 1: Introduction & Circle', 'Unit 2: Parabola & Ellipse', 'Unit 3: Hyperbola', 'Unit 4: Review & Applications'];
-for (let i = 1; i <= 4; i++) {
-    const btn = document.createElement('button');
-    btn.textContent = unitNames[i-1];
-    btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
-    btn.onclick = () => loadLesson(subject, i);
-    unitList.appendChild(btn);
-};
+            const unitNames = [
+                'Unit 1: Introduction & Circle',
+                'Unit 2: Parabola & Ellipse',
+                'Unit 3: Hyperbola',
+                'Unit 4: Review & Applications'
+            ];
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = unitNames[i-1];
+                btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
+                btn.onclick = () => loadLesson(subject, i);
+                unitList.appendChild(btn);
             }
-            lessonContent.innerHTML = '<p>Select a unit above to begin.</p>';
+            lessonContent.innerHTML = '<p class="text-center mt-4">Select a unit above to start learning.</p>';
         });
-    }
 }
 
 function loadLesson(subject, unit) {
     const lessonContent = document.getElementById('lesson-content');
-    let fileName;
-if (unit === 1) fileName = 'unit1-conic.html';
-else if (unit === 2) fileName = 'unit2-parabola.html';
-else if (unit === 3) fileName = 'unit3-hyperbola.html';
-else if (unit === 4) fileName = 'unit4-review.html';
-
-fetch(`lessons/${subject}/${fileName}`)
-    // rest of the function remains the same
+    
+    let fileName = '';
+    if (unit === 1) fileName = 'unit1-conic.html';
+    else if (unit === 2) fileName = 'unit2-parabola.html';
+    else if (unit === 3) fileName = 'unit3-hyperbola.html';
+    else if (unit === 4) fileName = 'unit4-review.html';
+    
+    fetch(`lessons/${subject}/${fileName}`)
         .then(response => {
-            if (!response.ok) throw new Error('File not found');
+            if (!response.ok) throw new Error('Not found');
             return response.text();
         })
         .then(data => {
@@ -150,10 +144,9 @@ fetch(`lessons/${subject}/${fileName}`)
             };
             lessonContent.appendChild(completeBtn);
         })
-        .catch(err => {
-            lessonContent.innerHTML = '<p>Lesson file not found. Check file name.</p>';
+        .catch(() => {
+            lessonContent.innerHTML = '<p>Lesson file not found. Please check the file name.</p>';
         });
-
 }
 
 function loadQuizUnits(subject) {
@@ -187,38 +180,40 @@ function loadQuiz(subject, quizNum) {
 function showQuestion() {
     const quizContent = document.getElementById('quiz-content');
     const q = quizData[currentQuestion];
-    let html = `<div class="question"><p>${q.question}</p>`;
+    let html = `<div class="question"><p><strong>Question ${currentQuestion + 1}:</strong> ${q.question}</p>`;
     q.options.forEach((opt, idx) => {
-        html += `<label class="d-block"><input type="radio" name="answer" value="${idx}">${opt}</label>`;
+        html += `<label class="d-block"><input type="radio" name="q${currentQuestion}" value="${idx}"> ${opt}</label>`;
     });
-    html += `<button class="btn btn-primary mt-2" onclick="nextQuestion()">Next</button></div>`;
+    html += `<button class="btn btn-primary mt-3" onclick="nextQuestion()">Next</button></div>`;
     quizContent.innerHTML += html;
 }
 
 function nextQuestion() {
-    const selected = document.querySelector('input[name="answer"]:checked');
+    const selected = document.querySelector(`input[name="q${currentQuestion}"]:checked`);
     if (selected) {
         const feedbackDiv = document.createElement('div');
         if (parseInt(selected.value) === quizData[currentQuestion].correct) {
             score++;
-            feedbackDiv.innerHTML = `<p class="feedback">Correct! Explanation: ${quizData[currentQuestion].explanation}</p>`;
+            feedbackDiv.innerHTML = `<p class="feedback">Correct! ${quizData[currentQuestion].explanation}</p>`;
         } else {
-            feedbackDiv.innerHTML = `<p class="error">Wrong. Correct is ${quizData[currentQuestion].options[quizData[currentQuestion].correct]}. Explanation: ${quizData[currentQuestion].explanation}</p>`;
+            feedbackDiv.innerHTML = `<p class="error">Wrong. Correct answer: ${quizData[currentQuestion].options[quizData[currentQuestion].correct]}. ${quizData[currentQuestion].explanation}</p>`;
         }
-        document.getElementById('quiz-content').appendChild(feedbackDiv);
+        document.querySelectorAll('.question')[currentQuestion].appendChild(feedbackDiv);
         currentQuestion++;
         if (currentQuestion < quizData.length) {
             showQuestion();
         } else {
             submitQuiz();
         }
+    } else {
+        alert('Please select an answer.');
     }
 }
 
 function submitQuiz(subject) {
     clearInterval(quizTimer);
     const quizContent = document.getElementById('quiz-content');
-    quizContent.innerHTML += `<p class="mt-3 fw-bold">Score: ${score} / ${quizData.length}</p>`;
+    quizContent.innerHTML += `<h4 class="mt-4">Quiz Complete! Your score: ${score} / ${quizData.length}</h4>`;
     let totalScore = parseInt(localStorage.getItem(`${subject}-score`) || 0);
     totalScore += score * 10;
     localStorage.setItem(`${subject}-score`, totalScore);
@@ -230,18 +225,23 @@ function startTimer(seconds, timerId, callback) {
     const timerElem = document.getElementById(timerId);
     quizTimer = setInterval(() => {
         time--;
-        timerElem.textContent = `${Math.floor(time/60)}:${time%60 < 10 ? '0' : ''}${time%60}`;
-        if (time <= 0) callback();
+        const min = Math.floor(time / 60);
+        const sec = time % 60;
+        timerElem.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+        if (time <= 0) {
+            clearInterval(quizTimer);
+            callback();
+        }
     }, 1000);
 }
 
-// Similar logic for tests (adapt as in original)
+// Tests section (same structure as quizzes but longer)
 function loadTestUnits(subject) {
     const testList = document.getElementById('test-list');
     testList.innerHTML = '';
     for (let i = 1; i <= 2; i++) {
         const btn = document.createElement('button');
-        btn.textContent = `Test ${i} (Units ${i*2-1}-${i*2})`;
+        btn.textContent = `Test ${i} (Units ${i*2-1}–${i*2})`;
         btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
         btn.onclick = () => loadTest(subject, i);
         testList.appendChild(btn);
@@ -267,38 +267,40 @@ function loadTest(subject, testNum) {
 function showTestQuestion() {
     const testContent = document.getElementById('test-content');
     const q = testData[testCurrent];
-    let html = `<div class="question"><p>${q.question}</p>`;
+    let html = `<div class="question"><p><strong>Question ${testCurrent + 1}:</strong> ${q.question}</p>`;
     q.options.forEach((opt, idx) => {
-        html += `<label class="d-block"><input type="radio" name="answer" value="${idx}">${opt}</label>`;
+        html += `<label class="d-block"><input type="radio" name="tq${testCurrent}" value="${idx}"> ${opt}</label>`;
     });
-    html += `<button class="btn btn-primary mt-2" onclick="nextTestQuestion()">Next</button></div>`;
+    html += `<button class="btn btn-primary mt-3" onclick="nextTestQuestion()">Next</button></div>`;
     testContent.innerHTML += html;
 }
 
 function nextTestQuestion() {
-    const selected = document.querySelector('input[name="answer"]:checked');
+    const selected = document.querySelector(`input[name="tq${testCurrent}"]:checked`);
     if (selected) {
         const feedbackDiv = document.createElement('div');
         if (parseInt(selected.value) === testData[testCurrent].correct) {
             testScore++;
-            feedbackDiv.innerHTML = `<p class="feedback">Correct! Explanation: ${testData[testCurrent].explanation}</p>`;
+            feedbackDiv.innerHTML = `<p class="feedback">Correct! ${testData[testCurrent].explanation}</p>`;
         } else {
-            feedbackDiv.innerHTML = `<p class="error">Wrong. Correct is ${testData[testCurrent].options[testData[testCurrent].correct]}. Explanation: ${testData[testCurrent].explanation}</p>`;
+            feedbackDiv.innerHTML = `<p class="error">Wrong. Correct answer: ${testData[testCurrent].options[testData[testCurrent].correct]}. ${testData[testCurrent].explanation}</p>`;
         }
-        document.getElementById('test-content').appendChild(feedbackDiv);
+        document.querySelectorAll('.question')[testCurrent].appendChild(feedbackDiv);
         testCurrent++;
         if (testCurrent < testData.length) {
             showTestQuestion();
         } else {
             submitTest();
         }
+    } else {
+        alert('Please select an answer.');
     }
 }
 
 function submitTest(subject) {
     clearInterval(testTimer);
     const testContent = document.getElementById('test-content');
-    testContent.innerHTML += `<p class="mt-3 fw-bold">Score: ${testScore} / ${testData.length}</p>`;
+    testContent.innerHTML += `<h4 class="mt-4">Test Complete! Your score: ${testScore} / ${testData.length}</h4>`;
     let totalScore = parseInt(localStorage.getItem(`${subject}-score`) || 0);
     totalScore += testScore * 2;
     localStorage.setItem(`${subject}-score`, totalScore);
