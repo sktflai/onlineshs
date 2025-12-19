@@ -5,13 +5,16 @@ function toggleSidebar() {
     
     sidebar.classList.toggle('open');
     overlay.classList.toggle('active');
-    body.classList.toggle('sidebar-open'); // This triggers the push/dim effect
+    body.classList.toggle('sidebar-open');
 }
+
+// Close sidebar when tapping overlay
+document.querySelector('.overlay').addEventListener('click', toggleSidebar);
 
 function showTab(tabId) {
     document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
     document.getElementById(tabId).classList.add('active');
-    toggleSidebar(); // Close sidebar after picking a tab
+    toggleSidebar(); // Auto-close after choosing tab
 }
 
 let totalTime = parseInt(localStorage.getItem('totalStudyTime') || '0');
@@ -33,9 +36,7 @@ function updateMyPage() {
 setInterval(() => {
     totalTime++;
     localStorage.setItem('totalStudyTime', totalTime);
-    if (document.querySelector('#my-page').classList.contains('active')) {
-        document.getElementById('total-time').textContent = totalTime;
-    }
+    document.getElementById('total-time').textContent = totalTime;
 }, 60000);
 
 updateMyPage();
