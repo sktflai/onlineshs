@@ -1,4 +1,4 @@
-<!-- lessons/precalc/index.html (Subject Index Page) -->
+<!-- lessons/precalc/index.html - Updated: Bigger Overview, Smaller Unit Cards -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,60 +6,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pre-Calculus - Grade 11 STEM</title>
     <style>
-        body { font-family: 'Roboto', sans-serif; padding: 20px; background: #f8f9fa; color: #333; line-height: 1.6; }
-        h1, h2, h3 { color: #198754; }
-        .overview { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.1); margin-bottom: 40px; }
-        .unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .unit-card { background: white; padding: 35px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); text-align: center; transition: all 0.3s ease; }
-        .unit-card:hover { transform: translateY(-15px); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
-        .unit-card h4 { font-size: 1.6rem; margin-bottom: 15px; }
-        .unit-card p { font-size: 1.1rem; margin-bottom: 25px; }
-        .unit-card button { background: #198754; color: white; border: none; padding: 15px 30px; border-radius: 10px; font-size: 1.1rem; cursor: pointer; transition: background 0.3s; }
-        .unit-card button:hover { background: #157347; }
-        .video-section { margin-top: 60px; background: white; padding: 35px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.12); }
-        iframe { width: 100%; max-width: 800px; height: 450px; border-radius: 12px; }
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            padding: 0; 
+            margin: 0; 
+            background: #f8f9fa; 
+            color: #333; 
+            line-height: 1.6; 
+        }
+        .main-container {
+            background: white;
+            min-height: 100vh;
+            padding: 40px 20px; /* Bigger padding for overview area */
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        h1, h2, h3 { color: #198754; text-align: center; }
+        .overview { 
+            text-align: center; 
+            margin-bottom: 50px; 
+            padding: 30px 20px; /* Bigger overview section */
+            background: #f0f8f0; /* Light green tint for emphasis */
+            border-radius: 20px;
+        }
+        .overview h1 { font-size: 2rem; margin-bottom: 20px; }
+        .overview p { font-size: 1.1rem; margin-bottom: 30px; }
+        .overview ul { 
+            text-align: left; 
+            display: inline-block; 
+            font-size: 1.1rem; 
+            padding-left: 30px; 
+        }
+        .unit-grid { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 25px; 
+        }
+        .unit-card { 
+            width: 100%; 
+            max-width: 280px; /* Even smaller cards */
+            background: #f8f9fa; 
+            padding: 18px; 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+            text-align: center; 
+            transition: transform 0.3s ease; 
+        }
+        .unit-card:hover { 
+            transform: translateY(-5px); 
+        }
+        .unit-card h4 { 
+            font-size: 1.4rem; 
+            margin-bottom: 8px; 
+        }
+        .unit-card p { 
+            font-size: 1rem; 
+            margin-bottom: 15px; 
+        }
+        .unit-card button { 
+            background: #198754; 
+            color: white; 
+            border: none; 
+            padding: 10px 35px; 
+            border-radius: 30px; 
+            font-size: 1rem; 
+            cursor: pointer; 
+            transition: background 0.3s; 
+            width: 80%;
+        }
+        .unit-card button:hover { 
+            background: #157347; 
+        }
+        .video-section { 
+            margin-top: 60px; 
+            text-align: center; 
+            padding: 30px 20px;
+            background: #f0f8f0;
+            border-radius: 20px;
+        }
+        iframe { 
+            width: 100%; 
+            max-width: 600px; 
+            height: 280px; 
+            border-radius: 12px; 
+        }
+        @media (max-width: 480px) {
+            .main-container { padding: 30px 15px; }
+            .overview { padding: 25px 15px; }
+            .overview h1 { font-size: 1.8rem; }
+            .unit-card { max-width: 260px; padding: 15px; }
+            .unit-card h4 { font-size: 1.3rem; }
+            .unit-card button { padding: 9px 30px; width: 85%; }
+            iframe { height: 220px; }
+        }
     </style>
 </head>
 <body>
-    <div class="overview">
-        <h1>Pre-Calculus (Grade 11 STEM)</h1>
-        <p><strong>Overview:</strong> Analytic geometry course focusing on conic sections, their equations, graphs, and applications.</p>
-        <h2>Learning Objectives</h2>
-        <ul>
-            <li>Understand conic sections formation and properties.</li>
-            <li>Master standard and general equations.</li>
-            <li>Graph and solve real-world problems.</li>
-        </ul>
-    </div>
+    <div class="main-container">
+        <div class="overview">
+            <h1>Pre-Calculus (Grade 11 STEM)</h1>
+            <p><strong>Overview:</strong> This course introduces analytic geometry, focusing on conic sections—their definitions, equations, graphs, and real-world applications. It strengthens algebraic and geometric skills essential for calculus.</p>
 
-    <h2>Choose a Unit</h2>
-    <div class="unit-grid">
-        <div class="unit-card">
-            <h4>Unit 1</h4>
-            <p>Introduction to Conic Sections & Circle</p>
-            <button onclick="loadLesson('PreCalculus', 1)">Start</button>
+            <h2>Course Learning Objectives</h2>
+            <ul>
+                <li>Illustrate the formation of conic sections from a double cone.</li>
+                <li>Derive, transform, and graph standard/general equations of circles, parabolas, ellipses, and hyperbolas.</li>
+                <li>Determine key elements (center, vertices, foci, directrix, asymptotes).</li>
+                <li>Solve situational problems involving conic sections.</li>
+                <li>Recognize degenerate cases and solve systems of conics.</li>
+            </ul>
         </div>
-        <div class="unit-card">
-            <h4>Unit 2</h4>
-            <p>Parabola & Ellipse</p>
-            <button onclick="loadLesson('PreCalculus', 2)">Start</button>
-        </div>
-        <div class="unit-card">
-            <h4>Unit 3</h4>
-            <p>Hyperbola</p>
-            <button onclick="loadLesson('PreCalculus', 3)">Start</button>
-        </div>
-        <div class="unit-card">
-            <h4>Unit 4</h4>
-            <p>Review & Applications</p>
-            <button onclick="loadLesson('PreCalculus', 4)">Start</button>
-        </div>
-    </div>
 
-    <div class="video-section">
-        <h2>Recommended Playlists</h2>
-        <p><a href="https://www.youtube.com/playlist?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" target="_blank">Grade 11 Pre-Calculus Full Course</a></p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
+        <h2 style="margin-bottom: 30px;">Choose a Unit</h2>
+        <div class="unit-grid">
+            <div class="unit-card">
+                <h4>Unit 1</h4>
+                <p>Introduction to Conic Sections & the Circle</p>
+                <button onclick="loadLesson('PreCalculus', 1)">Start</button>
+            </div>
+            <div class="unit-card">
+                <h4>Unit 2</h4>
+                <p>Parabola & Ellipse</p>
+                <button onclick="loadLesson('PreCalculus', 2)">Start</button>
+            </div>
+            <div class="unit-card">
+                <h4>Unit 3</h4>
+                <p>Hyperbola</p>
+                <button onclick="loadLesson('PreCalculus', 3)">Start</button>
+            </div>
+            <div class="unit-card">
+                <h4>Unit 4</h4>
+                <p>Review, Systems & Applications</p>
+                <button onclick="loadLesson('PreCalculus', 4)">Start</button>
+            </div>
+        </div>
+
+        <div class="video-section">
+            <h2>Recommended Playlists</h2>
+            <p>These DepEd-aligned playlists provide clear Filipino explanations with examples.</p>
+            <p><a href="https://www.youtube.com/playlist?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" target="_blank">Primary Playlist: Grade 11 Pre-Calculus (STEM) Complete Coverage</a></p>
+            <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
+        </div>
     </div>
 
     <script>
