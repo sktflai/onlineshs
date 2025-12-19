@@ -1,135 +1,100 @@
-<!-- lessons/precalc/index.html - Updated for Perfect Mobile Alignment (Smaller, Centered Cards) -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Calculus - Grade 11 STEM</title>
-    <style>
-        body { 
-            font-family: 'Roboto', sans-serif; 
-            padding: 15px 10px; 
-            background: #f8f9fa; 
-            color: #333; 
-            line-height: 1.6; 
-            margin: 0;
-        }
-        h1, h2, h3 { color: #198754; text-align: center; }
-        .overview { 
-            background: white; 
-            padding: 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
-            margin-bottom: 30px; 
-            text-align: center;
-        }
-        .unit-grid { 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            gap: 20px; 
-        }
-        .unit-card { 
-            width: 100%; 
-            max-width: 320px; /* Smaller cards for mobile */
-            background: white; 
-            padding: 25px 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
-            text-align: center; 
-            transition: transform 0.3s ease; 
-        }
-        .unit-card:hover { 
-            transform: translateY(-5px); 
-        }
-        .unit-card h4 { 
-            font-size: 1.6rem; 
-            margin-bottom: 10px; 
-        }
-        .unit-card p { 
-            font-size: 1.1rem; 
-            margin-bottom: 20px; 
-        }
-        .unit-card button { 
-            background: #198754; 
-            color: white; 
-            border: none; 
-            padding: 12px 50px; 
-            border-radius: 30px; 
-            font-size: 1.1rem; 
-            cursor: pointer; 
-            transition: background 0.3s; 
-            width: 80%;
-        }
-        .unit-card button:hover { 
-            background: #157347; 
-        }
-        .video-section { 
-            margin-top: 40px; 
-            background: white; 
-            padding: 25px; 
-            border-radius: 15px; 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1); 
-            text-align: center; 
-        }
-        iframe { 
-            width: 100%; 
-            max-width: 600px; 
-            height: 300px; 
-            border-radius: 12px; 
-        }
-        ul { padding-left: 20px; text-align: left; display: inline-block; }
-    </style>
-</head>
-<body>
-    <div class="overview">
-        <h1>Pre-Calculus (Grade 11 STEM)</h1>
-        <p><strong>Overview:</strong> This course focuses on analytic geometry, conic sections, their equations, graphs, and real-world applications.</p>
+/* styles.css - Fixed Sidebar Stuck Issue on Mobile */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll from sidebar */
+}
 
-        <h2>Learning Objectives</h2>
-        <ul>
-            <li>Illustrate the formation of conic sections from a double cone.</li>
-            <li>Derive, transform, and graph standard/general equations of circles, parabolas, ellipses, and hyperbolas.</li>
-            <li>Determine key elements (center, vertices, foci, directrix, asymptotes).</li>
-            <li>Solve situational problems involving conic sections.</li>
-            <li>Recognize degenerate cases and solve systems of conics.</li>
-        </ul>
-    </div>
+.sidebar {
+    position: fixed;
+    left: -250px; /* Wider hidden position to fully hide */
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: #343a40;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto; /* Allow scroll inside sidebar if needed */
+}
 
-    <h2 style="margin-bottom: 20px;">Choose a Unit</h2>
-    <div class="unit-grid">
-        <div class="unit-card">
-            <h4>Unit 1</h4>
-            <p>Introduction to Conic Sections & the Circle</p>
-            <button onclick="loadLesson('PreCalculus', 1)">Start</button>
-        </div>
-        <div class="unit-card">
-            <h4>Unit 2</h4>
-            <p>Parabola & Ellipse</p>
-            <button onclick="loadLesson('PreCalculus', 2)">Start</button>
-        </div>
-        <div class="unit-card">
-            <h4>Unit 3</h4>
-            <p>Hyperbola</p>
-            <button onclick="loadLesson('PreCalculus', 3)">Start</button>
-        </div>
-        <div class="unit-card">
-            <h4>Unit 4</h4>
-            <p>Review, Systems & Applications</p>
-            <button onclick="loadLesson('PreCalculus', 4)">Start</button>
-        </div>
-    </div>
+.sidebar.show {
+    left: 0;
+}
 
-    <div class="video-section">
-        <h2>Recommended Playlists</h2>
-        <p><a href="https://www.youtube.com/playlist?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" target="_blank">Grade 11 Pre-Calculus Full Course</a></p>
-        <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
-    </div>
+.sidebar button {
+    color: white !important;
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 16px;
+}
 
-    <script>
-        function loadLesson(subject, unit) {
-            if (parent.loadLesson) parent.loadLesson(subject, unit);
-        }
-    </script>
-</body>
-</html>
+.sidebar button:hover {
+    background-color: #495057 !important;
+    color: #ffc107 !important;
+}
+
+.main-content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+    padding-top: 70px; /* Extra space for fixed navbar */
+    min-height: 100vh;
+}
+
+.sidebar.show + .main-content {
+    margin-left: 250px; /* Push content when sidebar open (desktop only) */
+}
+
+/* Mobile Fixes - No push, overlay instead */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 250px;
+        left: -250px;
+    }
+    
+    .sidebar.show {
+        left: 0;
+    }
+    
+    .sidebar.show + .main-content {
+        margin-left: 0 !important; /* No push on mobile - sidebar overlays */
+    }
+    
+    /* Prevent body scroll when sidebar open on mobile */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+}
+
+/* Other styles remain the same */
+h1, h2, h3, h4 {
+    color: #198754 !important;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, #198754, #2ca25f) !important;
+}
+
+.btn-success, .btn-primary {
+    background-color: #198754 !important;
+    border-color: #198754 !important;
+}
+
+.btn-success:hover, .btn-primary:hover {
+    background-color: #157347 !important;
+}
+
+.tab {
+    background: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
