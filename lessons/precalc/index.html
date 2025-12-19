@@ -1,4 +1,4 @@
-<!-- lessons/precalc/index.html - Updated: Bigger Overview, Smaller Unit Cards -->
+<!-- lessons/precalc/index.html - Final Fix: Perfect Center Alignment, Smaller Cards on Mobile -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,43 +17,41 @@
         .main-container {
             background: white;
             min-height: 100vh;
-            padding: 40px 20px; /* Bigger padding for overview area */
-            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            padding: 40px 15px; /* Ample space */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Perfect centering for everything */
         }
         h1, h2, h3 { color: #198754; text-align: center; }
         .overview { 
+            width: 100%;
+            max-width: 800px; /* Big overview */
             text-align: center; 
             margin-bottom: 50px; 
-            padding: 30px 20px; /* Bigger overview section */
-            background: #f0f8f0; /* Light green tint for emphasis */
+            padding: 30px; 
+            background: #f0f8f0; 
             border-radius: 20px;
         }
-        .overview h1 { font-size: 2rem; margin-bottom: 20px; }
-        .overview p { font-size: 1.1rem; margin-bottom: 30px; }
         .overview ul { 
             text-align: left; 
             display: inline-block; 
             font-size: 1.1rem; 
-            padding-left: 30px; 
         }
         .unit-grid { 
+            width: 100%;
+            max-width: 400px; /* Narrow container for cards */
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 25px; 
+            gap: 20px; 
         }
         .unit-card { 
             width: 100%; 
-            max-width: 280px; /* Even smaller cards */
             background: #f8f9fa; 
-            padding: 18px; 
+            padding: 20px; 
             border-radius: 15px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
             text-align: center; 
-            transition: transform 0.3s ease; 
-        }
-        .unit-card:hover { 
-            transform: translateY(-5px); 
         }
         .unit-card h4 { 
             font-size: 1.4rem; 
@@ -67,36 +65,36 @@
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 10px 35px; 
+            padding: 10px 30px; 
             border-radius: 30px; 
             font-size: 1rem; 
             cursor: pointer; 
-            transition: background 0.3s; 
-            width: 80%;
+            width: 75%;
         }
         .unit-card button:hover { 
             background: #157347; 
         }
         .video-section { 
-            margin-top: 60px; 
+            width: 100%;
+            max-width: 800px;
+            margin-top: 50px; 
             text-align: center; 
-            padding: 30px 20px;
-            background: #f0f8f0;
+            padding: 30px; 
+            background: #f0f8f0; 
             border-radius: 20px;
         }
         iframe { 
             width: 100%; 
-            max-width: 600px; 
             height: 280px; 
             border-radius: 12px; 
         }
         @media (max-width: 480px) {
-            .main-container { padding: 30px 15px; }
+            .main-container { padding: 30px 10px; }
             .overview { padding: 25px 15px; }
-            .overview h1 { font-size: 1.8rem; }
-            .unit-card { max-width: 260px; padding: 15px; }
+            .unit-grid { max-width: 350px; gap: 18px; }
+            .unit-card { padding: 18px; }
             .unit-card h4 { font-size: 1.3rem; }
-            .unit-card button { padding: 9px 30px; width: 85%; }
+            .unit-card button { padding: 9px 25px; width: 80%; }
             iframe { height: 220px; }
         }
     </style>
@@ -117,7 +115,7 @@
             </ul>
         </div>
 
-        <h2 style="margin-bottom: 30px;">Choose a Unit</h2>
+        <h2>Choose a Unit</h2>
         <div class="unit-grid">
             <div class="unit-card">
                 <h4>Unit 1</h4>
