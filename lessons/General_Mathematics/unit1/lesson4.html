@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 4: Inverse Functions - Online SHS</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <style>
+    .back-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .example {
+      background: #f1f2f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .practice {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .practice h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .practice p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+    .practice ol {
+      margin-left: 35px;
+      line-height: 1.8;
+    }
+    .practice li {
+      margin-bottom: 18px;
+    }
+    .answer {
+      margin-top: 25px;
+      padding: 20px;
+      background: #dfe6e9;
+      border-radius: 8px;
+      display: none;
+      line-height: 1.8;
+    }
+    .show-answer {
+      display: block;
+      margin: 25px auto 0;
+      padding: 10px 30px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 20px auto;
+      display: block;
+    }
+    .complete-btn {
+      display: block;
+      margin: 50px auto;
+      padding: 14px 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Back to Unit 1</a>
+
+    <div class="card">
+      <h2 style="text-align:center; color:var(--accent);">Lesson 4: Inverse Functions</h2>
+      <p style="text-align:center; color:var(--text-light);">
+        Unit 1: Functions and Their Graphs | General Mathematics - Grade 11 STEM
+      </p>
+    </div>
+
+    <div class="card section">
+      <h3>Learning Objectives</h3>
+      <ul style="margin-left:20px; line-height:1.8; color:var(--text-light);">
+        <li>Determine if a function is one-to-one using the horizontal line test</li>
+        <li>Find the inverse of a function algebraically</li>
+        <li>Graph the inverse by reflecting over y = x</li>
+        <li>Verify inverses using composition</li>
+        <li>Understand domain and range swap for inverses</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>One-to-One Functions</h3>
+      <p>A function is <strong>one-to-one</strong> if every output comes from exactly one input (passes horizontal line test).</p>
+
+      <img src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/horizontal-line-test-01-1641884557.png" alt="Horizontal Line Test - One-to-One vs Not">
+
+      <img src="https://study.com/cimages/videopreview/videopreview-full/horizontal_line_test_thumbnail_115329.jpg" alt="Horizontal Line Test Examples">
+
+      <div class="example">
+        Linear functions (non-horizontal) are one-to-one.<br>
+        Quadratic functions are not (parabola fails horizontal test).
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>Finding Inverse Algebraically</h3>
+      <p>Steps: Swap x and y, solve for y.</p>
+
+      <div class="example">
+        <strong>Example 1 (Linear):</strong> f(x) = 3x + 6<br>
+        y = 3x + 6 → x = 3y + 6 → x - 6 = 3y → y = (x - 6)/3<br>
+        f⁻¹(x) = (x - 6)/3
+      </div>
+
+      <div class="example">
+        <strong>Example 2 (Square Root):</strong> f(x) = √(x + 5), x ≥ -5<br>
+        y = √(x + 5) → y² = x + 5 → x = y² - 5, y ≥ 0<br>
+        f⁻¹(x) = x² - 5, x ≥ 0
+      </div>
+
+      <div class="example">
+        <strong>Example 3 (Real-life Temperature):</strong> C to F: f(C) = (9/5)C + 32<br>
+        Inverse F to C: f⁻¹(F) = (5/9)(F - 32)
+      </div>
+
+      <img src="https://study.com/cimages/multimages/16/inverse_function_graph3254243234189465676.png" alt="Inverse Reflection over y=x">
+
+      <img src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/graph-of-inverse-function-1633065905.png" alt="Graphing Inverse Example">
+    </div>
+
+    <div class="card section">
+      <h3>Graphing Inverse Functions</h3>
+      <p>The graph of f⁻¹ is the reflection of f over the line y = x.</p>
+
+      <img src="https://mathbitsnotebook.com/Algebra1/Functions/FNInverseGraphEx.jpg" alt="Reflection over y=x Example 1">
+
+      <img src="https://study.com/cimages/videopreview/inverse_functions_graph_example_115329.jpg" alt="Reflection Example 2">
+
+      <img src="https://media.geeksforgeeks.org/wp-content/uploads/20231016183536/Inverse-Function-1.png" alt="Inverse Graph with Domain Range Swap">
+    </div>
+
+    <div class="card section">
+      <h3>Verifying Inverses</h3>
+      <p>(f ∘ f⁻¹)(x) = x and (f⁻¹ ∘ f)(x) = x</p>
+
+      <div class="example">
+        Using Example 1: f(x) = 3x + 6, f⁻¹(x) = (x - 6)/3<br>
+        (f ∘ f⁻¹)(x) = 3*((x - 6)/3) + 6 = x - 6 + 6 = x ✓
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>Domain and Range of Inverse</h3>
+      <p>Domain of f⁻¹ = Range of f<br>
+      Range of f⁻¹ = Domain of f</p>
+
+      <img src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/domain-and-range-of-inverse-function-1633065905.png" alt="Domain Range Swap Illustration">
+    </div>
+
+    <div class="card section">
+      <h3>Recommended Videos (Philippine Teachers)</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/3XPiM8tT8P8" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">INVERSE FUNCTIONS || GRADE 11 GENERAL MATHEMATICS Q1</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/0t3d1d4V4kA" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">Inverse Functions - Gen Math Grade 11</p>
+    </div>
+
+    <div class="card practice">
+      <h3>Practice Exercises</h3>
+      <p>Test your understanding.</p>
+      <ol>
+        <li>Find inverse of f(x) = 4x - 8.</li>
+        <li>Is f(x) = x² one-to-one? Why? Restrict domain to make it one-to-one.</li>
+        <li>Verify f(x) = x + 5, f⁻¹(x) = x - 5 are inverses using composition.</li>
+        <li>Real-life: Distance d = speed × time. Find inverse for time in terms of d and s.</li>
+      </ol>
+
+      <button class="show-answer">Show Answers</button>
+      <div class="answer">
+        <strong>Answers:</strong><br><br>
+        1. f⁻¹(x) = (x + 8)/4<br>
+        2. No (fails horizontal test). Restrict x ≥ 0 or x ≤ 0<br>
+        3. (f ∘ f⁻¹)(x) = (x - 5) + 5 = x ✓<br>
+        4. t = d / s
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="complete-btn" onclick="alert('Awesome! You understand inverse functions.')">
+        Mark as Complete
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.show-answer').addEventListener('click', function() {
+      this.style.display = 'none';
+      this.nextElementSibling.style.display = 'block';
+    });
+  </script>
+  <script src="../../../script.js"></script>
+</body>
+</html>
