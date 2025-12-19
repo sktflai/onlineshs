@@ -9,6 +9,9 @@
 <body>
     <button class="toggle-btn" onclick="toggleSidebar()">☰ Menu</button>
 
+    <!-- Dark overlay when sidebar is open (tap to close) -->
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
     <div class="sidebar">
         <h2>Free Online School</h2>
         <h3>Grade 11 STEM</h3>
@@ -23,9 +26,10 @@
     <div class="content">
         <div id="my-page" class="tab active">
             <h1>Welcome Back!</h1>
-            <div style="background: linear-gradient(45deg, #ff6b6b, #feca57); padding: 20px; border-radius: 15px; text-align: center; margin: 20px 0; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
-                <h2 style="color: white; font-size: 28px; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">EDUCATION IS MEANT TO BE FREE</h2>
-                <p style="color: white; font-size: 18px; margin: 10px 0 0 0;">Your journey to free knowledge starts here! 🌟</p>
+            <div class="motto">
+                <h2 style="font-size: 28px; color: #e74c3c; text-align: center; margin: 20px 0; font-weight: bold; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+                    "EDUCATION IS MEANT TO BE FREE"
+                </h2>
             </div>
             <p>This is your personal dashboard. Your progress, scores, and study time will appear here as you complete lessons and assessments.</p>
             <div id="progress-summary">
@@ -51,8 +55,7 @@
             <h1>Activities & Quizzes</h1>
             <p>Practice with 10-question quizzes (15 minutes each).</p>
             <div class="subject-grid">
-                <a href="quizzes/precalc-q1.html" class="subject-card">Pre-Calculus Quiz 1</a>
-                <!-- We will add more as we create them -->
+                <!-- Links added as we create them -->
             </div>
         </div>
 
@@ -60,8 +63,7 @@
             <h1>Tests</h1>
             <p>Full exams with 50 questions (90 minutes each).</p>
             <div class="subject-grid">
-                <!-- We will add links later -->
-                <p>Tests will appear here after quizzes are completed.</p>
+                <p>Tests coming soon!</p>
             </div>
         </div>
     </div>
