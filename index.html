@@ -1,4 +1,4 @@
-<!-- root index.html - Full Updated Version with Bigger "Welcome" Overview -->
+<!-- root index.html - Updated -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Fixed Top Navbar with Toggle -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <button id="sidebarToggle" class="btn btn-dark me-2 fs-4">
@@ -21,7 +20,6 @@
         </div>
     </nav>
 
-    <!-- Sidebar -->
     <div class="sidebar bg-dark vh-100 position-fixed top-0 pt-5" id="sidebar">
         <ul class="list-unstyled px-3">
             <li><button class="btn text-white w-100 text-start py-3" onclick="showTab('myPage')"><i class="ri-user-line me-2"></i>My Page</button></li>
@@ -31,18 +29,14 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
         <section class="container pt-5 mt-5">
-            <!-- My Page - Bigger Welcome Overview -->
             <div id="myPage" class="tab">
-                <div class="overview text-center p-5 bg-white shadow rounded" style="max-width: 900px; margin: 0 auto 50px auto;">
+                <div class="text-center p-5 bg-white shadow rounded" style="max-width: 900px; margin: 0 auto 50px auto;">
                     <h1 class="display-4 fw-bold mb-4">Welcome Back!</h1>
                     <h2 class="display-5 mb-5">"EDUCATION IS MEANT TO BE FREE"</h2>
-                    <p class="lead fs-3">This is your free online Senior High School platform for Grade 11 STEM subjects. Learn at your own pace with detailed lessons, quizzes, tests, progress tracking, and study time monitoring.</p>
-                    <p class="fs-4">Start by selecting <strong>Lessons</strong> from the sidebar to choose a subject.</p>
+                    <p class="lead fs-3">Your free online Senior High School platform for Grade 11 STEM subjects. Learn at your own pace with lessons, quizzes, tests, and progress tracking.</p>
                 </div>
-
                 <h3 class="text-center mb-4">Your Progress</h3>
                 <div id="progress-charts" class="row g-4"></div>
                 <p id="points" class="mt-5 fw-bold fs-3 text-center"></p>
@@ -50,7 +44,6 @@
                 <div id="lesson-times" class="mt-5"></div>
             </div>
 
-            <!-- Lessons Tab -->
             <div id="lessons" class="tab" style="display:none;">
                 <h1 class="mb-5 text-center">Lessons</h1>
                 <select id="subject-select" class="form-select w-75 mb-5 mx-auto d-block" onchange="loadUnits(this.value)">
@@ -65,7 +58,6 @@
                 <div id="lesson-content" class="card p-5 bg-white shadow"></div>
             </div>
 
-            <!-- Quizzes Tab -->
             <div id="quizzes" class="tab" style="display:none;">
                 <h1 class="mb-5 text-center">Activity/Quiz</h1>
                 <select id="quiz-subject" class="form-select w-75 mb-5 mx-auto d-block" onchange="loadQuizUnits(this.value)">
@@ -80,7 +72,6 @@
                 <div id="quiz-content" class="card p-5 bg-white shadow"></div>
             </div>
 
-            <!-- Tests Tab -->
             <div id="tests" class="tab" style="display:none;">
                 <h1 class="mb-5 text-center">Tests</h1>
                 <select id="test-subject" class="form-select w-75 mb-5 mx-auto d-block" onchange="loadTestUnits(this.value)">
