@@ -172,7 +172,7 @@ function checkQuiz(sub,index){
   else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`;}
 }
 </script>
-  <!-- ===== Part 2: Tests, Summaries, and Progress ===== -->
+  <!-- ===== Part 2: Full Tests, Summaries, and Progress ===== -->
 
 <nav>
 <button class="tab-btn" data-tab="tests">Tests</button>
@@ -205,50 +205,31 @@ document.getElementById(tab.dataset.tab).classList.add('active');
 });
 });
 
-// ===== Tests (2 per subject, 50 questions each) =====
-const tests = {
-"Physics":[
-{
-title:"Physics Test 1",
-questions:Array.from({length:50},(_,i)=>({
-q:`Physics Q${i+1}: Formula question example?`,
-options:["Option A","Option B","Option C","Option D"],
-a:0,
-exp:"Explanation for the correct answer."
-}))
-},
-{
-title:"Physics Test 2",
-questions:Array.from({length:50},(_,i)=>({
-q:`Physics Q${i+51}: Another formula question?`,
-options:["Option A","Option B","Option C","Option D"],
-a:1,
-exp:"Explanation for the correct answer."
-}))
+// ===== Full Tests Data =====
+const tests = {};
+
+// Helper function to generate 50 example questions per test per subject
+function generateTestQuestions(subject,testNum){
+  let questions=[];
+  for(let i=1;i<=50;i++){
+    questions.push({
+      q:`${subject} Test ${testNum} Q${i}: Example question content here?`,
+      options:["Option A","Option B","Option C","Option D"],
+      a:Math.floor(Math.random()*4), // Random correct answer for demo
+      exp:`Explanation for Q${i} in ${subject} Test ${testNum}.`
+    });
+  }
+  return questions;
 }
-],
-"Chemistry":[
-{
-title:"Chemistry Test 1",
-questions:Array.from({length:50},(_,i)=>({
-q:`Chemistry Q${i+1}: Question example?`,
-options:["Option A","Option B","Option C","Option D"],
-a:0,
-exp:"Explanation for correct answer."
-}))
-},
-{
-title:"Chemistry Test 2",
-questions:Array.from({length:50},(_,i)=>({
-q:`Chemistry Q${i+51}: Another question?`,
-options:["Option A","Option B","Option C","Option D"],
-a:1,
-exp:"Explanation for correct answer."
-}))
-}
-]
-// Similarly add for Biology, Mathematics, Statistics, Earth & Life Science
-};
+
+// Subjects array
+const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Earth & Life Science"];
+subjects.forEach(sub=>{
+  tests[sub]=[
+    {title:`${sub} Test 1`, questions: generateTestQuestions(sub,1)},
+    {title:`${sub} Test 2`, questions: generateTestQuestions(sub,2)}
+  ];
+});
 
 // ===== Load Tests =====
 const testContainer = document.getElementById('test-content');
@@ -265,6 +246,8 @@ testContainer.appendChild(div);
 });
 
 // ===== Test Logic =====
+const progressData = JSON.parse(localStorage.getItem('progress')) || {};
+
 function checkTest(sub,testIndex,qIndex){
 const q=tests[sub][testIndex].questions[qIndex];
 const opts=document.getElementsByName(`${sub}-t${testIndex}-q${qIndex}`);
@@ -272,36 +255,12 @@ let selected=-1;
 opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
 const scoreEl=document.getElementById(`${sub}-t${testIndex}-score${qIndex}`);
 if(selected===-1){scoreEl.innerHTML="Please select an answer."; return;}
-if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;}
+if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;} 
 else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`;}
 updateProgress(sub, testIndex, qIndex, selected===q.a);
 }
 
-// ===== Summaries =====
-const summaries = {
-"Physics":[
-{section:"Kinematics","summary":"Kinematics is the study of motion. Key formulas: v=d/t, a=Δv/Δt. Watch: <a href='https://www.youtube.com/watch?v=ZVj0pqDXqVU'>Kinematics Video</a>"},
-{section:"Dynamics","summary":"Dynamics studies forces. F=m*a. Watch: <a href='https://www.youtube.com/watch?v=2rRlHf7tIqU'>Newton's Laws</a>"},
-{section:"Work & Energy","summary":"Work = F*d, KE = 1/2mv^2, PE=mgh. Video: <a href='https://www.youtube.com/watch?v=2qUEXosJ2XI'>Work & Energy</a>"},
-{section:"Momentum","summary":"Momentum = m*v. Impulse = Δp. Video: <a href='https://www.youtube.com/watch?v=5FPY_gi7oIU'>Momentum</a>"}
-]
-// Similarly add summaries for other subjects
-};
-
-const summaryContainer = document.getElementById('summary-content');
-for(const sub in summaries){
-const div=document.createElement('div');
-div.className="summary";
-div.innerHTML=`<h3>${sub} Summaries</h3>`;
-summaries[sub].forEach(s=>{
-div.innerHTML+=`<h4>${s.section}</h4><p>${s.summary}</p>`;
-});
-summaryContainer.appendChild(div);
-}
-
-// ===== Progress Tracking =====
-const progressData = JSON.parse(localStorage.getItem('progress')) || {};
-
+// ===== Update & Display Progress =====
 function updateProgress(sub,testIndex,qIndex,correct){
 if(!progressData[sub]) progressData[sub]={};
 if(!progressData[sub][testIndex]) progressData[sub][testIndex]=0;
@@ -321,8 +280,58 @@ container.innerHTML+=`<p>Test ${parseInt(t)+1} Correct Answers: ${progressData[s
 }
 }
 displayProgress();
-</script>
 
+// ===== Summaries =====
+const summaries = {
+"Physics":[
+{section:"Kinematics","summary":"Kinematics is the study of motion. Key formulas: v=d/t, a=Δv/Δt. Watch: <a href='https://www.youtube.com/watch?v=ZVj0pqDXqVU'>Kinematics Video</a>"},
+{section:"Dynamics","summary":"Dynamics studies forces. F=m*a. Watch: <a href='https://www.youtube.com/watch?v=2rRlHf7tIqU'>Newton's Laws</a>"},
+{section:"Work & Energy","summary":"Work = F*d, KE = 1/2mv^2, PE=mgh. Video: <a href='https://www.youtube.com/watch?v=2qUEXosJ2XI'>Work & Energy</a>"},
+{section:"Momentum","summary":"Momentum = m*v. Impulse = Δp. Video: <a href='https://www.youtube.com/watch?v=5FPY_gi7oIU'>Momentum</a>"}
+],
+"Chemistry":[
+{section:"Atomic Structure","summary":"Atoms consist of protons, neutrons, electrons. Video: <a href='https://www.youtube.com/watch?v=Hx33Eca0h0I'>Atomic Structure</a>"},
+{section:"Chemical Bonding","summary":"Ionic, covalent, metallic bonds. Video: <a href='https://www.youtube.com/watch?v=QXT4OVM4vXI'>Chemical Bonding</a>"},
+{section:"Stoichiometry","summary":"Balanced equations, mole ratios. Video: <a href='https://www.youtube.com/watch?v=1LzVgK2U1ZI'>Stoichiometry</a>"},
+{section:"Acids & Bases","summary":"pH, acidity, basicity. Video: <a href='https://www.youtube.com/watch?v=d7PpTICr-lM'>Acids & Bases</a>"}
+],
+"Biology":[
+{section:"Cell Biology","summary":"Cells: basic unit of life, organelles. Video: <a href='https://www.youtube.com/watch?v=URUJD5NEXC8'>Cell Structure</a>"},
+{section:"Genetics","summary":"Heredity, Punnett squares. Video: <a href='https://www.youtube.com/watch?v=8mWWf3b0grU'>Genetics Basics</a>"},
+{section:"Human Anatomy","summary":"Body systems: circulatory, respiratory, nervous, digestive. Video: <a href='https://www.innerbody.com/'>Human Anatomy Diagram</a>"},
+{section:"Ecology","summary":"Interactions in ecosystems. Video: <a href='https://www.youtube.com/watch?v=5g0G8z_hVxg'>Ecology Basics</a>"}
+],
+"Mathematics":[
+{section:"Functions","summary":"Functions relate input to output. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Functions Explained</a>"},
+{section:"Algebra","summary":"Equations, inequalities, polynomials. Video: <a href='https://www.youtube.com/watch?v=Q9VNB7hXRIw'>Algebra Basics</a>"},
+{section:"Trigonometry","summary":"Angles and sides in triangles. Video: <a href='https://www.youtube.com/watch?v=O6b1gqPXQGg'>Trigonometry Basics</a>"},
+{section:"Calculus","summary":"Differentiation, integration, applications. Video: <a href='https://www.youtube.com/watch?v=WUvTyaaNkzM'>Calculus Introduction</a>"}
+],
+"Statistics":[
+{section:"Descriptive Statistics","summary":"Mean, median, mode, range. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Descriptive Stats</a>"},
+{section:"Probability","summary":"Likelihood of events, addition/multiplication rules."},
+{section:"Distributions","summary":"Normal, binomial, Poisson distributions. Video: <a href='https://www.youtube.com/watch?v=MD4aVHOxl0A'>Probability Distributions</a>"},
+{section:"Inferential Statistics","summary":"Sample to population, hypothesis testing, confidence intervals."}
+],
+"Earth & Life Science":[
+{section:"Earth Structure","summary":"Earth layers, plate tectonics. Video: <a href='https://www.youtube.com/watch?v=ZoeZgtJ0efo'>Earth Structure</a>"},
+{section:"Rocks & Minerals","summary":"Igneous, sedimentary, metamorphic rocks. Video: <a href='https://www.youtube.com/watch?v=7R4kVqHn4P8'>Rocks & Minerals</a>"},
+{section:"Plate Tectonics","summary":"Plate movements, earthquakes, volcanoes. Video: <a href='https://www.youtube.com/watch?v=9tUlhPwh4jc'>Plate Tectonics</a>"},
+{section:"Environment & Sustainability","summary":"Human impact, conservation. Video: <a href='https://www.youtube.com/watch?v=2iGfIqztcX0'>Sustainability</a>"}
+]
+};
+
+const summaryContainer = document.getElementById('summary-content');
+for(const sub in summaries){
+const div=document.createElement('div');
+div.className="summary";
+div.innerHTML=`<h3>${sub} Summaries</h3>`;
+summaries[sub].forEach(s=>{
+div.innerHTML+=`<h4>${s.section}</h4><p>${s.summary}</p>`;
+});
+summaryContainer.appendChild(div);
+}
+</script>
 
 </body>
 </html>
