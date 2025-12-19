@@ -6,10 +6,10 @@ body {
 }
 
 .sidebar {
-    left: -250px;
+    left: -200px;
     transition: left 0.3s ease;
     z-index: 1000;
-    width: 250px;
+    width: 200px;
 }
 
 .sidebar ul li button:hover, .sidebar ul li a:hover {
@@ -40,12 +40,19 @@ body {
 }
 
 .sidebar.show + .main-content {
-    margin-left: 250px;
+    margin-left: 200px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     .sidebar.show + .main-content {
         margin-left: 0;
+    }
+    .sidebar {
+        width: 250px; /* Slightly wider on small screens when toggled */
+        left: -250px;
+    }
+    .sidebar.show {
+        left: 0;
     }
 }
 
