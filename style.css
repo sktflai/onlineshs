@@ -23,7 +23,7 @@ body {
 
 .sidebar {
     position: fixed;
-    left: -300px; /* Fully hidden off-screen */
+    left: -300px; /* Fully hidden - no part visible */
     top: 0;
     width: 280px;
     height: 100%;
@@ -31,12 +31,12 @@ body {
     color: white;
     transition: left 0.4s ease;
     padding: 20px;
-    box-shadow: 10px 0 20px rgba(0,0,0,0.5);
+    box-shadow: none; /* Remove any shadow that might show edge */
     z-index: 1000;
 }
 
 .sidebar.open {
-    left: 0; /* Only appears when menu clicked */
+    left: 0; /* Only shows when menu clicked */
 }
 
 .sidebar h2, .sidebar h3 {
