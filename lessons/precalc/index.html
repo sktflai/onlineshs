@@ -1,3 +1,4 @@
+<!-- lessons/precalc/index.html - Updated Style + Fixed Clickable Buttons -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +21,20 @@
             flex-direction: column;
             align-items: center; 
         }
-        h1, h2, h3 { color: #198754; text-align: center; }
+        h1, h2, h3 { color: #198754; text-align: center; margin-bottom: 25px; }
         .overview { 
             width: 100%;
             max-width: 900px; 
             text-align: center; 
             margin-bottom: 60px; 
-            padding: 30px; 
+            padding: 35px; 
+            background: #f0f8f0; 
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         .overview p { 
-            font-size: 1.2rem; 
+            font-size: 1.25rem; 
+            margin-bottom: 30px;
         }
         .overview ul { 
             text-align: left; 
@@ -37,58 +42,76 @@
             font-size: 1.2rem; 
             padding-left: 40px; 
         }
+        .overview ul li {
+            margin-bottom: 15px;
+        }
         .unit-list { 
             width: 100%;
-            max-width: 600px; 
+            max-width: 650px; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            gap: 25px; 
+            gap: 30px; 
         }
         .unit-button { 
             width: 100%; 
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 25px; 
-            border-radius: 15px; 
-            font-size: 1.2rem; 
+            padding: 30px; 
+            border-radius: 20px; 
+            font-size: 1.3rem; 
             text-align: center; 
             cursor: pointer; 
-            transition: background 0.3s, transform 0.2s; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: background 0.3s, transform 0.3s; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
         .unit-button:hover { 
             background: #157347; 
-            transform: translateY(-3px); 
+            transform: translateY(-5px); 
         }
         .unit-button h4 { 
-            margin: 0 0 10px 0; 
-            font-size: 1.6rem; 
+            margin: 0 0 12px 0; 
+            font-size: 1.8rem; 
         }
         .unit-button p { 
             margin: 0; 
-            font-size: 1.2rem; 
+            font-size: 1.3rem; 
             opacity: 0.9; 
         }
         .video-section { 
             width: 100%;
             max-width: 900px; 
-            margin-top: 60px; 
+            margin-top: 70px; 
             text-align: center; 
-            padding: 30px; 
+            padding: 35px; 
+            background: #f0f8f0; 
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .video-section p { 
+            font-size: 1.2rem; 
+            margin-bottom: 20px;
         }
         iframe { 
             width: 100%; 
-            height: 400px; 
-            border-radius: 12px; 
+            height: 450px; 
+            border-radius: 15px; 
+        }
+        @media (max-width: 768px) {
+            .main-container { padding: 30px 15px; }
+            .overview { padding: 30px 20px; }
+            .overview p, .overview ul { font-size: 1.1rem; }
+            .unit-list { max-width: 100%; gap: 25px; }
+            .unit-button { padding: 25px; }
+            .unit-button h4 { font-size: 1.6rem; }
+            .unit-button p { font-size: 1.2rem; }
+            iframe { height: 280px; }
         }
         @media (max-width: 480px) {
-            .main-container { padding: 30px 15px; }
-            .overview { padding: 25px 15px; }
-            .unit-list { max-width: 100%; }
-            .unit-button { padding: 20px; }
-            .unit-button h4 { font-size: 1.4rem; }
+            .overview ul { padding-left: 30px; }
+            .unit-button { padding: 22px; }
+            .unit-button h4 { font-size: 1.5rem; }
             iframe { height: 220px; }
         }
     </style>
@@ -111,19 +134,19 @@
 
         <h2>Choose a Unit</h2>
         <div class="unit-list">
-            <button class="unit-button" onclick="parent.document.getElementById('lesson-content').innerHTML = parent.fetch('lessons/precalc/unit1-conic.html').then(r => r.text()).then(data => parent.document.getElementById('lesson-content').innerHTML = data);">
+            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 1)">
                 <h4>Unit 1</h4>
                 <p>Introduction to Conic Sections & the Circle</p>
             </button>
-            <button class="unit-button" onclick="parent.document.getElementById('lesson-content').innerHTML = parent.fetch('lessons/precalc/unit2-parabola.html').then(r => r.text()).then(data => parent.document.getElementById('lesson-content').innerHTML = data);">
+            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 2)">
                 <h4>Unit 2</h4>
                 <p>Parabola & Ellipse</p>
             </button>
-            <button class="unit-button" onclick="parent.document.getElementById('lesson-content').innerHTML = parent.fetch('lessons/precalc/unit3-hyperbola.html').then(r => r.text()).then(data => parent.document.getElementById('lesson-content').innerHTML = data);">
+            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 3)">
                 <h4>Unit 3</h4>
                 <p>Hyperbola</p>
             </button>
-            <button class="unit-button" onclick="parent.document.getElementById('lesson-content').innerHTML = parent.fetch('lessons/precalc/unit4-review.html').then(r => r.text()).then(data => parent.document.getElementById('lesson-content').innerHTML = data);">
+            <button class="unit-button" onclick="parent.loadLesson('PreCalculus', 4)">
                 <h4>Unit 4</h4>
                 <p>Review, Systems & Applications</p>
             </button>
@@ -136,5 +159,27 @@
             <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
         </div>
     </div>
+
+    <script>
+        // Fallback if parent.loadLesson not available
+        if (typeof parent.loadLesson === 'undefined') {
+            function loadLesson(subject, unit) {
+                let fileName = '';
+                if (unit === 1) fileName = 'unit1-conic.html';
+                else if (unit === 2) fileName = 'unit2-parabola.html';
+                else if (unit === 3) fileName = 'unit3-hyperbola.html';
+                else if (unit === 4) fileName = 'unit4-review.html';
+                
+                fetch(`lessons/precalc/${fileName}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        parent.document.getElementById('lesson-content').innerHTML = data;
+                    })
+                    .catch(() => {
+                        parent.document.getElementById('lesson-content').innerHTML = '<p class="text-danger">Error loading lesson.</p>';
+                    });
+            }
+        }
+    </script>
 </body>
 </html>
