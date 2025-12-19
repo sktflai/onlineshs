@@ -1,71 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 11 STEM Learning App</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade 11 STEM Learning</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background:#f7f7f7; }
+  header { background:#0073e6; color:white; padding:10px; text-align:center; }
+  nav { display:flex; justify-content:space-around; background:#005bb5; }
+  nav button { flex:1; padding:10px; border:none; background:#005bb5; color:white; font-size:16px; }
+  nav button.active { background:#003f7f; }
+  section { padding:10px; display:none; }
+  section.active { display:block; }
+  .lesson, .activity, .quiz { background:white; margin:10px 0; padding:10px; border-radius:5px; }
+  button { cursor:pointer; }
+  input[type="radio"] { margin-right:5px; }
+  .summary-video { width:100%; height:200px; margin:10px 0; }
+  .score { font-weight:bold; margin-top:10px; }
+</style>
 </head>
 <body>
 
-<header>
-  <h1>Grade 11 STEM Learning</h1>
-</header>
-
+<header><h1>Grade 11 STEM Learning</h1></header>
 <nav>
-  <button class="nav-item" data-tab="lessonTab">Lesson</button>
-  <button class="nav-item" data-tab="summaryTab">Summary</button>
-  <button class="nav-item" data-tab="activityTab">Activities</button>
-  <button class="nav-item" data-tab="quizTab">Quizzes</button>
-  <button class="nav-item" data-tab="testTab">Tests</button>
-  <button class="nav-item" data-tab="progressTab">Progress</button>
+  <button class="tab-btn active" data-tab="lessons">Lessons</button>
+  <button class="tab-btn" data-tab="activities">Activities</button>
+  <button class="tab-btn" data-tab="quizzes">Quizzes</button>
+  <button class="tab-btn" data-tab="summaries">Summaries</button>
+  <button class="tab-btn" data-tab="mypage">My Page</button>
 </nav>
 
-<main>
-  <!-- Lesson Selector -->
-  <select id="lessonSelector"></select>
+<section id="lessons" class="active">
+  <div id="lesson-content"></div>
+</section>
 
-  <!-- Lesson Tab -->
-  <section id="lessonTab" class="tab">
-    <h2 id="lessonTitle"></h2>
-    <div id="lessonContent"></div>
-    <a id="videoLink" href="#" target="_blank">Watch Video Lesson</a>
-  </section>
+<section id="activities">
+  <div id="activity-content"></div>
+</section>
 
-  <!-- Summary Tab -->
-  <section id="summaryTab" class="tab" style="display:none;">
-    <h2>Summary</h2>
-    <div id="summaryContent"></div>
-  </section>
+<section id="quizzes">
+  <div id="quiz-content"></div>
+</section>
 
-  <!-- Activity Tab -->
-  <section id="activityTab" class="tab" style="display:none;">
-    <h2>Activities</h2>
-    <div id="activityContent">No activities yet.</div>
-  </section>
+<section id="summaries">
+  <div id="summary-content"></div>
+</section>
 
-  <!-- Quiz Tab -->
-  <section id="quizTab" class="tab" style="display:none;">
-    <h2>Quizzes</h2>
-    <select id="quizSelector"></select>
-    <div id="quizContainer"></div>
-  </section>
+<section id="mypage">
+  <h3>My Progress</h3>
+  <div id="progress-content"></div>
+</section>
 
-  <!-- Test Tab -->
-  <section id="testTab" class="tab" style="display:none;">
-    <h2>Tests</h2>
-    <select id="testSelector"></select>
-    <div id="testContainer"></div>
-  </section>
+<script>
+// ======== Tabs ========
+const tabs = document.querySelectorAll('.tab-btn');
+const sections = document.querySelectorAll('section');
 
-  <!-- Progress Tab -->
-  <section id="progressTab" class="tab" style="display:none;">
-    <h2>Progress</h2>
-    <p id="progressText">0%</p>
-  </section>
-</main>
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    sections.forEach(s => s.classList.remove('active'));
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
 
-<script src="lessons.js"></script>
-<script src="script.js"></script>
+// ======== Data ========
+const lessons = [
+  {
+    title: "Lesson 1: Kinematics",
+    content: `<p>Kinematics is the study of motion without considering its causes...</p>
+              <p><b>Example:</b> A car moves at 60 km/h...</p>`
+  },
+  {
+    title: "Lesson 2: Dynamics",
+    content: `<p>Dynamics is the study of forces and why objects move...</p>`
+  }
+];
+
+const activities = [
+  {
+    title: "Activity 1: Motion Graphs",
+    content: "Draw a distance-time graph for a car moving at 50 km/h for 2 hours."
+  }
+];
+
+const quizzes = [
+  {
+    question: "What is the formula for velocity?",
+    options: ["v = d/t", "v = t/d", "v = m*a"],
+    answer: 0,
+    explanation: "Velocity is distance over time (v = d/t)."
+  }
+];
+
+const summaries = [
+  {
+    title: "Kinematics Summary",
+    content: "Kinematics deals with motion. Key formulas: v=d/t, a=Δv/Δt.",
+    video: "https://www.youtube.com/embed/kT5wXoNfi0A"
+  }
+];
+
+// ======== Load Content ========
+const lessonContainer = document.getElementById('lesson-content');
+lessons.forEach(l => {
+  const div = document.createElement('div');
+  div.className = "lesson";
+  div.innerHTML = `<h3>${l.title}</h3>${l.content}`;
+  lessonContainer.appendChild(div);
+});
+
+const activityContainer = document.getElementById('activity-content');
+activities.forEach(a => {
+  const div = document.createElement('div');
+  div.className = "activity";
+  div.innerHTML = `<h3>${a.title}</h3><p>${a.content}</p>`;
+  activityContainer.appendChild(div);
+});
+
+const quizContainer = document.getElementById('quiz-content');
+quizzes.forEach((q,i) => {
+  const div = document.createElement('div');
+  div.className = "quiz";
+  div.innerHTML = `<p><b>${q.question}</b></p>
+    ${q.options.map((o, idx) => `<label><input type="radio" name="q${i}" value="${idx}">${o}</label><br>`).join('')}
+    <button onclick="checkAnswer(${i})">Submit</button>
+    <p class="score" id="score${i}"></p>`;
+  quizContainer.appendChild(div);
+});
+
+// ======== Quiz Logic ========
+function checkAnswer(index) {
+  const q = quizzes[index];
+  const options = document.getElementsByName(`q${index}`);
+  let selected = -1;
+  options.forEach(o => { if(o.checked) selected = parseInt(o.value); });
+  const scoreEl = document.getElementById(`score${index}`);
+  if(selected === -1) { scoreEl.innerHTML = "Please select an answer."; return; }
+  if(selected === q.answer) {
+    scoreEl.innerHTML = `Correct! ✅ ${q.explanation}`;
+    saveProgress(index, true);
+  } else {
+    scoreEl.innerHTML = `Wrong ❌ ${q.explanation}`;
+    saveProgress(index, false);
+  }
+}
+
+// ======== Summaries ========
+const summaryContainer = document.getElementById('summary-content');
+summaries.forEach(s => {
+  const div = document.createElement('div');
+  div.className = "summary";
+  div.innerHTML = `<h3>${s.title}</h3><p>${s.content}</p>
+  <iframe class="summary-video" src="${s.video}" frameborder="0" allowfullscreen></iframe>`;
+  summaryContainer.appendChild(div);
+});
+
+// ======== Progress Tracking ========
+function saveProgress(quizIndex, correct) {
+  let progress = JSON.parse(localStorage.getItem('progress') || '{}');
+  progress[`quiz${quizIndex}`] = correct;
+  localStorage.setItem('progress', JSON.stringify(progress));
+  loadProgress();
+}
+
+function loadProgress() {
+  let progress = JSON.parse(localStorage.getItem('progress') || '{}');
+  const progressEl = document.getElementById('progress-content');
+  progressEl.innerHTML = Object.keys(progress).length ? 
+    Object.keys(progress).map(k => `${k}: ${progress[k] ? "✅ Correct" : "❌ Wrong"}`).join('<br>') 
+    : "No progress yet.";
+}
+
+loadProgress();
+</script>
+
 </body>
 </html>
