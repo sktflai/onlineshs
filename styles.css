@@ -1,3 +1,4 @@
+/* styles.css - Updated */
 body {
     font-family: 'Roboto', sans-serif;
     background: #f8f9fa;
@@ -77,14 +78,6 @@ h1, h2, h3, h4 {
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-
-.unit-button {
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-.unit-button:hover {
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
