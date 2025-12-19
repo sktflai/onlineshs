@@ -5,248 +5,230 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Grade 11 STEM Online Learning</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f4f4f4; }
-header { background:#0073e6; color:white; text-align:center; padding:15px 0; font-size:1.5em; }
-nav { display:flex; flex-wrap:wrap; background:#005bb5; }
-nav button { flex:1; padding:12px; border:none; background:#005bb5; color:white; font-size:16px; cursor:pointer; }
-nav button.active { background:#003f7f; }
-section { display:none; padding:10px; }
+/* ===== Basic Styles ===== */
+body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f5f5f5; color:#333; }
+nav { display:flex; flex-wrap:wrap; background:#007acc; }
+nav button { flex:1; padding:15px; color:white; background:none; border:none; cursor:pointer; font-size:16px; }
+nav button.active { background:#005fa3; }
+section { display:none; padding:20px; max-width:900px; margin:auto; }
 section.active { display:block; }
-.lesson, .activity, .quiz { background:white; margin:10px 0; padding:10px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);}
-h3 { margin-top:0; }
-button { cursor:pointer; margin-top:5px; }
-input[type="radio"] { margin-right:5px; }
-.score { font-weight:bold; margin-top:5px; }
-@media (max-width:600px){ nav button { font-size:14px; padding:10px; } }
+h3 { color:#007acc; }
+.test, .summary, .lesson { margin-bottom:40px; background:white; padding:15px; border-radius:8px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
+button { margin-top:10px; padding:7px 15px; cursor:pointer; }
+.score { margin-top:5px; font-weight:bold; }
+@media(max-width:600px){nav button{font-size:14px; padding:12px;} section{padding:10px;}}
 </style>
 </head>
 <body>
 
-<header>Grade 11 STEM Online Learning</header>
+<h1 style="text-align:center; padding:15px;">Grade 11 STEM Online Learning</h1>
+
 <nav>
 <button class="tab-btn active" data-tab="lessons">Lessons</button>
 <button class="tab-btn" data-tab="activities">Activities</button>
 <button class="tab-btn" data-tab="quizzes">Quizzes</button>
-</nav>
-
-<section id="lessons" class="active">
-<div id="lesson-content"></div>
-</section>
-
-<section id="activities">
-<div id="activity-content"></div>
-</section>
-
-<section id="quizzes">
-<div id="quiz-content"></div>
-</section>
-
-<script>
-// ===== Tab Navigation =====
-const tabs = document.querySelectorAll('.tab-btn');
-const sections = document.querySelectorAll('section');
-tabs.forEach(tab => {
-tab.addEventListener('click', () => {
-tabs.forEach(t => t.classList.remove('active'));
-tab.classList.add('active');
-sections.forEach(s => s.classList.remove('active'));
-document.getElementById(tab.dataset.tab).classList.add('active');
-});
-});
-
-// ===== Subjects =====
-const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Earth & Life Science"];
-
-// ===== Lessons (Textbook style, links included) =====
-const lessons = {
-"Physics":[
-{section:"Kinematics", content:"Kinematics studies motion without considering forces. <br> Formulas: v=d/t, a=Δv/Δt. <br> Example: A car moves at 60 km/h for 2h → distance = 120 km. <br> Image reference: <a href='https://www.physicsclassroom.com/class/1DKin'>Kinematics Diagram</a>"},
-{section:"Dynamics", content:"Dynamics studies forces causing motion. <br> Newton's laws: F = m*a. <br> Example: 10kg object accelerated at 2 m/s² → F = 20 N. <br> Video reference: <a href='https://www.youtube.com/watch?v=2rRlHf7tIqU'>Newton's Laws</a>"},
-{section:"Work & Energy", content:"Work: W = F*d. Kinetic Energy: KE = 1/2 m v². Potential Energy: PE = m g h. <br> Example: Lifting 10kg object 2m → PE=196J. <br> Image reference: <a href='https://www.physicsclassroom.com/class/energy'>Work & Energy Diagram</a>"},
-{section:"Momentum", content:"Momentum: p = m*v. Impulse = change in momentum. <br> Example: 5kg object moving at 4 m/s → p = 20 kg*m/s. <br> Video reference: <a href='https://www.youtube.com/watch?v=5FPY_gi7oIU'>Momentum Explained</a>"}
-],
-"Chemistry":[
-{section:"Atomic Structure", content:"Atoms: protons, neutrons, electrons. <br> Electron configuration follows energy levels. <br> Image: <a href='https://chem.libretexts.org/Bookshelves/General_Chemistry/'>Atomic Structure Diagram</a>"},
-{section:"Chemical Bonding", content:"Atoms bond to achieve stability. Types: ionic, covalent, metallic. <br> Video: <a href='https://www.youtube.com/watch?v=QXT4OVM4vXI'>Chemical Bonding</a>"},
-{section:"Stoichiometry", content:"Calculations based on balanced chemical equations. Use mole ratios. <br> Example: 2H2 + O2 → 2H2O; 4 moles H2 react with 2 moles O2 → 4 moles H2O produced."},
-{section:"Acids & Bases", content:"Acids donate H+, bases accept H+. pH indicates acidity. <br> Video: <a href='https://www.youtube.com/watch?v=d7PpTICr-lM'>Acids & Bases</a>"}
-],
-"Biology":[
-{section:"Cell Biology", content:"Cells: basic unit of life. Organelles: nucleus, mitochondria, ribosomes. <br> Video: <a href='https://www.youtube.com/watch?v=URUJD5NEXC8'>Cell Structure</a>"},
-{section:"Genetics", content:"Genetics: heredity. Punnett squares predict offspring traits. <br> Example: Cross Aa x Aa → 1:2:1 ratio. <br> Video: <a href='https://www.youtube.com/watch?v=8mWWf3b0grU'>Genetics Basics</a>"},
-{section:"Human Anatomy", content:"Body systems: circulatory, respiratory, nervous, digestive. <br> Image: <a href='https://www.innerbody.com/'>Human Anatomy Diagram</a>"},
-{section:"Ecology", content:"Interactions between organisms and environment. Food chains, ecosystems. <br> Video: <a href='https://www.youtube.com/watch?v=5g0G8z_hVxg'>Ecology Basics</a>"}
-],
-"Mathematics":[
-{section:"Functions", content:"Functions relate input to output. Types: linear, quadratic, exponential. <br> Example: f(x)=2x+3, g(x)=x². <br> Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Functions Explained</a>"},
-{section:"Algebra", content:"Solve equations, inequalities, factor polynomials. <br> Example: Solve 2x+5=11 → x=3. <br> Video: <a href='https://www.youtube.com/watch?v=Q9VNB7hXRIw'>Algebra Basics</a>"},
-{section:"Trigonometry", content:"Relations of angles and sides in triangles. sin, cos, tan. <br> Example: sin30°=1/2. <br> Video: <a href='https://www.youtube.com/watch?v=O6b1gqPXQGg'>Trigonometry Basics</a>"},
-{section:"Calculus", content:"Differentiation and integration of functions. Applications in rates and areas. <br> Example: d/dx(x²)=2x. <br> Video: <a href='https://www.youtube.com/watch?v=WUvTyaaNkzM'>Calculus Introduction</a>"}
-],
-"Statistics":[
-{section:"Descriptive Statistics", content:"Summarize data: mean, median, mode, range. <br> Example: Data=[2,3,4] → mean=3. <br> Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Descriptive Stats</a>"},
-{section:"Probability", content:"Measure likelihood of events. Rules: addition, multiplication. <br> Example: P(A or B)=P(A)+P(B)-P(A and B)."},
-{section:"Distributions", content:"Normal, binomial, Poisson distributions. <br> Video: <a href='https://www.youtube.com/watch?v=MD4aVHOxl0A'>Probability Distributions</a>"},
-{section:"Inferential Statistics", content:"Draw conclusions from sample to population using confidence intervals, hypothesis testing."}
-],
-"Earth & Life Science":[
-{section:"Earth Structure", content:"Earth layers: crust, mantle, core. Plate tectonics explains earthquakes, volcanoes. <br> Video: <a href='https://www.youtube.com/watch?v=ZoeZgtJ0efo'>Earth Structure</a>"},
-{section:"Rocks & Minerals", content:"Types: igneous, sedimentary, metamorphic. Mineral properties: hardness, streak, luster. <br> Video: <a href='https://www.youtube.com/watch?v=7R4kVqHn4P8'>Rocks & Minerals</a>"},
-{section:"Plate Tectonics", content:"Movement of plates causes earthquakes, volcanic activity, mountain formation. <br> Video: <a href='https://www.youtube.com/watch?v=9tUlhPwh4jc'>Plate Tectonics</a>"},
-{section:"Environment & Sustainability", content:"Human impact, conservation, sustainability practices. <br> Video: <a href='https://www.youtube.com/watch?v=2iGfIqztcX0'>Sustainability</a>"}
-]
-};
-
-// ===== Load Lessons =====
-const lessonContainer = document.getElementById('lesson-content');
-for(const sub of subjects){
-  const div = document.createElement('div');
-  div.className="lesson";
-  div.innerHTML=`<h3>${sub}</h3>`;
-  lessons[sub].forEach(sec=>{
-    div.innerHTML+=`<h4>${sec.section}</h4><p>${sec.content}</p>`;
-  });
-  lessonContainer.appendChild(div);
-}
-
-// ===== Activities =====
-const activities = {
-"Physics":["Draw a distance-time graph for a moving car.","Calculate force given mass and acceleration.","Solve work and energy problems.","Calculate momentum of objects."],
-"Chemistry":["Draw Bohr diagrams.","Identify types of chemical bonds.","Balance chemical equations.","Perform acid-base titration calculations."],
-"Biology":["Observe cell structures under microscope.","Solve genetics Punnett squares.","Label human body systems.","Identify interactions in an ecosystem."],
-"Mathematics":["Plot functions on graph.","Solve algebraic equations.","Solve trigonometric problems.","Differentiate simple functions."],
-"Statistics":["Compute mean, median, mode.","Calculate probability of events.","Identify distributions.","Perform sample inference."],
-"Earth & Life Science":["Draw Earth layers.","Classify rocks and minerals.","Map plate boundaries.","Analyze human impact on environment."]
-};
-
-const activityContainer = document.getElementById('activity-content');
-for(const sub of subjects){
-  const div = document.createElement('div');
-  div.className="activity";
-  div.innerHTML=`<h3>${sub}</h3>`;
-  activities[sub].forEach((act,i)=>{
-    div.innerHTML+=`<p><b>Activity ${i+1}:</b> ${act}</p>`;
-  });
-  activityContainer.appendChild(div);
-}
-
-// ===== Quizzes (4 per subject, 10 questions each, simplified example) =====
-const quizzes = {
-"Physics":[
-{q:"Formula for velocity?",options:["v=d/t","v=t/d","v=m*a"],a:0,exp:"Velocity = distance/time."},
-{q:"Newton's 2nd Law?",options:["F=m/a","F=m*a","F=a/m"],a:1,exp:"Force = mass * acceleration."},
-{q:"Unit of force?",options:["Newton","Joule","Pascal"],a:0,exp:"Newton is SI unit."},
-{q:"Acceleration formula?",options:["a=v/t","a=vt","a=d/t"],a:0,exp:"a = Δv / Δt."},
-{q:"Work formula?",options:["W=F*d","W=F/d","W=F+d"],a:0,exp:"Work = Force × Distance."},
-{q:"Kinetic energy?",options:["KE=1/2mv^2","KE=mv","KE=mv^2"],a:0,exp:"KE = 1/2 * m * v^2."},
-{q:"Potential energy?",options:["PE=mgh","PE=mg","PE=gh"],a:0,exp:"PE = m * g * h."},
-{q:"Momentum?",options:["p=mv","p=m/v","p=v/m"],a:0,exp:"Momentum = mass * velocity."},
-{q:"Unit of energy?",options:["Joule","Newton","Watt"],a:0,exp:"Joule is SI unit."},
-{q:"Newton's 1st Law?",options:["Law of Inertia","F=ma","Action=Reaction"],a:0,exp:"Object remains at rest or moves unless acted on."}
-]
-// Similarly, quizzes for other subjects can be added here in the same format
-};
-
-// ===== Load Quizzes =====
-const quizContainer = document.getElementById('quiz-content');
-for(const sub of subjects){
-  if(!quizzes[sub]) continue;
-  const div = document.createElement('div');
-  div.className="quiz";
-  div.innerHTML=`<h3>${sub} Quizzes</h3>`;
-  quizzes[sub].forEach((q,i)=>{
-    div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-q${i}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkQuiz('${sub}',${i})">Submit</button><p class="score" id="${sub}-score${i}"></p>`;
-  });
-  quizContainer.appendChild(div);
-});
-
-// ===== Quiz Logic =====
-function checkQuiz(sub,index){
-  const q=quizzes[sub][index];
-  const opts=document.getElementsByName(`${sub}-q${index}`);
-  let selected=-1;
-  opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
-  const scoreEl=document.getElementById(`${sub}-score${index}`);
-  if(selected===-1){scoreEl.innerHTML="Please select an answer.";return;}
-  if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;} 
-  else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`;}
-}
-</script>
-  <!-- ===== Part 2: Full Tests, Summaries, and Progress ===== -->
-
-<nav>
 <button class="tab-btn" data-tab="tests">Tests</button>
 <button class="tab-btn" data-tab="summaries">Summaries</button>
 <button class="tab-btn" data-tab="mypage">My Page</button>
 </nav>
 
+<!-- ===== LESSONS ===== -->
+<section id="lessons" class="active">
+<div id="lesson-content"></div>
+</section>
+
+<!-- ===== ACTIVITIES ===== -->
+<section id="activities">
+<div id="activity-content"></div>
+</section>
+
+<!-- ===== QUIZZES ===== -->
+<section id="quizzes">
+<div id="quiz-content"></div>
+</section>
+
+<!-- ===== TESTS ===== -->
 <section id="tests">
 <div id="test-content"></div>
 </section>
 
+<!-- ===== SUMMARIES ===== -->
 <section id="summaries">
 <div id="summary-content"></div>
 </section>
 
+<!-- ===== MY PAGE ===== -->
 <section id="mypage">
 <h3>My Progress</h3>
 <div id="progress-content"></div>
 </section>
 
 <script>
-// ===== Extend tab navigation for new sections =====
-const newTabs = document.querySelectorAll('nav .tab-btn');
-newTabs.forEach(tab=>{
+// ===== Tab Navigation =====
+const sections = document.querySelectorAll('section');
+const tabs = document.querySelectorAll('nav .tab-btn');
+tabs.forEach(tab=>{
 tab.addEventListener('click',()=>{
-newTabs.forEach(t=>t.classList.remove('active'));
+tabs.forEach(t=>t.classList.remove('active'));
 tab.classList.add('active');
 sections.forEach(s=>s.classList.remove('active'));
 document.getElementById(tab.dataset.tab).classList.add('active');
 });
 });
 
-// ===== Full Tests Data =====
-const tests = {};
+// ===== LESSONS DATA =====
+const lessons = {
+"Physics":[
+{section:"Kinematics", content:"Motion in one and two dimensions, speed, velocity, acceleration. Examples: v=d/t, a=Δv/Δt."},
+{section:"Dynamics", content:"Forces, Newton's Laws. F=ma, friction, free body diagrams."},
+{section:"Work & Energy", content:"Work = F*d*cosθ, kinetic energy KE=1/2 mv², potential energy PE=mgh."},
+{section:"Momentum", content:"Momentum p=mv, impulse J=Δp, collisions."}
+],
+"Chemistry":[
+{section:"Atomic Structure", content:"Atoms consist of protons, neutrons, electrons. Electron configuration and orbitals."},
+{section:"Chemical Bonding", content:"Ionic, covalent, and metallic bonds. Lewis structures and polarity."},
+{section:"Stoichiometry", content:"Balancing chemical equations, mole concept, molar mass calculations."},
+{section:"Acids & Bases", content:"pH, pOH, strong/weak acids and bases, titration calculations."}
+],
+"Biology":[
+{section:"Cell Biology", content:"Cell theory, organelles and their functions, eukaryotic vs prokaryotic cells."},
+{section:"Genetics", content:"Mendelian inheritance, Punnett squares, dominant and recessive traits."},
+{section:"Human Anatomy", content:"Circulatory, respiratory, nervous, digestive systems overview."},
+{section:"Ecology", content:"Ecosystem interactions, food chains, energy flow, biomes."}
+],
+"Mathematics":[
+{section:"Functions", content:"Definition, domain and range, types of functions, graphing."},
+{section:"Algebra", content:"Equations, inequalities, polynomials, factoring, quadratic equations."},
+{section:"Trigonometry", content:"Sine, cosine, tangent, angles, identities, solving triangles."},
+{section:"Calculus", content:"Limits, differentiation, integration, applications in real life."}
+],
+"Statistics":[
+{section:"Descriptive Statistics", content:"Mean, median, mode, range, standard deviation."},
+{section:"Probability", content:"Basic probability rules, independent and dependent events."},
+{section:"Distributions", content:"Normal, binomial, and Poisson distributions with examples."},
+{section:"Inferential Statistics", content:"Sampling, hypothesis testing, confidence intervals."}
+],
+"Earth & Life Science":[
+{section:"Earth Structure", content:"Earth layers, plate tectonics, seismic waves, volcanoes."},
+{section:"Rocks & Minerals", content:"Types of rocks: igneous, sedimentary, metamorphic; mineral properties."},
+{section:"Plate Tectonics", content:"Plate boundaries, earthquakes, volcano formation."},
+{section:"Environment & Sustainability", content:"Human impact, conservation, climate change."}
+]
+};
 
-// Helper function to generate 50 example questions per test per subject
-function generateTestQuestions(subject,testNum){
-  let questions=[];
-  for(let i=1;i<=50;i++){
-    questions.push({
-      q:`${subject} Test ${testNum} Q${i}: Example question content here?`,
-      options:["Option A","Option B","Option C","Option D"],
-      a:Math.floor(Math.random()*4), // Random correct answer for demo
-      exp:`Explanation for Q${i} in ${subject} Test ${testNum}.`
-    });
-  }
-  return questions;
+const lessonContainer = document.getElementById('lesson-content');
+for(const sub in lessons){
+const div=document.createElement('div');
+div.className="lesson";
+div.innerHTML=`<h3>${sub} Lessons</h3>`;
+lessons[sub].forEach(l=>{
+div.innerHTML+=`<h4>${l.section}</h4><p>${l.content}</p>`;
+});
+lessonContainer.appendChild(div);
 }
 
-// Subjects array
-const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Earth & Life Science"];
+// ===== ACTIVITIES DATA =====
+const activities = {
+"Physics":["Draw motion diagrams for 3 objects moving at different speeds.","Solve F=ma problems with varying forces."],
+"Chemistry":["Balance these 5 chemical equations.","Draw Lewis structures for H2O, CO2, NH3."],
+"Biology":["Label cell organelles in a diagram.","Create a Punnett square for monohybrid crosses."],
+"Mathematics":["Graph these 4 functions.","Solve 5 quadratic equations."],
+"Statistics":["Calculate mean, median, mode for a dataset.","Find probability of rolling a 6 twice."],
+"Earth & Life Science":["Classify 5 rock samples.","Explain causes of earthquakes in 3 regions."]
+};
+
+const activityContainer = document.getElementById('activity-content');
+for(const sub in activities){
+const div=document.createElement('div');
+div.className="lesson";
+div.innerHTML=`<h3>${sub} Activities</h3>`;
+activities[sub].forEach((a,i)=>{
+div.innerHTML+=`<p>${i+1}. ${a}</p>`;
+});
+activityContainer.appendChild(div);
+}
+
+// ===== QUIZZES & TESTS DATA =====
+const quizzes = {};
+const tests = {};
+subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Earth & Life Science"];
+
+// Generate quizzes: 4 quizzes x 10 questions per subject
 subjects.forEach(sub=>{
-  tests[sub]=[
-    {title:`${sub} Test 1`, questions: generateTestQuestions(sub,1)},
-    {title:`${sub} Test 2`, questions: generateTestQuestions(sub,2)}
-  ];
+quizzes[sub]=[];
+for(let qz=1;qz<=4;qz++){
+let questions=[];
+for(let i=1;i<=10;i++){
+questions.push({
+q:`${sub} Quiz ${qz} Q${i}: Example question content?`,
+options:["A","B","C","D"],
+a:Math.floor(Math.random()*4),
+exp:`Explanation for correct answer of Q${i} in ${sub} Quiz ${qz}.`
+});
+}
+quizzes[sub].push({title:`${sub} Quiz ${qz}`,questions});
+}
 });
 
-// ===== Load Tests =====
+// Generate tests: 2 tests x 50 questions per subject
+subjects.forEach(sub=>{
+tests[sub]=[];
+for(let t=1;t<=2;t++){
+let questions=[];
+for(let i=1;i<=50;i++){
+questions.push({
+q:`${sub} Test ${t} Q${i}: Example question content?`,
+options:["A","B","C","D"],
+a:Math.floor(Math.random()*4),
+exp:`Explanation for correct answer of Q${i} in ${sub} Test ${t}.`
+});
+}
+tests[sub].push({title:`${sub} Test ${t}`,questions});
+}
+});
+
+// ===== LOAD QUIZZES =====
+const quizContainer = document.getElementById('quiz-content');
+for(const sub in quizzes){
+quizzes[sub].forEach((qz,qi)=>{
+const div=document.createElement('div');
+div.className="test";
+div.innerHTML=`<h3>${sub} - ${qz.title}</h3>`;
+qz.questions.forEach((q,j)=>{
+div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-qz${qi}-q${j}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkQuiz('${sub}',${qi},${j})">Submit</button><p class="score" id="${sub}-qz${qi}-score${j}"></p>`;
+});
+quizContainer.appendChild(div);
+});
+});
+
+// ===== LOAD TESTS =====
 const testContainer = document.getElementById('test-content');
 for(const sub in tests){
-tests[sub].forEach((t,i)=>{
+tests[sub].forEach((t,ti)=>{
 const div=document.createElement('div');
 div.className="test";
 div.innerHTML=`<h3>${sub} - ${t.title}</h3>`;
 t.questions.forEach((q,j)=>{
-div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-t${i}-q${j}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkTest('${sub}',${i},${j})">Submit</button><p class="score" id="${sub}-t${i}-score${j}"></p>`;
+div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-t${ti}-q${j}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkTest('${sub}',${ti},${j})">Submit</button><p class="score" id="${sub}-t${ti}-score${j}"></p>`;
 });
 testContainer.appendChild(div);
 });
 });
 
-// ===== Test Logic =====
+// ===== QUIZ & TEST LOGIC =====
 const progressData = JSON.parse(localStorage.getItem('progress')) || {};
+
+function checkQuiz(sub,qzIndex,qIndex){
+const q=quizzes[sub][qzIndex].questions[qIndex];
+const opts=document.getElementsByName(`${sub}-qz${qzIndex}-q${qIndex}`);
+let selected=-1;
+opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
+const scoreEl=document.getElementById(`${sub}-qz${qzIndex}-score${qIndex}`);
+if(selected===-1){scoreEl.innerHTML="Please select an answer."; return;}
+if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;}
+else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`;}
+updateProgress(sub,`quiz${qzIndex}`,qIndex,selected===q.a);
+}
 
 function checkTest(sub,testIndex,qIndex){
 const q=tests[sub][testIndex].questions[qIndex];
@@ -255,16 +237,16 @@ let selected=-1;
 opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
 const scoreEl=document.getElementById(`${sub}-t${testIndex}-score${qIndex}`);
 if(selected===-1){scoreEl.innerHTML="Please select an answer."; return;}
-if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;} 
+if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`;}
 else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`;}
-updateProgress(sub, testIndex, qIndex, selected===q.a);
+updateProgress(sub,`test${testIndex}`,qIndex,selected===q.a);
 }
 
-// ===== Update & Display Progress =====
-function updateProgress(sub,testIndex,qIndex,correct){
+// ===== PROGRESS TRACKING =====
+function updateProgress(sub,id,qIndex,correct){
 if(!progressData[sub]) progressData[sub]={};
-if(!progressData[sub][testIndex]) progressData[sub][testIndex]=0;
-if(correct) progressData[sub][testIndex]+=1;
+if(!progressData[sub][id]) progressData[sub][id]=0;
+if(correct) progressData[sub][id]+=1;
 localStorage.setItem('progress',JSON.stringify(progressData));
 displayProgress();
 }
@@ -275,49 +257,49 @@ container.innerHTML="";
 for(const sub in progressData){
 container.innerHTML+=`<h4>${sub}</h4>`;
 for(const t in progressData[sub]){
-container.innerHTML+=`<p>Test ${parseInt(t)+1} Correct Answers: ${progressData[sub][t]}</p>`;
+container.innerHTML+=`<p>${t}: Correct Answers: ${progressData[sub][t]}</p>`;
 }
 }
 }
 displayProgress();
 
-// ===== Summaries =====
+// ===== SUMMARIES =====
 const summaries = {
 "Physics":[
-{section:"Kinematics","summary":"Kinematics is the study of motion. Key formulas: v=d/t, a=Δv/Δt. Watch: <a href='https://www.youtube.com/watch?v=ZVj0pqDXqVU'>Kinematics Video</a>"},
-{section:"Dynamics","summary":"Dynamics studies forces. F=m*a. Watch: <a href='https://www.youtube.com/watch?v=2rRlHf7tIqU'>Newton's Laws</a>"},
-{section:"Work & Energy","summary":"Work = F*d, KE = 1/2mv^2, PE=mgh. Video: <a href='https://www.youtube.com/watch?v=2qUEXosJ2XI'>Work & Energy</a>"},
-{section:"Momentum","summary":"Momentum = m*v. Impulse = Δp. Video: <a href='https://www.youtube.com/watch?v=5FPY_gi7oIU'>Momentum</a>"}
+{section:"Kinematics","summary":"Kinematics is the study of motion. Watch: <a href='https://www.youtube.com/watch?v=ZVj0pqDXqVU'>Video</a>"},
+{section:"Dynamics","summary":"Dynamics studies forces. F=ma. Video: <a href='https://www.youtube.com/watch?v=2rRlHf7tIqU'>Video</a>"},
+{section:"Work & Energy","summary":"Work=F*d, KE=1/2mv², PE=mgh. Video: <a href='https://www.youtube.com/watch?v=2qUEXosJ2XI'>Video</a>"},
+{section:"Momentum","summary":"Momentum=p*v. Impulse=Δp. Video: <a href='https://www.youtube.com/watch?v=5FPY_gi7oIU'>Video</a>"}
 ],
 "Chemistry":[
-{section:"Atomic Structure","summary":"Atoms consist of protons, neutrons, electrons. Video: <a href='https://www.youtube.com/watch?v=Hx33Eca0h0I'>Atomic Structure</a>"},
-{section:"Chemical Bonding","summary":"Ionic, covalent, metallic bonds. Video: <a href='https://www.youtube.com/watch?v=QXT4OVM4vXI'>Chemical Bonding</a>"},
-{section:"Stoichiometry","summary":"Balanced equations, mole ratios. Video: <a href='https://www.youtube.com/watch?v=1LzVgK2U1ZI'>Stoichiometry</a>"},
-{section:"Acids & Bases","summary":"pH, acidity, basicity. Video: <a href='https://www.youtube.com/watch?v=d7PpTICr-lM'>Acids & Bases</a>"}
+{section:"Atomic Structure","summary":"Atoms and orbitals. Video: <a href='https://www.youtube.com/watch?v=Hx33Eca0h0I'>Video</a>"},
+{section:"Chemical Bonding","summary":"Ionic, covalent bonds. Video: <a href='https://www.youtube.com/watch?v=QXT4OVM4vXI'>Video</a>"},
+{section:"Stoichiometry","summary":"Mole concept, balancing equations. Video: <a href='https://www.youtube.com/watch?v=1LzVgK2U1ZI'>Video</a>"},
+{section:"Acids & Bases","summary":"pH, titration. Video: <a href='https://www.youtube.com/watch?v=d7PpTICr-lM'>Video</a>"}
 ],
 "Biology":[
-{section:"Cell Biology","summary":"Cells: basic unit of life, organelles. Video: <a href='https://www.youtube.com/watch?v=URUJD5NEXC8'>Cell Structure</a>"},
-{section:"Genetics","summary":"Heredity, Punnett squares. Video: <a href='https://www.youtube.com/watch?v=8mWWf3b0grU'>Genetics Basics</a>"},
-{section:"Human Anatomy","summary":"Body systems: circulatory, respiratory, nervous, digestive. Video: <a href='https://www.innerbody.com/'>Human Anatomy Diagram</a>"},
-{section:"Ecology","summary":"Interactions in ecosystems. Video: <a href='https://www.youtube.com/watch?v=5g0G8z_hVxg'>Ecology Basics</a>"}
+{section:"Cell Biology","summary":"Cell structure and organelles. Video: <a href='https://www.youtube.com/watch?v=URUJD5NEXC8'>Video</a>"},
+{section:"Genetics","summary":"Mendelian inheritance. Video: <a href='https://www.youtube.com/watch?v=8mWWf3b0grU'>Video</a>"},
+{section:"Human Anatomy","summary":"Body systems overview. Video: <a href='https://www.innerbody.com/'>Diagram</a>"},
+{section:"Ecology","summary":"Ecosystem interactions. Video: <a href='https://www.youtube.com/watch?v=5g0G8z_hVxg'>Video</a>"}
 ],
 "Mathematics":[
-{section:"Functions","summary":"Functions relate input to output. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Functions Explained</a>"},
-{section:"Algebra","summary":"Equations, inequalities, polynomials. Video: <a href='https://www.youtube.com/watch?v=Q9VNB7hXRIw'>Algebra Basics</a>"},
-{section:"Trigonometry","summary":"Angles and sides in triangles. Video: <a href='https://www.youtube.com/watch?v=O6b1gqPXQGg'>Trigonometry Basics</a>"},
-{section:"Calculus","summary":"Differentiation, integration, applications. Video: <a href='https://www.youtube.com/watch?v=WUvTyaaNkzM'>Calculus Introduction</a>"}
+{section:"Functions","summary":"Input-output relations. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Video</a>"},
+{section:"Algebra","summary":"Equations, inequalities, quadratics. Video: <a href='https://www.youtube.com/watch?v=Q9VNB7hXRIw'>Video</a>"},
+{section:"Trigonometry","summary":"Angles, triangles, identities. Video: <a href='https://www.youtube.com/watch?v=O6b1gqPXQGg'>Video</a>"},
+{section:"Calculus","summary":"Limits, differentiation, integration. Video: <a href='https://www.youtube.com/watch?v=WUvTyaaNkzM'>Video</a>"}
 ],
 "Statistics":[
-{section:"Descriptive Statistics","summary":"Mean, median, mode, range. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Descriptive Stats</a>"},
-{section:"Probability","summary":"Likelihood of events, addition/multiplication rules."},
-{section:"Distributions","summary":"Normal, binomial, Poisson distributions. Video: <a href='https://www.youtube.com/watch?v=MD4aVHOxl0A'>Probability Distributions</a>"},
-{section:"Inferential Statistics","summary":"Sample to population, hypothesis testing, confidence intervals."}
+{section:"Descriptive Statistics","summary":"Mean, median, mode. Video: <a href='https://www.youtube.com/watch?v=Vfo5le26IhY'>Video</a>"},
+{section:"Probability","summary":"Basic probability rules."},
+{section:"Distributions","summary":"Normal, binomial distributions. Video: <a href='https://www.youtube.com/watch?v=MD4aVHOxl0A'>Video</a>"},
+{section:"Inferential Statistics","summary":"Hypothesis testing, confidence intervals."}
 ],
 "Earth & Life Science":[
-{section:"Earth Structure","summary":"Earth layers, plate tectonics. Video: <a href='https://www.youtube.com/watch?v=ZoeZgtJ0efo'>Earth Structure</a>"},
-{section:"Rocks & Minerals","summary":"Igneous, sedimentary, metamorphic rocks. Video: <a href='https://www.youtube.com/watch?v=7R4kVqHn4P8'>Rocks & Minerals</a>"},
-{section:"Plate Tectonics","summary":"Plate movements, earthquakes, volcanoes. Video: <a href='https://www.youtube.com/watch?v=9tUlhPwh4jc'>Plate Tectonics</a>"},
-{section:"Environment & Sustainability","summary":"Human impact, conservation. Video: <a href='https://www.youtube.com/watch?v=2iGfIqztcX0'>Sustainability</a>"}
+{section:"Earth Structure","summary":"Earth layers, plate tectonics. Video: <a href='https://www.youtube.com/watch?v=ZoeZgtJ0efo'>Video</a>"},
+{section:"Rocks & Minerals","summary":"Types of rocks. Video: <a href='https://www.youtube.com/watch?v=7R4kVqHn4P8'>Video</a>"},
+{section:"Plate Tectonics","summary":"Plate movements, earthquakes. Video: <a href='https://www.youtube.com/watch?v=9tUlhPwh4jc'>Video</a>"},
+{section:"Environment & Sustainability","summary":"Human impact, conservation. Video: <a href='https://www.youtube.com/watch?v=2iGfIqztcX0'>Video</a>"}
 ]
 };
 
