@@ -4,315 +4,244 @@ const lessons = {
   oralComm: {
     title: "Oral Communication in Context",
     lesson: `
-Oral Communication is the process of expressing ideas, information, and feelings through spoken language. It is essential in school, work, and everyday interactions.
+<p><strong>Oral communication</strong> is the art of expressing and exchanging ideas through spoken words. This includes conversations, presentations, discussions, and public speaking.</p>
 
-COMMUNICATION PROCESS
-- Sender: person delivering the message
-- Message: the idea or information conveyed
-- Channel: the medium used (face-to-face, phone, online)
-- Receiver: the listener or audience
-- Feedback: the response from the receiver
-- Noise: anything that disrupts communication
+<p>In SHS, oral communication teaches students how to speak clearly, listen actively, and convey messages effectively. It helps develop confidence, leadership, and interpersonal skills.</p>
 
-TYPES OF ORAL COMMUNICATION
-1. Interpersonal – one-on-one conversation
-2. Group Communication – discussions within small groups
-3. Public Speaking – formal speech delivered to an audience
+<h3>Communication Process</h3>
+<p>There are several components involved in any communication:</p>
+<ul>
+  <li><strong>Sender:</strong> The person who sends the message.</li>
+  <li><strong>Message:</strong> The idea or information being conveyed.</li>
+  <li><strong>Channel:</strong> The medium used (face‑to‑face, phone, online).</li>
+  <li><strong>Receiver:</strong> The audience who receives the message.</li>
+  <li><strong>Feedback:</strong> The response from the receiver.</li>
+  <li><strong>Noise:</strong> Anything that disrupts or interferes with communication.</li>
+</ul>
 
-EFFECTIVE ORAL COMMUNICATION SKILLS
-- Clarity: speak clearly
-- Organization: arrange ideas logically
-- Tone: adjust voice to match message
-- Body Language: gestures, posture, facial expressions
-- Active Listening: focus fully on the speaker
+<h3>Types of Oral Communication</h3>
+<p><strong>1. Interpersonal Communication</strong> – one‑on‑one conversations with another person.</p>
+<p><strong>2. Group Communication</strong> – discussions held within small groups, like class projects.</p>
+<p><strong>3. Public Speaking</strong> – presenting a structured speech to an audience.</p>
 
-EXAMPLES:
-- Introducing yourself in class
-- Presenting a report
-- Explaining a procedure step-by-step
-`,
+<h3>Example</h3>
+<p>Imagine presenting a report in class. You must organize your main points logically, speak at an understandable pace, and use appropriate body language to support your message.</p>
+
+<p><em>Tip:</em> Practice speaking in front of a mirror or with friends to build confidence.</p>
+    `,
     summary: `
-• Oral communication conveys ideas and feelings  
-• Elements: sender, message, channel, receiver, feedback  
-• Effective speakers are clear, organized, confident  
-• Context affects message delivery
-`,
-    video: "https://www.youtube.com/results?search_query=oral+communication+in+context+grade+11",
-    quiz: [
-      {
-        question: "Which element receives the message?",
-        choices: ["Sender", "Channel", "Receiver", "Noise"],
-        answer: 2,
-        explanation: "The receiver is the person who listens to or receives the message."
-      }
-    ]
+• Oral communication involves speaking and listening skills.  
+• Effective communication includes a clear message, good delivery, and active listening.  
+• Practice and feedback improve communication skills.
+    `,
+    video: "https://www.youtube.com/results?search_query=oral+communication+in+context+senior+high",
+    quizzes: [],
+    tests: []
   },
 
   // 2. Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino
   kompAtPan: {
     title: "Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino",
     lesson: `
-Ang asignaturang ito ay nakatuon sa mabisang komunikasyon sa wikang Filipino at sa pananaliksik na may kaugnayan sa kulturang Pilipino.
+<p>Ang <strong>Komunikasyon at Pananaliksik sa Wika at Kulturang Pilipino</strong> ay isang asignatura na naghahasa sa kakayahan ng mag‑aaral sa mabisang komunikasyon sa Filipino at sa pagsasagawa ng pananaliksik tungkol sa kultura.</p>
 
-WIKA AT KOMUNIKASYON
-- Ang wika ay kasangkapan sa pagpapahayag ng kaisipan, damdamin, at karanasan.
-- Ginagamit sa pakikipag-usap, pagsulat, pananaliksik, at pagpapahayag ng kultura.
+<h3>Wika at Komunikasyon</h3>
+<p>Ang wika ay kasangkapan upang maipahayag ang kaisipan, damdamin, at karanasan. Mahalaga ito sa pakikipag‑ugnayan at pagsulat ng mga sulatin na akademiko at pananaliksik.</p>
 
-PANANALIKSIK
-- Sistematikong pag-aaral upang makakuha ng bagong kaalaman.
-- Mga hakbang:
-  1. Pagpili ng paksa
-  2. Pagbuo ng layunin
-  3. Pangangalap ng datos
-  4. Pagsusuri ng impormasyon
-  5. Pagsulat ng pananaliksik
+<h3>Pananaliksik</h3>
+<p>Ang pananaliksik ay sistematikong pag‑aaral upang makakuha ng bagong kaalaman. Ito ay may mga sumusunod na hakbang:</p>
+<ol>
+  <li>Pagpili ng paksa</li>
+  <li>Pagtukoy ng layunin</li>
+  <li>Pangangalap ng datos</li>
+  <li>Pagsusuri ng impormasyon</li>
+  <li>Pagsulat ng ulat o konklusyon</li>
+</ol>
 
-KULTURANG PILIPINO
-- Sinasalamin ng wika ang tradisyon, paniniwala, at pagpapahalaga ng Pilipino.
-
-EXAMPLES:
-- Pagsulat ng research paper sa Filipino
-- Panayam sa lokal na pamayanan
-`,
+<h3>Halimbawa</h3>
+<p>Kung nais mong pag‑aralan ang mga tradisyon sa pista sa inyong bayan, maaari kang magsagawa ng panayam sa matatanda, kumuha ng larawan, at mag‑lista ng mga pinakamasayang aktibidad para sa iyong pananaliksik.</p>
+    `,
     summary: `
-• Wika ay salamin ng kultura  
-• Pananaliksik ay sistematikong pag-aaral  
-• Mahalaga ang Filipino sa akademikong diskurso
-`,
-    video: "https://www.youtube.com/results?search_query=komunikasyon+at+pananaliksik+grade+11",
-    quiz: [
-      {
-        question: "Ano ang unang hakbang sa pananaliksik?",
-        choices: ["Pagsusuri", "Pagpili ng paksa", "Pagsulat", "Paglalathala"],
-        answer: 1,
-        explanation: "Nagsisimula ang pananaliksik sa pagpili ng angkop na paksa."
-      }
-    ]
+• Ang wika ay mahalaga sa komunikasyon.  
+• Ang pananaliksik ay sistematikong proseso ng pagkuha ng kaalaman.  
+• May limang pangunahing hakbang ang pananaliksik.
+    `,
+    video: "https://www.youtube.com/results?search_query=komunikasyon+at+pananaliksik+sa+wika+at+kultura+filipino",
+    quizzes: [],
+    tests: []
   },
 
   // 3. General Mathematics
   genMath: {
     title: "General Mathematics",
     lesson: `
-General Mathematics introduces fundamental mathematical concepts needed for real-life applications.
+<p><strong>General Mathematics</strong> introduces essential mathematical concepts needed for everyday life, higher studies, and STEM courses.</p>
 
-FUNCTIONS
-- A function is a relation where each input has exactly one output.
-- Domain: input values
-- Range: output values
+<h3>Functions</h3>
+<p>A <strong>function</strong> is a rule that takes every input and assigns it to exactly one output. The set of all possible inputs is called the <em>domain</em>, and the set of outputs is called the <em>range</em>.</p>
 
-LINEAR FUNCTIONS
-- Form: y = mx + b
-- m = slope, b = y-intercept
+<p><strong>Example:</strong> If f(x) = 2x + 3, and x = 4, then f(4) = 2(4) + 3 = 11.</p>
 
-QUADRATIC FUNCTIONS
-- Form: y = ax² + bx + c
-- Graph is a parabola
-- Vertex shows maximum or minimum point
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Linear_Function.svg/320px-Linear_Function.svg.png" alt="Linear Function Example">
 
-SEQUENCES
-- Arithmetic: constant difference
-- Geometric: constant ratio
+<h3>Linear Functions</h3>
+<p>A <strong>linear function</strong> has the form y = mx + b, where m is the slope and b is the y‑intercept.</p>
 
-EXAMPLES:
-- Linear: y = 2x + 3
-- Quadratic: y = x² - 4x + 3
-- Arithmetic sequence: 2, 5, 8, 11...
-`,
+<h3>Quadratic Functions</h3>
+<p>A <strong>quadratic function</strong> has the form y = ax² + bx + c. Its graph forms a parabola, which may open upward or downward.</p>
+
+<h3>Sequences</h3>
+<p>An <strong>arithmetic sequence</strong> has a constant difference between terms. A <strong>geometric sequence</strong> has a constant ratio between terms.</p>
+    `,
     summary: `
-• Functions map inputs to outputs  
-• Linear functions: straight line  
-• Quadratic functions: parabola  
-• Sequences follow arithmetic or geometric patterns
-`,
-    video: "https://www.youtube.com/results?search_query=general+mathematics+grade+11",
-    quiz: [
-      {
-        question: "What is the graph of a quadratic function?",
-        choices: ["Line", "Circle", "Parabola", "Triangle"],
-        answer: 2,
-        explanation: "Quadratic functions always form a parabola."
-      }
-    ]
+• Functions map inputs to outputs (domain → range).  
+• Linear equations graph as straight lines.  
+• Quadratic equations graph as parabolas.  
+• Sequences follow specific patterns.
+    `,
+    video: "https://www.youtube.com/results?search_query=general+mathematics+grade+11+functions",
+    quizzes: [],
+    tests: []
   },
 
-  // 4. Pre-Calculus
+  // 4. Pre‑Calculus
   preCalc: {
-    title: "Pre-Calculus",
+    title: "Pre‑Calculus",
     lesson: `
-Pre-Calculus prepares students for Calculus with algebra and trigonometry skills.
+<p><strong>Pre‑Calculus</strong> strengthens algebra and trigonometry skills to prepare you for calculus.</p>
 
-TRIGONOMETRY
-- sin θ = opposite / hypotenuse
-- cos θ = adjacent / hypotenuse
-- tan θ = opposite / adjacent
+<h3>Trigonometric Ratios</h3>
+<p>Trigonometry relates angles to side lengths in right triangles:</p>
+<ul>
+  <li><strong>sin θ</strong> = opposite/hypotenuse</li>
+  <li><strong>cos θ</strong> = adjacent/hypotenuse</li>
+  <li><strong>tan θ</strong> = opposite/adjacent</li>
+</ul>
 
-UNIT CIRCLE
-- Defines sine and cosine for all angles
-- Positive and negative values based on quadrant
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Unit_circle_angles_color.svg" alt="Unit Circle">
 
-EXAMPLES:
-- sin 30° = 1/2
-- cos 60° = 1/2
-- tan 45° = 1
-`,
+<p>The <strong>unit circle</strong> allows you to define sine and cosine for all angles based on coordinates of points on the circle.</p>
+
+<h3>Example</h3>
+<p>If cos 60° = 1/2 and sin 30° = 1/2, then tan 30° = sin 30°/cos 30° = (1/2)/(√3/2) = 1/√3.</p>
+    `,
     summary: `
-• Trigonometry relates angles and sides  
-• Unit circle defines trig values for all angles  
-• Prepares for Calculus
-`,
-    video: "https://www.youtube.com/results?search_query=precalculus+grade+11",
-    quiz: [
-      {
-        question: "What is sin 90°?",
-        choices: ["0", "0.5", "1", "-1"],
-        answer: 2,
-        explanation: "The sine of 90 degrees is 1."
-      }
-    ]
+• Trigonometry connects angles and sides of triangles.  
+• The unit circle helps define trigonometric values for any angle.
+    `,
+    video: "https://www.youtube.com/results?search_query=precalculus+grade+11+trigonometry",
+    quizzes: [],
+    tests: []
   },
 
   // 5. Earth Science
   earthSci: {
     title: "Earth Science",
     lesson: `
-Earth Science studies Earth’s structure, processes, and systems.
+<p><strong>Earth Science</strong> explores the structure and processes of the Earth.</p>
 
-LAYERS OF THE EARTH
-- Crust: outer layer
-- Mantle: semi-molten layer
-- Core: inner and outer core
+<h3>Layers of the Earth</h3>
+<p>The Earth is composed of several layers:</p>
+<ul>
+  <li><strong>Crust:</strong> thin, outermost layer</li>
+  <li><strong>Mantle:</strong> thick, semi‑molten layer</li>
+  <li><strong>Core:</strong> center of the Earth made of iron and nickel</li>
+</ul>
 
-PLATE TECTONICS
-- Plate movements cause earthquakes, volcanoes, mountains
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Earth-cutaway-schematic-english.svg" alt="Earth Layers">
 
-ROCKS
-- Igneous, Sedimentary, Metamorphic
+<h3>Plate Tectonics</h3>
+<p>The movement of Earth's plates causes earthquakes, volcanoes, and mountain building.</p>
 
-EXAMPLES:
-- Ring of Fire earthquakes
-- Formation of Himalayas
-`,
+<h3>Rocks</h3>
+<p>Rocks are classified as <strong>igneous</strong>, <strong>sedimentary</strong>, or <strong>metamorphic</strong> depending on how they form.</p>
+    `,
     summary: `
-• Earth has crust, mantle, core  
-• Plate movement causes earthquakes  
-• Rocks are igneous, sedimentary, metamorphic
-`,
+• Earth has layers: crust, mantle, core.  
+• Plate movement causes major geologic activity.  
+• Rocks form in three major types.
+    `,
     video: "https://www.youtube.com/results?search_query=earth+science+grade+11",
-    quiz: [
-      {
-        question: "Which layer is the hottest?",
-        choices: ["Crust", "Mantle", "Core", "Atmosphere"],
-        answer: 2,
-        explanation: "The core is the hottest layer of the Earth."
-      }
-    ]
+    quizzes: [],
+    tests: []
   },
 
   // 6. General Chemistry 1
   genChem: {
     title: "General Chemistry 1",
     lesson: `
-General Chemistry studies matter and its behavior.
+<p><strong>General Chemistry</strong> studies the properties and behavior of matter.</p>
 
-MATTER
-- Solid, Liquid, Gas
+<h3>Matter and Its States</h3>
+<p>Matter exists as solids, liquids, and gases. Each state has unique properties based on particle arrangement and energy.</p>
 
-ATOMIC STRUCTURE
-- Protons, Neutrons, Electrons
+<h3>Atomic Structure</h3>
+<p>Atoms are made of protons, neutrons, and electrons. The nucleus contains protons and neutrons.</p>
 
-PERIODIC TABLE
-- Organizes elements by properties and atomic number
+<img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Bohr_model_of_Helium.jpg" alt="Atomic Structure">
 
-EXAMPLES:
-- H₂O is a compound
-- Na is an element
-`,
+<h3>Periodic Table</h3>
+<p>The periodic table organizes elements by increasing atomic number and similar chemical properties.</p>
+    `,
     summary: `
-• Matter exists in three states  
-• Atoms compose matter  
-• Periodic table organizes elements
-`,
-    video: "https://www.youtube.com/results?search_query=general+chemistry+grade+11",
-    quiz: [
-      {
-        question: "What is H₂O?",
-        choices: ["Element", "Compound", "Mixture", "Solution"],
-        answer: 1,
-        explanation: "H₂O is a compound made of hydrogen and oxygen."
-      }
-    ]
+• Matter is found in three states.  
+• Atoms consist of protons, neutrons, electrons.  
+• The periodic table organizes elements.
+    `,
+    video: "https://www.youtube.com/results?search_query=general+chemistry+1+grade+11",
+    quizzes: [],
+    tests: []
   },
 
-  // 7. Physical Education and Health
+  // 7. Physical Education & Health
   physEd: {
     title: "Physical Education and Health",
     lesson: `
-Promotes physical fitness and healthy living.
+<p>Physical Education & Health promotes physical fitness, well‑being, and healthy lifestyle habits.</p>
 
-FITNESS COMPONENTS
-- Cardiovascular endurance
-- Strength
-- Flexibility
+<h3>Fitness Components</h3>
+<ul>
+  <li><strong>Cardiovascular endurance</strong></li>
+  <li><strong>Muscular strength</strong></li>
+  <li><strong>Flexibility</strong></li>
+</ul>
 
-HEALTH
-- Nutrition
-- Mental health
-- Lifestyle choices
+<p>Good health also includes balanced nutrition and positive mental health habits.</p>
 
-EXAMPLES:
-- Jogging for endurance
-- Stretching for flexibility
-- Balanced diet
-`,
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Stretching_before_exercise.jpg" alt="Fitness Example">
+
+<h3>Example</h3>
+<p>Stretching before exercise improves flexibility and reduces risk of injury.</p>
+    `,
     summary: `
-• Fitness improves health  
-• Nutrition supports performance  
-• Physical activity is essential
-`,
-    video: "https://www.youtube.com/results?search_query=physical+education+grade+11",
-    quiz: [
-      {
-        question: "Which is a fitness component?",
-        choices: ["Reading", "Strength", "Writing", "Sleeping"],
-        answer: 1,
-        explanation: "Strength is a core component of physical fitness."
-      }
-    ]
+• Fitness includes strength, endurance, and flexibility.  
+• Healthy habits support physical and mental performance.
+    `,
+    video: "https://www.youtube.com/results?search_query=physical+education+health+grade+11",
+    quizzes: [],
+    tests: []
   },
 
   // 8. Empowerment Technologies
   empTech: {
     title: "Empowerment Technologies",
     lesson: `
-Focuses on digital tools for productivity and communication.
+<p><strong>Empowerment Technologies</strong> focuses on digital tools and productivity software.</p>
 
-TOPICS
-- Word processing
-- Spreadsheets
-- Presentations
-- Internet safety
-- Basic web development
+<h3>Key Topics</h3>
+<p>Students learn word processing, spreadsheets, presentations, internet safety, and basic web design. These skills help in school projects and future careers.</p>
 
-EXAMPLES:
-- Writing reports in Word
-- Calculations in Excel
-- Creating slides in PowerPoint
-`,
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Microsoft_Office_logo.png" alt="Productivity Tools">
+
+<p><strong>Example:</strong> Using a spreadsheet to organize data and create charts.</p>
+    `,
     summary: `
-• Uses digital tools for productivity  
-• Promotes digital citizenship  
-• Introduces basic web tools
-`,
+• Digital tools boost productivity.  
+• Internet safety and ethics are essential.
+    `,
     video: "https://www.youtube.com/results?search_query=empowerment+technologies+grade+11",
-    quiz: [
-      {
-        question: "Which tool is used for calculations?",
-        choices: ["Word", "Excel", "PowerPoint", "Paint"],
-        answer: 1,
-        explanation: "Excel is used for calculations and data analysis."
-      }
-    ]
+    quizzes: [],
+    tests: []
   }
 
 };
