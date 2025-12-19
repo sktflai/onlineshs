@@ -8,55 +8,64 @@
 </head>
 <body>
 
-  <header>
-    <h1>Grade 11 STEM Learning</h1>
-  </header>
+<header>
+  <h1>Grade 11 STEM Learning</h1>
+</header>
 
-  <nav>
-    <button class="nav-item" data-tab="lessonTab">Lesson</button>
-    <button class="nav-item" data-tab="summaryTab">Summary</button>
-    <button class="nav-item" data-tab="activityTab">Activities</button>
-    <button class="nav-item" data-tab="quizTab">Quiz</button>
-    <button class="nav-item" data-tab="progressTab">Progress</button>
-  </nav>
+<nav>
+  <button class="nav-item" data-tab="lessonTab">Lesson</button>
+  <button class="nav-item" data-tab="summaryTab">Summary</button>
+  <button class="nav-item" data-tab="activityTab">Activities</button>
+  <button class="nav-item" data-tab="quizTab">Quizzes</button>
+  <button class="nav-item" data-tab="testTab">Tests</button>
+  <button class="nav-item" data-tab="progressTab">Progress</button>
+</nav>
 
-  <main>
-    <!-- Lesson Selector -->
-    <select id="lessonSelector"></select>
+<main>
+  <!-- Lesson Selector -->
+  <select id="lessonSelector"></select>
 
-    <!-- Lesson Tab -->
-    <section id="lessonTab" class="tab">
-      <h2 id="lessonTitle"></h2>
-      <div id="lessonContent"></div>
-      <a id="videoLink" href="#" target="_blank">Watch Video Lesson</a>
-    </section>
+  <!-- Lesson Tab -->
+  <section id="lessonTab" class="tab">
+    <h2 id="lessonTitle"></h2>
+    <div id="lessonContent"></div>
+    <a id="videoLink" href="#" target="_blank">Watch Video Lesson</a>
+  </section>
 
-    <!-- Summary Tab -->
-    <section id="summaryTab" class="tab" style="display:none;">
-      <h2>Summary</h2>
-      <div id="summaryContent"></div>
-    </section>
+  <!-- Summary Tab -->
+  <section id="summaryTab" class="tab" style="display:none;">
+    <h2>Summary</h2>
+    <div id="summaryContent"></div>
+  </section>
 
-    <!-- Activity Tab -->
-    <section id="activityTab" class="tab" style="display:none;">
-      <h2>Activities</h2>
-      <div id="activityContent">No activities yet. Check back later!</div>
-    </section>
+  <!-- Activity Tab -->
+  <section id="activityTab" class="tab" style="display:none;">
+    <h2>Activities</h2>
+    <div id="activityContent">No activities yet.</div>
+  </section>
 
-    <!-- Quiz Tab -->
-    <section id="quizTab" class="tab" style="display:none;">
-      <h2>Quiz</h2>
-      <div id="quizContainer"></div>
-    </section>
+  <!-- Quiz Tab -->
+  <section id="quizTab" class="tab" style="display:none;">
+    <h2>Quizzes</h2>
+    <select id="quizSelector"></select>
+    <div id="quizContainer"></div>
+  </section>
 
-    <!-- Progress Tab -->
-    <section id="progressTab" class="tab" style="display:none;">
-      <h2>Progress</h2>
-      <p id="progressText">0%</p>
-    </section>
-  </main>
+  <!-- Test Tab -->
+  <section id="testTab" class="tab" style="display:none;">
+    <h2>Tests</h2>
+    <select id="testSelector"></select>
+    <div id="testContainer"></div>
+  </section>
 
-  <script src="lessons.js"></script>
-  <script src="script.js"></script>
+  <!-- Progress Tab -->
+  <section id="progressTab" class="tab" style="display:none;">
+    <h2>Progress</h2>
+    <p id="progressText">0%</p>
+  </section>
+</main>
+
+<script src="lessons.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
