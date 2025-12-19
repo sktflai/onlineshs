@@ -1,39 +1,59 @@
-<div class="container mt-4">
-    <h3>Pre-Calculus Index</h3>
-    <p><strong>Course Overview:</strong> This covers analytic geometry, symmetries, tessellations, the golden ratio, Fibonacci sequences, matrices, and linear programming as per the Philippine Grade 11 STEM curriculum.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pre-Calculus - Grade 11 STEM</title>
+    <style>
+        body { font-family: 'Roboto', sans-serif; padding: 20px; background: #f8f9fa; color: #333; }
+        h1, h2 { color: #198754; }
+        .unit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .unit-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; }
+        .unit-card a { text-decoration: none; color: #198754; font-weight: bold; font-size: 18px; }
+        .unit-card a:hover { color: #157347; }
+        .video-section { margin-top: 40px; }
+        iframe { width: 100%; max-width: 560px; height: 315px; border: none; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Pre-Calculus (Grade 11 STEM)</h1>
+    <p><strong>Subject Overview:</strong> This course focuses on analytic geometry, conic sections, series and sequences, and mathematical induction. It prepares students for calculus by strengthening algebraic manipulation and geometric understanding.</p>
     
-    <div class="row g-3 mt-3">
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h5>Unit 1: Symmetries and Transformations</h5>
-                <p>Learning Objectives: Understand types of symmetries, transformations, and their applications.</p>
-                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 1)">Start Unit 1</button>
-            </div>
+    <h2>Course Learning Objectives</h2>
+    <ul>
+        <li>Illustrate and identify the different conic sections (circle, parabola, ellipse, hyperbola).</li>
+        <li>Determine the standard and general equations of conic sections.</li>
+        <li>Solve situational problems involving conic sections.</li>
+        <li>Understand sequences, series, and the binomial theorem.</li>
+        <li>Apply mathematical induction to prove statements.</li>
+    </ul>
+
+    <h2>Select a Unit to Study</h2>
+    <div class="unit-grid">
+        <div class="unit-card">
+            <a href="unit1.html">Unit 1<br>Introduction to Conic Sections & Circles</a>
         </div>
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h5>Unit 2: Tessellations and Frieze Patterns</h5>
-                <p>Learning Objectives: Explore tiling patterns, frieze groups, and real-world designs.</p>
-                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 2)">Start Unit 2</button>
-            </div>
+        <div class="unit-card">
+            <a href="unit2.html">Unit 2<br>Parabola & Ellipse</a>
         </div>
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h5>Unit 3: Golden Ratio and Fibonacci Sequence</h5>
-                <p>Learning Objectives: Study the golden ratio, Fibonacci numbers, and their occurrences in nature/art.</p>
-                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 3)">Start Unit 3</button>
-            </div>
+        <div class="unit-card">
+            <a href="unit3.html">Unit 3<br>Hyperbola & Systems of Conic Sections</a>
         </div>
-        <div class="col-md-6">
-            <div class="card p-3 shadow-sm">
-                <h5>Unit 4: Matrices and Linear Programming</h5>
-                <p>Learning Objectives: Master matrix operations, systems of equations, and optimization problems.</p>
-                <button class="btn btn-success mt-2" onclick="parent.loadLesson('precalc', 4)">Start Unit 4</button>
-            </div>
+        <div class="unit-card">
+            <a href="unit4.html">Unit 4<br>Series, Sequences & Mathematical Induction</a>
         </div>
     </div>
-    
-    <div class="mt-4">
-        <p><strong>Resources:</strong> Khan Academy Pre-Calculus videos, YouTube searches for "Philippine DepEd Pre-Calculus".</p>
+
+    <div class="video-section">
+        <h2>Recommended Full Course Playlists (Filipino Explanations)</h2>
+        <p>These playlists cover the entire Grade 11 Pre-Calculus curriculum with clear examples:</p>
+        
+        <p><strong>Best Overall Playlist:</strong></p>
+        <a href="https://www.youtube.com/playlist?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" target="_blank">Grade 11 Pre-Calculus (STEM) Full Coverage</a>
+        <iframe src="https://www.youtube.com/embed/videoseries?list=PLFG5lKeDCYPnDEPoEPsCZyhopg2IHLnxr" allowfullscreen></iframe>
+
+        <p><strong>Another Excellent One (Prof D Style):</strong></p>
+        <a href="https://www.youtube.com/playlist?list=PLHvCA6RNznXLbhqeyNzLkrB9iVhB0Ej91" target="_blank">Pre-Calculus Grade 11 Complete Lessons</a>
     </div>
-</div>
+</body>
+</html>
