@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     margin: 0;
     background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-    color: #2c3e0;
+    color: #2c3e50;
     overflow-x: hidden;
     transition: filter 0.4s ease;
 }
@@ -40,15 +40,27 @@ body {
     left: 0;
 }
 
-.sidebar h2, .sidebar h3 { text-align: center; margin: 10px 0; }
-.sidebar ul { list-style: none; padding: 0; margin-top: 40px; }
+.sidebar h2, .sidebar h3 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+}
+
 .sidebar li {
     padding: 20px;
     cursor: pointer;
     font-size: 19px;
     border-bottom: 1px solid #34495e;
 }
-.sidebar li:hover { background: #3498db; }
+
+.sidebar li:hover {
+    background: #3498db;
+}
 
 .content {
     padding: 90px 20px 40px;
@@ -68,20 +80,24 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 999;
-    transition: opacity 0.4s ease;
 }
 
 .overlay.active {
     display: block;
 }
 
-/* Dim content when sidebar open */
+/* Dim the main content when sidebar is open */
 body.sidebar-open .content {
     filter: brightness(0.7);
 }
 
-/* Make sure text is readable */
-h1 { font-size: 38px; color: #2980b9; text-align: center; margin-bottom: 25px; }
+h1 {
+    font-size: 38px;
+    color: #2980b9;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
 .motto h2 {
     font-size: 32px !important;
     color: #e74c3c !important;
@@ -91,8 +107,13 @@ h1 { font-size: 38px; color: #2980b9; text-align: center; margin-bottom: 25px; }
     text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
 }
 
-.tab { display: none; }
-.tab.active { display: block; }
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
 
 .subject-grid {
     display: grid;
@@ -119,7 +140,13 @@ h1 { font-size: 38px; color: #2980b9; text-align: center; margin-bottom: 25px; }
     box-shadow: 0 16px 30px rgba(0,0,0,0.25);
 }
 
+/* Mobile adjustments */
 @media (max-width: 768px) {
-    .content { padding: 100px 15px 40px; }
-    .toggle-btn { font-size: 24px; padding: 14px 20px; }
+    .content {
+        padding: 100px 15px 40px;
+    }
+    .toggle-btn {
+        font-size: 24px;
+        padding: 14px 20px;
+    }
 }
