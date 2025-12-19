@@ -89,14 +89,33 @@ function stopStudyTimer(subject, unit) {
 }
 
 function loadUnits(subject) {
+    const lessonContent = document.getElementById('lesson-content');
     const unitList = document.getElementById('unit-list');
-    unitList.innerHTML = '';
-    for (let i = 1; i <= 4; i++) {
-        const btn = document.createElement('button');
-        btn.textContent = `Unit ${i}`;
-        btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
-        btn.onclick = () => loadLesson(subject, i);
-        unitList.appendChild(btn);
+    
+    // Try to load the subject index first
+    fetch(`lessons/${subject}/index.html`)
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            }
+            throw new Error('No index');
+        })
+        .then(data => {
+            lessonContent.innerHTML = data;
+            unitList.innerHTML = ''; // Hide unit buttons since index has its own
+        })
+        .catch(() => {
+            // If no index.html, fall back to showing unit buttons
+            unitList.innerHTML = '';
+            for (let i = 1; i <= 4; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = `Unit ${i}`;
+                btn.classList.add('btn', 'btn-primary', 'me-2', 'mb-2');
+                btn.onclick = () => loadLesson(subject, i);
+                unitList.appendChild(btn);
+            }
+            lessonContent.innerHTML = '<p>Select a unit above to begin.</p>';
+        });
     }
 }
 
