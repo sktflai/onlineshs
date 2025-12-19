@@ -1,4 +1,3 @@
-// script.js - Updated: Fixed Sidebar Stuck on Mobile + Better Mobile Support
 const subjects = ['PreCalculus', 'GeneralBiology1', 'GeneralChemistry1', 'GeneralPhysics1', 'EarthScience'];
 
 const sidebar = document.getElementById('sidebar');
@@ -17,11 +16,11 @@ function setInitialSidebarState() {
 
 toggleBtn.addEventListener('click', () => {
     sidebar.classList.toggle('show');
-    document.body.classList.toggle('sidebar-open'); // Prevents background scroll on mobile
+    document.body.classList.toggle('sidebar-open');
     if (!isMobile()) {
         mainContent.style.marginLeft = sidebar.classList.contains('show') ? '250px' : '0';
     } else {
-        mainContent.style.marginLeft = '0'; // Always overlay on mobile
+        mainContent.style.marginLeft = '0';
     }
 });
 
@@ -47,7 +46,7 @@ function loadProgress() {
         const div = document.createElement('div');
         div.classList.add('col-md-6', 'mb-4');
         div.innerHTML = `
-            <p class="fw-bold fs-5">${subject.replace(/([A-Z])/g, ' $1').trim()}: ${progress}% complete</p>
+            <p class="fw-bold fs-5 text-center">${subject.replace(/([A-Z])/g, ' $1').trim()}: ${progress}% complete</p>
             <div class="progress" style="height: 35px;">
                 <div class="progress-bar bg-success" style="width: ${progress}%; font-size: 1.2rem;">${progress}%</div>
             </div>
@@ -60,7 +59,7 @@ function loadProgress() {
     document.getElementById('study-time').textContent = `Study Time: ${studyTime} minutes`;
     
     const lessonTimes = document.getElementById('lesson-times');
-    lessonTimes.innerHTML = '<h4 class="mt-5">Lesson History</h4>';
+    lessonTimes.innerHTML = '<h4 class="mt-5 text-center">Lesson History</h4>';
     let hasHistory = false;
     subjects.forEach(subject => {
         for (let u = 1; u <= 4; u++) {
@@ -68,11 +67,11 @@ function loadProgress() {
             const finish = localStorage.getItem(`${subject}-unit${u}-finish`);
             if (start) {
                 hasHistory = true;
-                lessonTimes.innerHTML += `<p class="border-bottom pb-2"><strong>${subject.replace(/([A-Z])/g, ' $1').trim()} Unit ${u}</strong><br>Started: ${start}<br>Finished: ${finish || 'In progress'}</p>`;
+                lessonTimes.innerHTML += `<p class="border-bottom pb-2 text-center"><strong>${subject.replace(/([A-Z])/g, ' $1').trim()} Unit ${u}</strong><br>Started: ${start}<br>Finished: ${finish || 'In progress'}</p>`;
             }
         }
     });
-    if (!hasHistory) lessonTimes.innerHTML += '<p>No history yet — start a lesson!</p>';
+    if (!hasHistory) lessonTimes.innerHTML += '<p class="text-center">No history yet — start a lesson!</p>';
 }
 
 let studyTimer;
@@ -102,7 +101,7 @@ function loadUnits(subject) {
     const folder = (subject === 'PreCalculus') ? 'precalc' : subject;
     
     fetch(`lessons/${folder}/index.html`)
-        .then(response => response.ok ? response.text() : throwError())
+        .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
             lessonContent.innerHTML = data;
             unitList.innerHTML = '';
@@ -138,13 +137,13 @@ function loadLesson(subject, unit) {
     else if (unit === 4) fileName = 'unit4-review.html';
     
     fetch(`lessons/${folder}/${fileName}`)
-        .then(response => response.ok ? response.text() : throwError())
+        .then(response => response.ok ? response.text() : Promise.reject())
         .then(data => {
             lessonContent.innerHTML = data;
             startStudyTimer(subject, `unit${unit}`);
             const completeBtn = document.createElement('button');
             completeBtn.textContent = 'Mark as Complete';
-            completeBtn.classList.add('btn', 'btn-success', 'mt-5', 'fs-4', 'px-5', 'py-3');
+            completeBtn.classList.add('btn', 'btn-success', 'mt-5', 'fs-4', 'px-5', 'py-3', 'd-block', 'mx-auto');
             completeBtn.onclick = () => {
                 stopStudyTimer(subject, `unit${unit}`);
                 let progress = parseInt(localStorage.getItem(`${subject}-progress`) || 0);
@@ -157,12 +156,8 @@ function loadLesson(subject, unit) {
             lessonContent.appendChild(completeBtn);
         })
         .catch(() => {
-            lessonContent.innerHTML = '<p class="text-danger fs-4">Lesson file not found.</p>';
+            lessonContent.innerHTML = '<p class="text-danger fs-4 text-center">Lesson file not found.</p>';
         });
 }
-
-function throwError() { throw new Error(); }
-
-// Quiz and Test functions (add your previous ones here if needed)
 
 showTab('myPage');
