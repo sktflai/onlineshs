@@ -5,46 +5,16 @@ body {
     line-height: 1.6;
 }
 
-/* Override Bootstrap primary color to green globally */
-.btn-primary {
-    background: #198754 !important;
-    border-color: #198754 !important;
-}
-
-.btn-primary:hover {
-    background: #157347 !important;
-    border-color: #157347 !important;
-    transform: scale(1.05);
-}
-
-.btn-success {
-    background: #198754 !important;
-    border-color: #198754 !important;
-}
-
-.btn-success:hover {
-    background: #157347 !important;
-}
-
-.form-select {
-    border-color: #ced4da;
-}
-
-.form-select:focus {
-    border-color: #198754;
-    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
-}
-
 .sidebar {
     left: -200px;
     transition: left 0.3s ease;
     z-index: 1000;
     width: 200px;
-    background: #343a40;
+    background: #343a40; /* Dark gray for consistency */
 }
 
 .sidebar button {
-    color: white !important;
+    color: white !important; /* Forces white text */
     background: transparent;
     border: none;
     text-align: left;
@@ -55,7 +25,7 @@ body {
 
 .sidebar button:hover {
     background-color: #495057 !important;
-    color: #ffc107 !important;
+    color: #ffc107 !important; /* Yellow hover for contrast */
 }
 
 .sidebar.show {
@@ -86,7 +56,11 @@ body {
 }
 
 h1, h2 {
-    color: #198754;
+    color: #198754 !important; /* Soft green for headings */
+}
+
+select.form-select {
+    max-width: 300px;
 }
 
 #progress-charts .progress {
@@ -95,13 +69,30 @@ h1, h2 {
 }
 
 .progress-bar {
-    background: linear-gradient(to right, #198754, #2ca25f);
+    background: linear-gradient(to right, #198754, #2ca25f) !important; /* Green gradient override */
     transition: width 0.5s ease;
+}
+
+.btn-primary {
+    background-color: #198754 !important; /* Override Bootstrap blue buttons to green */
+    border-color: #198754 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #157347 !important; /* Darker green hover */
+    border-color: #157347 !important;
+    transform: scale(1.05);
+}
+
+.btn-success {
+    background-color: #198754 !important; /* Ensure success buttons match green scheme */
+    border-color: #198754 !important;
 }
 
 #unit-list button, #quiz-list button, #test-list button {
     padding: 10px 20px;
-    background: #198754;
+    background: #198754; /* Green buttons */
     color: white;
     border: none;
     border-radius: 5px;
@@ -109,7 +100,7 @@ h1, h2 {
 }
 
 #unit-list button:hover, #quiz-list button:hover, #test-list button:hover {
-    background: #157347;
+    background: #157347; /* Darker green hover */
     transform: scale(1.05);
 }
 
@@ -138,7 +129,7 @@ h1, h2 {
 
 .timer {
     font-weight: bold;
-    color: #198754;
+    color: #198754 !important; /* Green timer */
     font-size: 18px;
     margin-bottom: 20px;
 }
