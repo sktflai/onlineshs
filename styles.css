@@ -1,9 +1,11 @@
-/* styles.css - Updated for Better Alignment and Mobile View */
+/* styles.css - Final Fix for Perfect Mobile Alignment & Smaller Cards */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
     color: #333;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 .sidebar {
@@ -43,102 +45,105 @@ body {
     margin-left: 200px;
 }
 
-/* General Improvements */
+/* Index Page - Smaller, Perfectly Aligned Cards */
+.unit-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Always single column for perfect centering */
+    gap: 25px;
+    padding: 0 20px;
+    justify-items: center;
+}
+
+.unit-card {
+    width: 100%;
+    max-width: 350px; /* Smaller cards */
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.unit-card:hover {
+    transform: translateY(-8px);
+}
+
+.unit-card h4 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.unit-card p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.unit-card button {
+    background: #198754;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 30px; /* Rounded pill shape */
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 70%;
+}
+
+.unit-card button:hover {
+    background: #157347;
+}
+
+/* Mobile Specific */
+@media (max-width: 992px) {
+    .unit-grid {
+        padding: 0 15px;
+        gap: 20px;
+    }
+    
+    .unit-card {
+        max-width: 320px;
+        padding: 20px;
+    }
+    
+    .unit-card h4 {
+        font-size: 1.6rem;
+    }
+    
+    .unit-card button {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        width: 80%;
+    }
+    
+    .overview {
+        padding: 20px 15px;
+    }
+    
+    iframe {
+        height: 240px !important;
+    }
+}
+
+/* General */
 h1, h2, h3, h4 {
     color: #198754 !important;
     text-align: center !important;
 }
 
-p {
-    text-align: justify;
-}
-
-/* Index Page Specific Alignment */
 .overview {
-    text-align: center;
-}
-
-.unit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    justify-items: center; /* Centers cards horizontally */
-    padding: 0 20px;
-}
-
-.unit-card {
-    width: 100%;
-    max-width: 400px;
     text-align: center;
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    margin: 20px;
 }
 
-.unit-card:hover {
-    transform: translateY(-10px);
-}
-
-.unit-card button {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Mobile Fixes */
-@media (max-width: 992px) {
-    .sidebar.show + .main-content {
-        margin-left: 0;
-    }
-    .sidebar {
-        width: 250px;
-        left: -250px;
-    }
-    
-    .unit-grid {
-        grid-template-columns: 1fr !important; /* Single column on mobile */
-        padding: 0 10px;
-        gap: 20px;
-    }
-    
-    .unit-card {
-        padding: 25px;
-    }
-    
-    .unit-card button {
-        width: 90%;
-        padding: 15px;
-        font-size: 1.2rem;
-    }
-    
-    .overview {
-        padding: 20px;
-    }
-    
-    iframe {
-        height: 250px !important;
-    }
-    
-    #lessons .form-select {
-        width: 100% !important;
-    }
-    
-    #unit-list {
-        flex-direction: column !important;
-        align-items: center;
-    }
-    
-    #unit-list button {
-        width: 90% !important;
-        margin-bottom: 15px !important;
-        padding: 15px !important;
-        font-size: 1.1rem;
-    }
-    
-    #lesson-content {
-        padding: 20px !important;
-    }
+.video-section {
+    margin-top: 50px;
+    text-align: center;
 }
 
 .progress-bar {
@@ -148,42 +153,11 @@ p {
 .btn-success, .btn-primary {
     background-color: #198754 !important;
     border-color: #198754 !important;
+    border-radius: 30px !important;
 }
 
 .btn-success:hover, .btn-primary:hover {
     background-color: #157347 !important;
-}
-
-.question {
-    background: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.feedback {
-    color: #28a745 !important;
-    font-weight: bold;
-}
-
-.error {
-    color: #dc3545 !important;
-    font-weight: bold;
-}
-
-.timer {
-    font-weight: bold;
-    color: #198754 !important;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
-.tab {
-    background: white;
-    border-radius: 10px;
-    padding: 30px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
