@@ -1,4 +1,4 @@
-<!-- lessons/precalc/index.html - Final Fix: Perfect Center Alignment, Smaller Cards on Mobile -->
+<!-- lessons/precalc/index.html - Updated: Simple Text Buttons (No Cards) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,91 +10,83 @@
             font-family: 'Roboto', sans-serif; 
             padding: 0; 
             margin: 0; 
-            background: #f8f9fa; 
+            background: white; /* Full white background */
             color: #333; 
             line-height: 1.6; 
         }
         .main-container {
-            background: white;
+            padding: 40px 20px; 
             min-height: 100vh;
-            padding: 40px 15px; /* Ample space */
             display: flex;
             flex-direction: column;
-            align-items: center; /* Perfect centering for everything */
+            align-items: center; /* Everything centered */
         }
         h1, h2, h3 { color: #198754; text-align: center; }
         .overview { 
             width: 100%;
             max-width: 800px; /* Big overview */
             text-align: center; 
-            margin-bottom: 50px; 
+            margin-bottom: 60px; 
             padding: 30px; 
-            background: #f0f8f0; 
-            border-radius: 20px;
         }
         .overview ul { 
             text-align: left; 
             display: inline-block; 
             font-size: 1.1rem; 
+            padding-left: 30px; 
         }
-        .unit-grid { 
+        .unit-list { 
             width: 100%;
-            max-width: 400px; /* Narrow container for cards */
+            max-width: 500px; /* Narrow for perfect centering */
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             gap: 20px; 
         }
-        .unit-card { 
+        .unit-button { 
             width: 100%; 
-            background: #f8f9fa; 
-            padding: 20px; 
-            border-radius: 15px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            text-align: center; 
-        }
-        .unit-card h4 { 
-            font-size: 1.4rem; 
-            margin-bottom: 8px; 
-        }
-        .unit-card p { 
-            font-size: 1rem; 
-            margin-bottom: 15px; 
-        }
-        .unit-card button { 
             background: #198754; 
             color: white; 
             border: none; 
-            padding: 10px 30px; 
-            border-radius: 30px; 
-            font-size: 1rem; 
+            padding: 20px; 
+            border-radius: 15px; 
+            font-size: 1.2rem; 
+            text-align: center; 
             cursor: pointer; 
-            width: 75%;
+            transition: background 0.3s, transform 0.2s; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .unit-card button:hover { 
+        .unit-button:hover { 
             background: #157347; 
+            transform: translateY(-3px); 
+        }
+        .unit-button h4 { 
+            margin: 0 0 8px 0; 
+            font-size: 1.4rem; 
+        }
+        .unit-button p { 
+            margin: 0; 
+            font-size: 1.1rem; 
+            opacity: 0.9; 
         }
         .video-section { 
             width: 100%;
             max-width: 800px;
-            margin-top: 50px; 
+            margin-top: 60px; 
             text-align: center; 
             padding: 30px; 
-            background: #f0f8f0; 
-            border-radius: 20px;
         }
         iframe { 
             width: 100%; 
-            height: 280px; 
+            height: 300px; 
             border-radius: 12px; 
         }
         @media (max-width: 480px) {
-            .main-container { padding: 30px 10px; }
+            .main-container { padding: 30px 15px; }
             .overview { padding: 25px 15px; }
-            .unit-grid { max-width: 350px; gap: 18px; }
-            .unit-card { padding: 18px; }
-            .unit-card h4 { font-size: 1.3rem; }
-            .unit-card button { padding: 9px 25px; width: 80%; }
+            .unit-list { max-width: 100%; padding: 0 10px; gap: 18px; }
+            .unit-button { padding: 18px; font-size: 1.1rem; }
+            .unit-button h4 { font-size: 1.3rem; }
             iframe { height: 220px; }
         }
     </style>
@@ -115,28 +107,24 @@
             </ul>
         </div>
 
-        <h2>Choose a Unit</h2>
-        <div class="unit-grid">
-            <div class="unit-card">
+        <h2 style="margin-bottom: 30px;">Choose a Unit</h2>
+        <div class="unit-list">
+            <button class="unit-button" onclick="loadLesson('PreCalculus', 1)">
                 <h4>Unit 1</h4>
                 <p>Introduction to Conic Sections & the Circle</p>
-                <button onclick="loadLesson('PreCalculus', 1)">Start</button>
-            </div>
-            <div class="unit-card">
+            </button>
+            <button class="unit-button" onclick="loadLesson('PreCalculus', 2)">
                 <h4>Unit 2</h4>
                 <p>Parabola & Ellipse</p>
-                <button onclick="loadLesson('PreCalculus', 2)">Start</button>
-            </div>
-            <div class="unit-card">
+            </button>
+            <button class="unit-button" onclick="loadLesson('PreCalculus', 3)">
                 <h4>Unit 3</h4>
                 <p>Hyperbola</p>
-                <button onclick="loadLesson('PreCalculus', 3)">Start</button>
-            </div>
-            <div class="unit-card">
+            </button>
+            <button class="unit-button" onclick="loadLesson('PreCalculus', 4)">
                 <h4>Unit 4</h4>
                 <p>Review, Systems & Applications</p>
-                <button onclick="loadLesson('PreCalculus', 4)">Start</button>
-            </div>
+            </button>
         </div>
 
         <div class="video-section">
