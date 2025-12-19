@@ -5,16 +5,46 @@ body {
     line-height: 1.6;
 }
 
+/* Override Bootstrap primary color to green globally */
+.btn-primary {
+    background: #198754 !important;
+    border-color: #198754 !important;
+}
+
+.btn-primary:hover {
+    background: #157347 !important;
+    border-color: #157347 !important;
+    transform: scale(1.05);
+}
+
+.btn-success {
+    background: #198754 !important;
+    border-color: #198754 !important;
+}
+
+.btn-success:hover {
+    background: #157347 !important;
+}
+
+.form-select {
+    border-color: #ced4da;
+}
+
+.form-select:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
+}
+
 .sidebar {
     left: -200px;
     transition: left 0.3s ease;
     z-index: 1000;
     width: 200px;
-    background: #343a40; /* Dark gray for consistency */
+    background: #343a40;
 }
 
 .sidebar button {
-    color: white !important; /* Forces white text */
+    color: white !important;
     background: transparent;
     border: none;
     text-align: left;
@@ -25,7 +55,7 @@ body {
 
 .sidebar button:hover {
     background-color: #495057 !important;
-    color: #ffc107 !important; /* Yellow hover for contrast */
+    color: #ffc107 !important;
 }
 
 .sidebar.show {
@@ -56,11 +86,7 @@ body {
 }
 
 h1, h2 {
-    color: #198754; /* Soft green for headings */
-}
-
-select.form-select {
-    max-width: 300px;
+    color: #198754;
 }
 
 #progress-charts .progress {
@@ -69,13 +95,13 @@ select.form-select {
 }
 
 .progress-bar {
-    background: linear-gradient(to right, #198754, #2ca25f); /* Green gradient */
+    background: linear-gradient(to right, #198754, #2ca25f);
     transition: width 0.5s ease;
 }
 
 #unit-list button, #quiz-list button, #test-list button {
     padding: 10px 20px;
-    background: #198754; /* Green buttons */
+    background: #198754;
     color: white;
     border: none;
     border-radius: 5px;
@@ -83,7 +109,7 @@ select.form-select {
 }
 
 #unit-list button:hover, #quiz-list button:hover, #test-list button:hover {
-    background: #157347; /* Darker green hover */
+    background: #157347;
     transform: scale(1.05);
 }
 
@@ -112,7 +138,7 @@ select.form-select {
 
 .timer {
     font-weight: bold;
-    color: #198754; /* Green timer */
+    color: #198754;
     font-size: 18px;
     margin-bottom: 20px;
 }
