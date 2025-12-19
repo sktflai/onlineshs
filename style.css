@@ -4,6 +4,7 @@ body {
     background: linear-gradient(to bottom, #e0f7fa, #ffffff);
     color: #2c3e50;
     overflow-x: hidden;
+    overscroll-behavior: none; /* Stops pull-to-refresh and edge shadows */
 }
 
 .toggle-btn {
@@ -23,7 +24,7 @@ body {
 
 .sidebar {
     position: fixed;
-    left: -300px; /* Fully hidden */
+    left: -300px;
     top: 0;
     width: 280px;
     height: 100%;
@@ -31,13 +32,13 @@ body {
     color: white;
     transition: left 0.4s ease;
     padding: 20px;
-    box-shadow: none !important; /* No shadow = no visible edge/bar */
+    box-shadow: none !important;
     z-index: 1000;
+    overscroll-behavior: none;
 }
 
 .sidebar.open {
     left: 0;
-    box-shadow: none !important;
 }
 
 .sidebar h2, .sidebar h3 {
@@ -67,6 +68,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     min-height: 100vh;
+    overscroll-behavior: none; /* Extra protection */
 }
 
 .overlay {
@@ -78,6 +80,7 @@ body {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     z-index: 999;
+    overscroll-behavior: none;
 }
 
 .overlay.active {
@@ -140,5 +143,8 @@ h1 {
     .toggle-btn {
         font-size: 24px;
         padding: 14px 20px;
+    }
+    body, html {
+        overscroll-behavior-y: none; /* Final mobile fix */
     }
 }
