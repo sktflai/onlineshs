@@ -1,71 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grade 11 STEM Learning App</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f5f5f5;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+}
 
-<header>
-  <h1>Grade 11 STEM Learning</h1>
-</header>
+header {
+  background: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+}
 
-<nav>
-  <button class="nav-item" data-tab="lessonTab">Lesson</button>
-  <button class="nav-item" data-tab="summaryTab">Summary</button>
-  <button class="nav-item" data-tab="activityTab">Activities</button>
-  <button class="nav-item" data-tab="quizTab">Quizzes</button>
-  <button class="nav-item" data-tab="testTab">Tests</button>
-  <button class="nav-item" data-tab="progressTab">Progress</button>
-</nav>
+nav {
+  display: flex;
+  justify-content: space-around;
+  background: #333;
+  flex-wrap: wrap;
+}
 
-<main>
-  <!-- Lesson Selector -->
-  <select id="lessonSelector"></select>
+nav button {
+  flex: 1;
+  padding: 12px;
+  background: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
 
-  <!-- Lesson Tab -->
-  <section id="lessonTab" class="tab">
-    <h2 id="lessonTitle"></h2>
-    <div id="lessonContent"></div>
-    <a id="videoLink" href="#" target="_blank">Watch Video Lesson</a>
-  </section>
+nav button:hover {
+  background: #555;
+}
 
-  <!-- Summary Tab -->
-  <section id="summaryTab" class="tab" style="display:none;">
-    <h2>Summary</h2>
-    <div id="summaryContent"></div>
-  </section>
+main {
+  padding: 20px;
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+}
 
-  <!-- Activity Tab -->
-  <section id="activityTab" class="tab" style="display:none;">
-    <h2>Activities</h2>
-    <div id="activityContent">No activities yet.</div>
-  </section>
+h2 {
+  color: #4CAF50;
+  font-size: 1.6em;
+  margin-bottom: 10px;
+}
 
-  <!-- Quiz Tab -->
-  <section id="quizTab" class="tab" style="display:none;">
-    <h2>Quizzes</h2>
-    <select id="quizSelector"></select>
-    <div id="quizContainer"></div>
-  </section>
+a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #2196F3;
+  text-decoration: none;
+}
 
-  <!-- Test Tab -->
-  <section id="testTab" class="tab" style="display:none;">
-    <h2>Tests</h2>
-    <select id="testSelector"></select>
-    <div id="testContainer"></div>
-  </section>
+a:hover {
+  text-decoration: underline;
+}
 
-  <!-- Progress Tab -->
-  <section id="progressTab" class="tab" style="display:none;">
-    <h2>Progress</h2>
-    <p id="progressText">0%</p>
-  </section>
-</main>
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  border-radius: 5px;
+}
 
-<script src="lessons.js"></script>
-<script src="script.js"></script>
-</body>
-</html>
+#lessonContent, #summaryContent, #activityContent, #quizContainer, #testContainer {
+  margin-top: 20px;
+}
+
+.quiz-question button, .test-question button {
+  display: block;
+  margin: 8px 0;
+  padding: 12px;
+  width: 100%;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.quiz-question button:hover, .test-question button:hover {
+  background: #45a049;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+  nav button {
+    padding: 10px;
+    text-align: center;
+  }
+}
