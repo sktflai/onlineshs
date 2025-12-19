@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 2: Representations of Functions - Online SHS</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <style>
+    .back-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .example {
+      background: #f1f2f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .practice {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .practice h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .practice p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+    .practice ol {
+      margin-left: 35px;
+      line-height: 1.8;
+    }
+    .practice li {
+      margin-bottom: 18px;
+    }
+    .answer {
+      margin-top: 25px;
+      padding: 20px;
+      background: #dfe6e9;
+      border-radius: 8px;
+      display: none;
+      line-height: 1.8;
+    }
+    .show-answer {
+      display: block;
+      margin: 25px auto 0;
+      padding: 10px 30px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 20px auto;
+      display: block;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table th, table td {
+      border: 1px solid var(--border);
+      padding: 12px;
+      text-align: center;
+    }
+    table th {
+      background: var(--accent-light);
+      color: white;
+    }
+    .complete-btn {
+      display: block;
+      margin: 50px auto;
+      padding: 14px 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Back to Unit 1</a>
+
+    <div class="card">
+      <h2 style="text-align:center; color:var(--accent);">Lesson 2: Representations of Functions</h2>
+      <p style="text-align:center; color:var(--text-light);">
+        Unit 1: Functions and Their Graphs | General Mathematics - Grade 11 STEM
+      </p>
+    </div>
+
+    <div class="card section">
+      <h3>Learning Objectives</h3>
+      <ul style="margin-left:20px; line-height:1.8; color:var(--text-light);">
+        <li>Represent functions using tables, graphs, equations, mappings, and verbal descriptions</li>
+        <li>Interpret real-life situations as functions in different forms</li>
+        <li>Convert between different representations of the same function</li>
+        <li>Graph linear and quadratic functions from tables or equations</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>Why Different Representations?</h3>
+      <p>Each form helps us understand functions better in different contexts:</p>
+      <ul style="margin-left:20px; line-height:1.8;">
+        <li><strong>Table</strong>: Shows exact values</li>
+        <li><strong>Graph</strong>: Shows trends and behavior</li>
+        <li><strong>Equation</strong>: Allows calculations and predictions</li>
+        <li><strong>Verbal</strong>: Describes real-world meaning</li>
+        <li><strong>Mapping</strong>: Shows input-output pairs clearly</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>1. Table of Values</h3>
+      <p>List input (x) and corresponding output f(x).</p>
+
+      <div class="example">
+        <strong>Example:</strong> f(x) = 2x + 1
+        <table>
+          <tr><th>x</th><th>f(x)</th></tr>
+          <tr><td>-2</td><td>-3</td></tr>
+          <tr><td>-1</td><td>-1</td></tr>
+          <tr><td>0</td><td>1</td></tr>
+          <tr><td>1</td><td>3</td></tr>
+          <tr><td>2</td><td>5</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>2. Graph</h3>
+      <p>Plot points from table and connect (for continuous functions).</p>
+
+      <img src="https://mathbitsnotebook.com/Algebra1/FunctionGraphs/fcnlineargraph.jpg" alt="Graph from Table">
+      <img src="https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/plotting-points-on-a-graph-1633018559.png" alt="Plotting Points">
+
+      <div class="example">
+        <strong>Graphing Steps:</strong><br>
+        1. Make a table of values<br>
+        2. Plot points (x, y)<br>
+        3. Connect with a smooth line or curve
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>3. Equation (Rule)</h3>
+      <p>Mathematical formula: f(x) = mx + b (linear), f(x) = ax² + bx + c (quadratic)</p>
+
+      <div class="example">
+        The cost C of printing n flyers is C(n) = 500 + 20n<br>
+        Fixed cost 500 + variable 20 per flyer
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>4. Verbal Description</h3>
+      <p>Words describing the relationship.</p>
+
+      <div class="example">
+        "The total cost is 500 pesos plus 20 pesos for each flyer printed."<br>
+        → This describes the same function as above.
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>5. Mapping Diagram</h3>
+      <p>Arrows show how inputs map to outputs.</p>
+
+      <img src="https://i.ytimg.com/vi/7lR-ug6L-0o/maxresdefault.jpg" alt="Mapping Diagram Example">
+    </div>
+
+    <div class="card section">
+      <h3>Real-Life Modeling Examples</h3>
+
+      <div class="example">
+        <strong>Distance-Time (Motion):</strong><br>
+        A car travels at constant 60 km/h.<br>
+        Distance d(t) = 60t (t in hours)<br>
+        Table: t=0 → 0km, t=1 → 60km, t=2 → 120km<br>
+        Graph: Straight line through origin
+      </div>
+
+      <div class="example">
+        <strong>Cost of Rice:</strong><br>
+        Price per kilo = ₱50<br>
+        Total cost C(w) = 50w (w = weight in kg)<br>
+        Constant rate → linear function
+      </div>
+    </div>
+
+    <div class="card section">
+      <h3>Recommended Videos (Philippine Teachers)</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/1z7Q7O-2r0U" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">REPRESENTATION OF FUNCTIONS || GRADE 11 GENERAL MATHEMATICS Q1 by Prof D</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/0t3d1d4V4kA" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">Representations of Functions - Gen Math Grade 11</p>
+    </div>
+
+    <div class="card practice">
+      <h3>Practice Exercises</h3>
+      <p>Apply what you've learned.</p>
+      <ol>
+        <li>Create a table of values for f(x) = x² - 1 using x = -2 to 2.</li>
+        <li>Describe verbally: A taxi fare is ₱40 flag down + ₱13.50 per km.</li>
+        <li>Write the equation for: "Salary is ₱15,000 base + ₱500 per item sold."</li>
+        <li>Which representation is best for predicting future values? Why?</li>
+      </ol>
+
+      <button class="show-answer">Show Answers</button>
+      <div class="answer">
+        <strong>Answers:</strong><br><br>
+        1. x: -2→3, -1→0, 0→-1, 1→0, 2→3<br>
+        2. The total fare is 40 pesos plus 13.50 pesos for each kilometer traveled.<br>
+        3. S(n) = 15000 + 500n (n = items sold)<br>
+        4. Equation — easiest for calculation and prediction
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="complete-btn" onclick="alert('Great job! Keep going!')">
+        Mark as Complete
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.show-answer').addEventListener('click', function() {
+      this.style.display = 'none';
+      this.nextElementSibling.style.display = 'block';
+    });
+  </script>
+  <script src="../../../script.js"></script>
+</body>
+</html>
