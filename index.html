@@ -77,40 +77,40 @@ const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Ea
 // ====== Lessons ======
 const lessons = {
 "Physics":[
-{section:"Kinematics", content:"<p>Kinematics is the study of motion without considering forces...</p><p><b>Example:</b> A car moves at 60 km/h for 2 hours. Distance = speed x time.</p>"},
-{section:"Dynamics", content:"<p>Dynamics deals with the forces causing motion...</p><p><b>Example:</b> F = m*a (Newton's 2nd Law)</p>"},
-{section:"Work & Energy", content:"<p>Work and energy concepts involve the ability to do work...</p>"},
-{section:"Momentum", content:"<p>Momentum is the product of mass and velocity...</p>"}
+{section:"Kinematics", content:"<p>Kinematics is the study of motion without considering forces. Key formulas: v=d/t, a=Δv/Δt.</p><p><b>Example:</b> A car moving at 60 km/h for 2 hours travels 120 km.</p>"},
+{section:"Dynamics", content:"<p>Dynamics studies the forces causing motion. Newton's laws apply.</p><p><b>Example:</b> F = m*a. A 10kg object with 2m/s² acceleration experiences 20 N force.</p>"},
+{section:"Work & Energy", content:"<p>Work is W=F*d. Kinetic energy KE=1/2 m v². Potential energy PE=mgh.</p>"},
+{section:"Momentum", content:"<p>Momentum = mass * velocity (p=mv). Impulse changes momentum.</p>"}
 ],
 "Chemistry":[
-{section:"Atomic Structure", content:"<p>Atoms consist of protons, neutrons, and electrons...</p>"},
-{section:"Chemical Bonding", content:"<p>Chemical bonds hold atoms together...</p>"},
-{section:"Stoichiometry", content:"<p>Stoichiometry is the calculation of reactants/products...</p>"},
-{section:"Acids & Bases", content:"<p>Acids donate H+, bases accept H+...</p>"}
+{section:"Atomic Structure", content:"<p>Atoms consist of protons, neutrons, and electrons. Electron configuration follows energy levels.</p>"},
+{section:"Chemical Bonding", content:"<p>Atoms bond to achieve stable electron configuration. Types: ionic, covalent, metallic.</p>"},
+{section:"Stoichiometry", content:"<p>Calculations based on balanced chemical equations. Use mole ratios.</p>"},
+{section:"Acids & Bases", content:"<p>Acids donate H+, bases accept H+. pH indicates acidity.</p>"}
 ],
 "Biology":[
-{section:"Cell Biology", content:"<p>Cells are the basic unit of life...</p>"},
-{section:"Genetics", content:"<p>Genetics studies heredity and genes...</p>"},
-{section:"Human Anatomy", content:"<p>Human body systems: circulatory, respiratory...</p>"},
-{section:"Ecology", content:"<p>Ecology studies interactions of organisms and environment...</p>"}
+{section:"Cell Biology", content:"<p>Cells are the basic unit of life. Organelles include nucleus, mitochondria, ribosomes.</p>"},
+{section:"Genetics", content:"<p>Genetics studies heredity. Punnett squares predict offspring traits.</p>"},
+{section:"Human Anatomy", content:"<p>Body systems: circulatory, respiratory, nervous, digestive.</p>"},
+{section:"Ecology", content:"<p>Interactions between organisms and environment. Food chains, ecosystems.</p>"}
 ],
 "Mathematics":[
-{section:"Functions", content:"<p>Functions relate input to output...</p>"},
-{section:"Algebra", content:"<p>Algebra involves solving equations and inequalities...</p>"},
-{section:"Trigonometry", content:"<p>Trigonometry studies relations of angles and sides...</p>"},
-{section:"Calculus", content:"<p>Calculus includes differentiation and integration...</p>"}
+{section:"Functions", content:"<p>Functions relate input to output. Types: linear, quadratic, exponential.</p>"},
+{section:"Algebra", content:"<p>Solving equations, inequalities, and factoring polynomials.</p>"},
+{section:"Trigonometry", content:"<p>Relations of angles and sides in triangles. Key formulas: sin, cos, tan.</p>"},
+{section:"Calculus", content:"<p>Differentiation and integration of functions. Applications in rates and areas.</p>"}
 ],
 "Statistics":[
-{section:"Descriptive Statistics", content:"<p>Summarizes data using mean, median, mode...</p>"},
-{section:"Probability", content:"<p>Probability measures chance of events...</p>"},
-{section:"Distributions", content:"<p>Normal, binomial, Poisson distributions...</p>"},
-{section:"Inferential Statistics", content:"<p>Draw conclusions from sample to population...</p>"}
+{section:"Descriptive Statistics", content:"<p>Summarize data: mean, median, mode, range.</p>"},
+{section:"Probability", content:"<p>Measure likelihood of events. Rules: addition, multiplication.</p>"},
+{section:"Distributions", content:"<p>Normal, binomial, Poisson distributions.</p>"},
+{section:"Inferential Statistics", content:"<p>Draw conclusions from sample to population using confidence intervals, hypothesis testing.</p>"}
 ],
 "Earth & Life Science":[
-{section:"Earth Structure", content:"<p>Earth layers: crust, mantle, core...</p>"},
-{section:"Rocks & Minerals", content:"<p>Types: igneous, sedimentary, metamorphic...</p>"},
-{section:"Plate Tectonics", content:"<p>Movement of Earth's plates causes earthquakes...</p>"},
-{section:"Environment & Sustainability", content:"<p>Human impact, conservation, sustainability...</p>"}
+{section:"Earth Structure", content:"<p>Earth layers: crust, mantle, core. Plate tectonics explains earthquakes, volcanoes.</p>"},
+{section:"Rocks & Minerals", content:"<p>Types: igneous, sedimentary, metamorphic. Mineral properties: hardness, streak, luster.</p>"},
+{section:"Plate Tectonics", content:"<p>Movement of plates causes earthquakes, volcanic activity, mountain formation.</p>"},
+{section:"Environment & Sustainability", content:"<p>Human impact, conservation, sustainability practices.</p>"}
 ]
 };
 
@@ -160,6 +160,18 @@ const quizzes = {
 {q:"Momentum?",options:["p=mv","p=m/v","p=v/m"],a:0,exp:"Momentum = mass × velocity."},
 {q:"Unit of energy?",options:["Joule","Newton","Watt"],a:0,exp:"Joule is the SI unit of energy."},
 {q:"Newton's 1st Law?",options:["Law of Inertia","F=ma","Action=Reaction"],a:0,exp:"An object remains at rest or in motion unless acted upon."}
+],
+"Chemistry":[
+{q:"Protons have what charge?",options:["Positive","Negative","Neutral"],a:0,exp:"Protons are positively charged."},
+{q:"Electron configuration of O?",options:["1s2 2s2 2p4","1s2 2s2 2p6","1s2 2s2 2p2"],a:0,exp:"Oxygen has 8 electrons: 1s2 2s2 2p4."},
+{q:"Type of bond in NaCl?",options:["Ionic","Covalent","Metallic"],a:0,exp:"NaCl forms an ionic bond."},
+{q:"Acid pH value?",options:["<7",">7","=7"],a:0,exp:"Acids have pH less than 7."},
+{q:"Mole represents?",options:["6.022×10^23 particles","1 liter","1 gram"],a:0,exp:"One mole = 6.022×10^23 particles."},
+{q:"Chemical equation balance?",options:["Equal atoms both sides","Any","Only products"],a:0,exp:"Balanced equations have equal number of atoms."},
+{q:"Electron donor in acid-base?",options:["Acid","Base","Salt"],a:0,exp:"Acid donates H+."},
+{q:"Endothermic reaction absorbs?",options:["Energy","Nothing","Mass"],a:0,exp:"Endothermic absorbs energy."},
+{q:"Oxidation is?",options:["Loss of electrons","Gain of electrons","Neutral"],a:0,exp:"Oxidation is loss of electrons."},
+{q:"Reduction is?",options:["Gain of electrons","Loss of electrons","Neutral"],a:0,exp:"Reduction is gain of electrons."}
 ]
 };
 
@@ -186,38 +198,6 @@ function checkQuiz(sub,index){
   if(selected===-1){scoreEl.innerHTML="Please select an answer.";return;}
   if(selected===q.a){scoreEl.innerHTML=`Correct! ✅ ${q.exp}`; saveProgress(`${sub}-q${index}`,true);} 
   else{scoreEl.innerHTML=`Wrong ❌ ${q.exp}`; saveProgress(`${sub}-q${index}`,false);}
-}
-
-// ====== Tests (simplified example, you can expand questions) ======
-const tests={
-"Physics":[
-{q:"Test Q1: v=d/t?",options:["v=d/t","v=t/d","v=m*a"],a:0},
-{q:"Test Q2: F=m*a?",options:["F=m/a","F=m*a","F=a/m"],a:1}
-]};
-
-// ====== Load Tests ======
-const testContainer=document.getElementById('test-content');
-for(const sub of subjects){
-  if(!tests[sub]) continue;
-  const div=document.createElement('div');
-  div.className="quiz";
-  div.innerHTML=`<h3>${sub} Tests</h3>`;
-  tests[sub].forEach((q,i)=>{
-    div.innerHTML+=`<p><b>${q.q}</b></p>${q.options.map((o,idx)=>`<label><input type="radio" name="${sub}-t${i}" value="${idx}">${o}</label><br>`).join('')}<button onclick="checkTest('${sub}',${i})">Submit</button><p class="score" id="${sub}-tscore${i}"></p>`;
-  });
-  testContainer.appendChild(div);
-});
-
-// ====== Test Logic ======
-function checkTest(sub,index){
-  const q=tests[sub][index];
-  const opts=document.getElementsByName(`${sub}-t${index}`);
-  let selected=-1;
-  opts.forEach(o=>{if(o.checked) selected=parseInt(o.value);});
-  const scoreEl=document.getElementById(`${sub}-tscore${index}`);
-  if(selected===-1){scoreEl.innerHTML="Please select an answer.";return;}
-  if(selected===q.a){scoreEl.innerHTML=`Correct! ✅`; saveProgress(`${sub}-t${index}`,true);}
-  else{scoreEl.innerHTML=`Wrong ❌`; saveProgress(`${sub}-t${index}`,false);}
 }
 
 // ====== Summaries ======
