@@ -3,52 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pre-Calculus - Grade 11 STEM</title>
-    <link rel="stylesheet" href="../../style.css">
+    <title>Online SHS - Education is Meant to be Free</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a href="../../index.html" style="position: fixed; top: 20px; left: 20px; font-size: 18px; color: #3498db; background: white; padding: 10px; border-radius: 10px; z-index: 1000;">← Back to Home</a>
-
-    <div class="content">
-        <h1>Pre-Calculus</h1>
-        <p><strong>Grade 11 STEM - Philippines DepEd Curriculum</strong></p>
-        <p>Choose a unit to start learning. Detailed explanations, examples, and videos included.</p>
-
-        <div class="subject-grid">
-            <a href="unit1.html" class="subject-card">Unit 1: Analytic Geometry (Conic Sections)</a>
-            <a href="unit2.html" class="subject-card">Unit 2: Series, Sequences & Mathematical Induction</a>
-            <a href="unit3.html" class="subject-card">Unit 3: Trigonometric Identities & Equations</a>
-            <!-- Add more units later as new files -->
-        </div>
-
-        <!-- Full lessons below - we'll split into unit files later when you want -->
-        <h2>All Topics (Full Textbook View)</h2>
-
-        <h3>Unit 1: Analytic Geometry</h3>
-        <h4>Circle</h4>
-        <p><strong>Objectives:</strong> Identify standard/general form, find center/radius, graph.</p>
-        <p>Standard: (x - h)² + (y - k)² = r²</p>
-        <p>Example: (x + 4)² + (y - 1)² = 25 → Center (-4,1), Radius 5</p>
-        <p>Video: <a href="https://www.youtube.com/watch?v=4wTsurT1qBg" target="_blank">Khan Academy Circle</a></p>
-
-        <h4>Parabola</h4>
-        <p>Forms: (x - h)² = 4p(y - k) or (y - k)² = 4p(x - h)</p>
-        <p>Example: (x - 1)² = -8(y + 2) → Vertex (1,-2), opens down</p>
-        <p>Video: <a href="https://www.youtube.com/watch?v=2b1A0e9ADL4" target="_blank">Parabola</a></p>
-
-        <h4>Ellipse & Hyperbola</h4>
-        <p>Ellipse: (x-h)²/a² + (y-k)²/b² = 1</p>
-        <p>Hyperbola: (x-h)²/a² - (y-k)²/b² = 1</p>
-        <p>Videos linked above.</p>
-
-        <h3>Unit 2: Series & Induction</h3>
-        <p>Arithmetic: a_n = a1 + (n-1)d</p>
-        <p>Geometric: a_n = a1 * r^(n-1)</p>
-        <p>Example sum: First 10 terms of 2,5,8,... = 155</p>
-
-        <h3>Unit 3: Trigonometry</h3>
-        <p>Identities: sin²θ + cos²θ = 1, tan²θ + 1 = sec²θ</p>
-        <p>Prove and solve equations.</p>
+    <div id="sidebar">
+        <button onclick="showTab('myPage')">My Page</button>
+        <button onclick="showTab('lessons')">Lessons</button>
+        <button onclick="showTab('quizzes')">Activity/Quiz</button>
+        <button onclick="showTab('tests')">Tests</button>
+        <button onclick="toggleSidebar()">Hide Sidebar</button>
     </div>
+    <div id="content">
+        <div id="myPage" class="tab">
+            <h1>Welcome Back!</h1>
+            <h2>"EDUCATION IS MEANT TO BE FREE"</h2>
+            <h3>Your Progress</h3>
+            <div id="progress-charts"></div>
+            <p id="points">Points: 0 / 1000 (Aim for 800 to pass)</p>
+            <p id="study-time">Study Time: 0 minutes</p>
+            <div id="lesson-times"></div>
+        </div>
+        <div id="lessons" class="tab" style="display:none;">
+            <h1>Lessons</h1>
+            <select id="subject-select" onchange="loadUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="unit-list"></div>
+            <div id="lesson-content"></div>
+        </div>
+        <div id="quizzes" class="tab" style="display:none;">
+            <h1>Activity/Quiz</h1>
+            <select id="quiz-subject" onchange="loadQuizUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="quiz-list"></div>
+            <div id="quiz-content"></div>
+        </div>
+        <div id="tests" class="tab" style="display:none;">
+            <h1>Tests</h1>
+            <select id="test-subject" onchange="loadTestUnits(this.value)">
+                <option value="">Select Subject</option>
+                <option value="PreCalculus">Pre-Calculus</option>
+                <option value="GeneralBiology1">General Biology 1</option>
+                <option value="GeneralChemistry1">General Chemistry 1</option>
+                <option value="GeneralPhysics1">General Physics 1</option>
+                <option value="EarthScience">Earth Science</option>
+            </select>
+            <div id="test-list"></div>
+            <div id="test-content"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
