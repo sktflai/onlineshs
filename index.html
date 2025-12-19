@@ -1,30 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grade 11 STEM Learning</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 11 STEM Learning App</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <h1>Grade 11 STEM Learning</h1>
-</header>
+  <header>
+    <h1>Grade 11 STEM Learning</h1>
+  </header>
 
-<nav>
-  <button onclick="showTab('lessons')">Lessons</button>
-  <button onclick="showTab('summaries')">Summaries</button>
-  <button onclick="showTab('quizzes')">Quizzes</button>
-  <button onclick="showTab('activities')">Activities</button>
-  <button onclick="showTab('progress')">My Page</button>
-</nav>
+  <nav>
+    <button class="nav-item" data-tab="lessonTab">Lesson</button>
+    <button class="nav-item" data-tab="summaryTab">Summary</button>
+    <button class="nav-item" data-tab="activityTab">Activities</button>
+    <button class="nav-item" data-tab="quizTab">Quiz</button>
+    <button class="nav-item" data-tab="progressTab">Progress</button>
+  </nav>
 
-<main id="main-content">
-  <!-- Content loads dynamically -->
-</main>
+  <main>
+    <!-- Lesson Tab -->
+    <section id="lessonTab" class="tab">
+      <h2 id="lessonTitle"></h2>
+      <div id="lessonContent"></div>
+      <a id="videoLink" href="#" target="_blank">Watch Video Lesson</a>
+    </section>
 
-<script src="lessons.js"></script>
-<script src="script.js"></script>
+    <!-- Summary Tab -->
+    <section id="summaryTab" class="tab" style="display:none;">
+      <h2>Summary</h2>
+      <div id="summaryContent"></div>
+    </section>
+
+    <!-- Activity Tab -->
+    <section id="activityTab" class="tab" style="display:none;">
+      <h2>Activities</h2>
+      <div id="activityContent">No activities yet. Check back later!</div>
+    </section>
+
+    <!-- Quiz Tab -->
+    <section id="quizTab" class="tab" style="display:none;">
+      <h2>Quiz</h2>
+      <div id="quizContainer"></div>
+    </section>
+
+    <!-- Progress Tab -->
+    <section id="progressTab" class="tab" style="display:none;">
+      <h2>Progress</h2>
+      <p id="progressText">0%</p>
+    </section>
+  </main>
+
+  <script src="lessons.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
