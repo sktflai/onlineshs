@@ -1,4 +1,3 @@
-<!-- root index.html (Full Updated Version) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +9,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Fixed Top Navbar with Toggle -->
     <nav class="navbar navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <button id="sidebarToggle" class="btn btn-dark me-2 fs-4">
@@ -21,7 +19,6 @@
         </div>
     </nav>
 
-    <!-- Sidebar -->
     <div class="sidebar bg-dark vh-100 position-fixed top-0 pt-5" id="sidebar">
         <ul class="list-unstyled px-3">
             <li><button class="btn text-white w-100 text-start py-3" onclick="showTab('myPage')"><i class="ri-user-line me-2"></i>My Page</button></li>
@@ -31,24 +28,21 @@
         </ul>
     </div>
 
-    <!-- Main Content -->
     <div class="main-content">
         <section class="container pt-5 mt-5">
-            <!-- My Page -->
             <div id="myPage" class="tab">
                 <h1 class="text-center mb-4">Welcome Back!</h1>
                 <h2 class="text-center mb-5">"EDUCATION IS MEANT TO BE FREE"</h2>
                 <h3>Your Progress</h3>
                 <div id="progress-charts" class="row g-4"></div>
-                <p id="points" class="mt-4 fw-bold fs-4"></p>
-                <p id="study-time" class="fs-5"></p>
+                <p id="points" class="mt-4 fw-bold fs-4 text-center"></p>
+                <p id="study-time" class="fs-5 text-center"></p>
                 <div id="lesson-times" class="mt-5"></div>
             </div>
 
-            <!-- Lessons Tab -->
             <div id="lessons" class="tab" style="display:none;">
                 <h1 class="mb-4">Lessons</h1>
-                <select id="subject-select" class="form-select w-50 mb-4" onchange="loadUnits(this.value)">
+                <select id="subject-select" class="form-select w-75 mb-4 mx-auto d-block" onchange="loadUnits(this.value)">
                     <option value="">Select Subject</option>
                     <option value="PreCalculus">Pre-Calculus</option>
                     <option value="GeneralBiology1">General Biology 1</option>
@@ -56,14 +50,13 @@
                     <option value="GeneralPhysics1">General Physics 1</option>
                     <option value="EarthScience">Earth Science</option>
                 </select>
-                <div id="unit-list" class="d-flex flex-wrap gap-3 mb-4"></div>
+                <div id="unit-list" class="d-flex flex-wrap justify-content-center gap-3 mb-4"></div>
                 <div id="lesson-content" class="card p-5 bg-white shadow"></div>
             </div>
 
-            <!-- Quizzes Tab -->
             <div id="quizzes" class="tab" style="display:none;">
                 <h1 class="mb-4">Activity/Quiz</h1>
-                <select id="quiz-subject" class="form-select w-50 mb-4" onchange="loadQuizUnits(this.value)">
+                <select id="quiz-subject" class="form-select w-75 mb-4 mx-auto d-block" onchange="loadQuizUnits(this.value)">
                     <option value="">Select Subject</option>
                     <option value="PreCalculus">Pre-Calculus</option>
                     <option value="GeneralBiology1">General Biology 1</option>
@@ -75,10 +68,9 @@
                 <div id="quiz-content" class="card p-5 bg-white shadow"></div>
             </div>
 
-            <!-- Tests Tab -->
             <div id="tests" class="tab" style="display:none;">
                 <h1 class="mb-4">Tests</h1>
-                <select id="test-subject" class="form-select w-50 mb-4" onchange="loadTestUnits(this.value)">
+                <select id="test-subject" class="form-select w-75 mb-4 mx-auto d-block" onchange="loadTestUnits(this.value)">
                     <option value="">Select Subject</option>
                     <option value="PreCalculus">Pre-Calculus</option>
                     <option value="GeneralBiology1">General Biology 1</option>
