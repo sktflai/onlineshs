@@ -14,10 +14,10 @@ section { display:none; padding:10px; }
 section.active { display:block; }
 .lesson, .activity, .quiz, .summary { background:white; margin:10px 0; padding:10px; border-radius:5px; box-shadow:0 0 5px rgba(0,0,0,0.1);}
 h3 { margin-top:0; }
-button { cursor:pointer; }
+button { cursor:pointer; margin-top:5px; }
 input[type="radio"] { margin-right:5px; }
 .summary-video { width:100%; height:200px; margin:10px 0; }
-.score { font-weight:bold; margin-top:10px; }
+.score { font-weight:bold; margin-top:5px; }
 @media (max-width:600px){ nav button { font-size:14px; padding:10px; } }
 </style>
 </head>
@@ -77,8 +77,8 @@ const subjects = ["Physics","Chemistry","Biology","Mathematics","Statistics","Ea
 // ====== Lessons ======
 const lessons = {
 "Physics":[
-{section:"Kinematics", content:"<p>Kinematics is the study of motion without considering forces. Key formulas: v=d/t, a=Δv/Δt.</p><p><b>Example:</b> A car moving at 60 km/h for 2 hours travels 120 km.</p>"},
-{section:"Dynamics", content:"<p>Dynamics studies the forces causing motion. Newton's laws apply.</p><p><b>Example:</b> F = m*a. A 10kg object with 2m/s² acceleration experiences 20 N force.</p>"},
+{section:"Kinematics", content:"<p>Kinematics is the study of motion without considering forces. Formulas: v=d/t, a=Δv/Δt.</p><p><b>Example:</b> A car moving at 60 km/h for 2 hours travels 120 km.</p>"},
+{section:"Dynamics", content:"<p>Dynamics studies forces causing motion. Newton's laws apply.</p><p><b>Example:</b> F = m*a. A 10kg object with 2m/s² acceleration experiences 20 N force.</p>"},
 {section:"Work & Energy", content:"<p>Work is W=F*d. Kinetic energy KE=1/2 m v². Potential energy PE=mgh.</p>"},
 {section:"Momentum", content:"<p>Momentum = mass * velocity (p=mv). Impulse changes momentum.</p>"}
 ],
@@ -96,8 +96,8 @@ const lessons = {
 ],
 "Mathematics":[
 {section:"Functions", content:"<p>Functions relate input to output. Types: linear, quadratic, exponential.</p>"},
-{section:"Algebra", content:"<p>Solving equations, inequalities, and factoring polynomials.</p>"},
-{section:"Trigonometry", content:"<p>Relations of angles and sides in triangles. Key formulas: sin, cos, tan.</p>"},
+{section:"Algebra", content:"<p>Solving equations, inequalities, factoring polynomials.</p>"},
+{section:"Trigonometry", content:"<p>Relations of angles and sides in triangles. sin, cos, tan.</p>"},
 {section:"Calculus", content:"<p>Differentiation and integration of functions. Applications in rates and areas.</p>"}
 ],
 "Statistics":[
@@ -160,18 +160,6 @@ const quizzes = {
 {q:"Momentum?",options:["p=mv","p=m/v","p=v/m"],a:0,exp:"Momentum = mass × velocity."},
 {q:"Unit of energy?",options:["Joule","Newton","Watt"],a:0,exp:"Joule is the SI unit of energy."},
 {q:"Newton's 1st Law?",options:["Law of Inertia","F=ma","Action=Reaction"],a:0,exp:"An object remains at rest or in motion unless acted upon."}
-],
-"Chemistry":[
-{q:"Protons have what charge?",options:["Positive","Negative","Neutral"],a:0,exp:"Protons are positively charged."},
-{q:"Electron configuration of O?",options:["1s2 2s2 2p4","1s2 2s2 2p6","1s2 2s2 2p2"],a:0,exp:"Oxygen has 8 electrons: 1s2 2s2 2p4."},
-{q:"Type of bond in NaCl?",options:["Ionic","Covalent","Metallic"],a:0,exp:"NaCl forms an ionic bond."},
-{q:"Acid pH value?",options:["<7",">7","=7"],a:0,exp:"Acids have pH less than 7."},
-{q:"Mole represents?",options:["6.022×10^23 particles","1 liter","1 gram"],a:0,exp:"One mole = 6.022×10^23 particles."},
-{q:"Chemical equation balance?",options:["Equal atoms both sides","Any","Only products"],a:0,exp:"Balanced equations have equal number of atoms."},
-{q:"Electron donor in acid-base?",options:["Acid","Base","Salt"],a:0,exp:"Acid donates H+."},
-{q:"Endothermic reaction absorbs?",options:["Energy","Nothing","Mass"],a:0,exp:"Endothermic absorbs energy."},
-{q:"Oxidation is?",options:["Loss of electrons","Gain of electrons","Neutral"],a:0,exp:"Oxidation is loss of electrons."},
-{q:"Reduction is?",options:["Gain of electrons","Loss of electrons","Neutral"],a:0,exp:"Reduction is gain of electrons."}
 ]
 };
 
@@ -236,7 +224,6 @@ function loadProgress(){
   progressEl.innerHTML=Object.keys(progress).length?Object.keys(progress).map(k=>`${k}: ${progress[k]?"✅ Correct":"❌ Wrong"}`).join('<br>'):"No progress yet.";
 }
 loadProgress();
-
 </script>
 </body>
 </html>
