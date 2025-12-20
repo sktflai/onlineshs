@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lesson 5: Piecewise & Special Functions - Online SHS</title>
+  <link rel="stylesheet" href="../../../style.css" />
+  <style>
+    .back-btn {
+      display: inline-block;
+      margin: 20px 0;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    .example {
+      background: #f1f2f6;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+    .video-embed {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px 0;
+      border-radius: 12px;
+    }
+    .video-embed iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .practice {
+      background: var(--surface);
+      padding: 30px;
+      border-radius: 12px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .practice h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .practice p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 25px;
+    }
+    .practice ol {
+      margin-left: 35px;
+      line-height: 1.8;
+    }
+    .practice li {
+      margin-bottom: 18px;
+    }
+    .answer {
+      margin-top: 25px;
+      padding: 20px;
+      background: #dfe6e9;
+      border-radius: 8px;
+      display: none;
+      line-height: 1.8;
+    }
+    .show-answer {
+      display: block;
+      margin: 25px auto 0;
+      padding: 10px 30px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      margin: 20px auto;
+      display: block;
+    }
+    .complete-btn {
+      display: block;
+      margin: 50px auto;
+      padding: 14px 40px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="index.html" class="back-btn">← Back to Unit 1</a>
+
+    <div class="card">
+      <h2 style="text-align:center; color:var(--accent);">Lesson 5: Piecewise & Special Functions</h2>
+      <p style="text-align:center; color:var(--text-light);">
+        Unit 1: Functions and Their Graphs | General Mathematics - Grade 11 STEM
+      </p>
+    </div>
+
+    <div class="card section">
+      <h3>Learning Objectives</h3>
+      <ul style="margin-left:20px; line-height:1.8; color:var(--text-light);">
+        <li>Graph and evaluate the absolute value function</li>
+        <li>Understand greatest integer (floor) and least integer (ceiling) functions</li>
+        <li>Work with step functions and signum function</li>
+        <li>Define, graph, and evaluate piecewise functions</li>
+        <li>Model real-life situations using piecewise functions</li>
+      </ul>
+    </div>
+
+    <div class="card section">
+      <h3>1. Absolute Value Function</h3>
+      <p>f(x) = |x| — V-shaped graph, vertex at (0,0)</p>
+
+      <div class="example">
+        f(x) = |x - 2| + 3 → shifted right 2, up 3
+      </div>
+
+      <img src="https://math.libretexts.org/@api/deki/files/17981/Fig_2.04_abs_value.jpg" alt="Absolute Value Graph">
+
+      <img src="https://math.libretexts.org/@api/deki/files/17982/Fig_2.04_abs_value_shift.jpg" alt="Shifted Absolute Value">
+    </div>
+
+    <div class="card section">
+      <h3>2. Greatest Integer (Floor) & Least Integer (Ceiling)</h3>
+      <p>Floor ⌊x⌋ = greatest integer ≤ x<br>
+      Ceiling ⌈x⌉ = least integer ≥ x</p>
+
+      <div class="example">
+        ⌊3.7⌋ = 3, ⌊-1.2⌋ = -2<br>
+        ⌈3.7⌉ = 4, ⌈-1.2⌉ = -1
+      </div>
+
+      <img src="https://math.libretexts.org/@api/deki/files/17983/Fig_2.04_floor_ceiling.jpg" alt="Floor and Ceiling Graphs">
+    </div>
+
+    <div class="card section">
+      <h3>3. Step Functions</h3>
+      <p>Constant over intervals — "stairs"</p>
+
+      <div class="example">
+        Shipping cost: $5 for 0-1kg, $8 for 1-2kg, $12 for 2-3kg
+      </div>
+
+      <img src="https://flexbooks.ck12.org/cbook/ck-12-precalculus-concepts-2.0/section/1.8/primary/lesson/step-functions/" alt="Step Function Example">
+    </div>
+
+    <div class="card section">
+      <h3>4. Signum Function</h3>
+      <p>sgn(x) = -1 if x < 0, 0 if x = 0, 1 if x > 0</p>
+
+      <img src="https://math.libretexts.org/@api/deki/files/17984/Fig_2.04_signum.jpg" alt="Signum Function Graph">
+    </div>
+
+    <div class="card section">
+      <h3>5. Piecewise Functions</h3>
+      <p>Different rule for different intervals</p>
+
+      <div class="example">
+        Tax bracket example:<br>
+        f(x) = 0 if x ≤ 250000<br>
+        0.20(x - 250000) if 250000 < x ≤ 500000<br>
+        etc.
+      </div>
+
+      <div class="example">
+        Phone plan: ₱500 for first 100 mins, ₱5 per extra minute
+      </div>
+
+      <img src="https://math.libretexts.org/@api/deki/files/17985/Fig_2.04_piecewise.jpg" alt="Piecewise Function Graph">
+
+      <img src="https://flexbooks.ck12.org/cbook/ck-12-precalculus-concepts-2.0/section/1.8/primary/lesson/piecewise-functions/" alt="Real-Life Piecewise Example">
+    </div>
+
+    <div class="card section">
+      <h3>Recommended Videos (Philippine Teachers)</h3>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/1X1v0rY9n1Q" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">PIECEWISE FUNCTIONS || GRADE 11 GENERAL MATHEMATICS Q1</p>
+
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/JkL1b1l4rL0" allowfullscreen></iframe>
+      </div>
+      <p style="text-align:center;">Piecewise Functions - General Mathematics Grade 11</p>
+    </div>
+
+    <div class="card practice">
+      <h3>Practice Exercises</h3>
+      <p>Apply the concepts.</p>
+      <ol>
+        <li>Evaluate f(x) = |x - 3| at x = 5, x = 1, x = 3.</li>
+        <li>⌊4.8⌋, ⌈-2.3⌉, ⌊-2.3⌋</li>
+        <li>Piecewise: f(x) = x if x < 0, x² if x ≥ 0. Find f(-2), f(3).</li>
+        <li>Real-life: Parking ₱40 first hour, ₱20 each additional. Write piecewise for 3.5 hours.</li>
+      </ol>
+
+      <button class="show-answer">Show Answers</button>
+      <div class="answer">
+        <strong>Answers:</strong><br><br>
+        1. 2, 2, 0<br>
+        2. 4, -2, -3<br>
+        3. -2, 9<br>
+        4. ₱40 + 2×₱20 = ₱80 (or piecewise definition)
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;">
+      <button class="complete-btn" onclick="alert('Congratulations! Unit 1 complete!')">
+        Mark as Complete
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.show-answer').addEventListener('click', function() {
+      this.style.display = 'none';
+      this.nextElementSibling.style.display = 'block';
+    });
+  </script>
+  <script src="../../../script.js"></script>
+</body>
+</html>
