@@ -6,120 +6,100 @@
   <title>General Mathematics - Online SHS</title>
   <link rel="stylesheet" href="../../style.css" />
   <style>
-    .back-btn {
-      display: inline-block;
-      margin: 20px 0;
-      padding: 10px 20px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-    .back-btn:hover {
-      background: var(--accent-light);
-    }
-    .units-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .unit-card {
-      background: var(--surface);
-      border-radius: 12px;
-      padding: 25px;
-      box-shadow: var(--shadow);
-      transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      color: var(--text);
-      display: block;
-    }
-    .unit-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    .unit-card h3 {
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-    .unit-card p {
-      color: var(--text-light);
-      font-size: 0.95rem;
-    }
-    .progress-bar {
-      margin-top: 15px;
-      height: 8px;
-      background: var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: var(--accent);
-      width: 0%;
-      transition: width 0.5s;
-    }
+    .back-btn { display: inline-block; margin: 20px 0; padding: 10px 20px; background: var(--accent); color: white; text-decoration: none; border-radius: 8px; }
+    .lessons-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+    .lesson-card { background: var(--surface); border-radius: 12px; padding: 25px; box-shadow: var(--shadow); transition: transform 0.2s; text-decoration: none; color: var(--text); display: block; }
+    .lesson-card:hover { transform: translateY(-5px); }
+    .lesson-card h4 { color: var(--accent); margin-bottom: 10px; }
+    .lesson-card .status { font-size: 0.9rem; color: var(--text-light); margin-top: 12px; }
+    .progress-container { background: #dfe6e9; border-radius: 8px; height: 30px; margin: 20px 0; overflow: hidden; }
+    .progress-bar { background: var(--accent); height: 100%; width: 0%; transition: width 0.8s ease; }
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="../../index.html" class="back-btn">← Back to Subjects</a>
+    <a href="../index.html" class="back-btn">← Back to Subjects</a>
 
     <div class="card">
-      <h2 style="text-align:center; color:var(--accent);">General Mathematics</h2>
+      <h2 style="text-align:center; color:var(--accent);">General Mathematics - Unit 1</h2>
       <p style="text-align:center; color:var(--text-light); margin-top:10px;">
-        Grade 11 STEM - Core Subject<br>
-        Explore functions, business math, and logic with detailed explanations, examples, and resources.
+        Functions and Their Graphs
       </p>
     </div>
 
+    <!-- Progress Bar for Unit 1 -->
     <div class="card">
-      <h3>Select a Unit</h3>
-      <p style="color:var(--text-light); margin-top:10px;">
-        Click a unit to view lessons, examples, videos, and practice.
-      </p>
+      <h3>Unit Progress</h3>
+      <div class="progress-container">
+        <div id="unitProgressBar" class="progress-bar"></div>
+      </div>
+      <p style="text-align:center; font-weight:600;" id="unitProgressText">0% Complete (0/5 lessons)</p>
+    </div>
 
-      <div class="units-grid">
-        <!-- Unit 1 -->
-        <a href="unit1/index.html" class="unit-card">
-          <h3>Unit 1: Functions and Their Graphs</h3>
-          <p>Review of functions, graphs, operations on functions, one-to-one and inverse functions, piecewise functions.</p>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
-          <p style="font-size:0.9rem; margin-top:8px; color:var(--text-light);">Progress: 0%</p>
+    <div class="card">
+      <h3>Learning Objectives</h3>
+      <ul style="margin-left:20px; line-height:1.8; color:var(--text-light);">
+        <li>Represent real-life situations using functions, including piece-wise functions</li>
+        <li>Evaluate functions and perform operations on functions</li>
+        <li>Find the domain and range of functions</li>
+        <li>Determine inverse functions and their graphs</li>
+        <li>Solve real-life problems involving functions</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>Lessons</h3>
+      <p style="color:var(--text-light);">Click to start. Complete in order.</p>
+
+      <div class="lessons-list">
+        <a href="unit1/lesson1.html" class="lesson-card">
+          <h4>Lesson 1: Review of Functions</h4>
+          <p>Relations vs functions, representations, vertical line test, domain/range, notation, types of functions.</p>
+          <div class="status">Status: Available</div>
         </a>
 
-        <!-- Unit 2 -->
-        <a href="#" class="unit-card" style="opacity:0.7;">
-          <h3>Unit 2: Rational Functions</h3>
-          <p>Graphs, intercepts, zeroes, asymptotes, solving rational equations and inequalities. (Coming soon)</p>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+        <a href="unit1/lesson2.html" class="lesson-card">
+          <h4>Lesson 2: Representations of Functions</h4>
+          <p>Tables, graphs, equations, real-life modeling.</p>
+          <div class="status">Status: Available</div>
         </a>
 
-        <!-- Unit 3 -->
-        <a href="#" class="unit-card" style="opacity:0.7;">
-          <h3>Unit 3: Exponential and Logarithmic Functions</h3>
-          <p>Exponential models, logarithmic functions, properties, graphs, and applications. (Coming soon)</p>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+        <a href="unit1/lesson3.html" class="lesson-card">
+          <h4>Lesson 3: Operations on Functions & Composition</h4>
+          <p>Addition, subtraction, multiplication, division, composition of functions.</p>
+          <div class="status">Status: Available</div>
         </a>
 
-        <!-- Unit 4 -->
-        <a href="#" class="unit-card" style="opacity:0.7;">
-          <h3>Unit 4: Basic Business Mathematics</h3>
-          <p>Simple and compound interest, annuities, stocks and bonds, loans, amortization. (Coming soon)</p>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+        <a href="unit1/lesson4.html" class="lesson-card">
+          <h4>Lesson 4: Inverse Functions</h4>
+          <p>One-to-one, horizontal line test, finding and graphing inverses, verification.</p>
+          <div class="status">Status: Available</div>
         </a>
 
-        <!-- Unit 5 -->
-        <a href="#" class="unit-card" style="opacity:0.7;">
-          <h3>Unit 5: Logic</h3>
-          <p>Propositions, truth tables, logical equivalences, methods of proof and disproof. (Coming soon)</p>
-          <div class="progress-bar"><div class="progress-fill" style="width:0%;"></div></div>
+        <a href="unit1/lesson5.html" class="lesson-card">
+          <h4>Lesson 5: Piecewise & Special Functions</h4>
+          <p>Absolute value, greatest integer (floor/ceiling), step, signum functions, real-life applications.</p>
+          <div class="status">Status: Available</div>
         </a>
       </div>
     </div>
   </div>
 
-  <script src="../../script.js"></script>
+  <script>
+    // Update progress bar on Unit 1 index page
+    function updateUnitProgress() {
+      const progress = JSON.parse(localStorage.getItem('unit1Progress') || '{"completed":0,"total":5}');
+      const percent = Math.round((progress.completed / progress.total) * 100);
+      const bar = document.getElementById('unitProgressBar');
+      const text = document.getElementById('unitProgressText');
+      if (bar && text) {
+        bar.style.width = percent + '%';
+        text.textContent = percent + '% Complete (' + progress.completed + '/5 lessons)';
+      }
+    }
+
+    // Run on load
+    updateUnitProgress();
+  </script>
 </body>
 </html>
