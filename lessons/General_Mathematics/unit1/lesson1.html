@@ -239,13 +239,9 @@
 </div>
 
 <script>
-  // CHANGE THIS FOR EACH LESSON FILE
-  const lessonKey = 'gm_unit1_lesson1';  // Change number for each lesson
-  // lesson1.html → 'gm_unit1_lesson1'
-  // lesson2.html → 'gm_unit1_lesson2'
-  // lesson3.html → 'gm_unit1_lesson3'
-  // lesson4.html → 'gm_unit1_lesson4'
-  // lesson5.html → 'gm_unit1_lesson5'
+  // CHANGE THESE FOR EACH LESSON FILE
+  const lessonKey = 'gm_unit1_lesson1';  // Unique key
+  const lessonNumber = 1;  // 1 for lesson1.html, 2 for lesson2.html, etc.
 
   const btn = document.getElementById('completeBtn');
 
@@ -255,7 +251,7 @@
   if (completed[lessonKey]) {
     btn.textContent = 'COMPLETED';
     btn.disabled = true;
-    btn.style.background = '#27ae60'; // Green
+    btn.style.background = '#27ae60';
     btn.style.cursor = 'default';
   } else {
     btn.textContent = 'Mark as Complete';
@@ -270,13 +266,22 @@
       completed[lessonKey] = true;
       localStorage.setItem('completedLessons', JSON.stringify(completed));
 
+      // Update total completed count
+      let progress = JSON.parse(localStorage.getItem('unit1Progress') || '{"completed":0,"total":5}');
+      progress.completed += 1;
+      localStorage.setItem('unit1Progress', JSON.stringify(progress));
+
       btn.textContent = 'COMPLETED';
       btn.disabled = true;
       btn.style.background = '#27ae60';
       btn.style.cursor = 'default';
 
-      alert('Lesson marked as complete! Quiz unlocked in Activity / Quiz tab.');
+      alert('Lesson ' + lessonNumber + ' marked as complete! Progress updated.');
     }
+  });
+</script>
+  });
+</script>
   });
 </script>
     });
