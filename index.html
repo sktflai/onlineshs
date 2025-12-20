@@ -21,7 +21,7 @@
         <a href="#" class="nav-link" data-tab="lessons">Lessons</a>
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link" data-tab="activity">Activity / Quiz</a>
+        <a href="actquiz/index.html" class="nav-link">Activity / Quiz</a>
       </li>
       <li class="nav-item">
         <a href="#" class="nav-link" data-tab="tests">Tests</a>
@@ -74,14 +74,15 @@
         </p>
       </div>
 
-      <!-- Secret Reset Feature (for prototyping) -->
-      <div class="card" style="margin-top:40px; padding:20px; background:#f8f9fa; border:1px solid var(--border);">
-        <p style="color:var(--text-light); font-size:0.9rem; text-align:center;">
-          Prototype Reset Tool (type code to wipe all progress)
+      <!-- Secret Reset Panel (for prototype testing) -->
+      <div class="card" style="margin-top:40px; border:1px solid #e74c3c;">
+        <h3 style="color:#e74c3c;">Developer Tools (Prototype Only)</h3>
+        <p style="color:var(--text-light); font-size:0.9rem;">
+          Enter code to reset all progress (lessons, time, memos, quizzes).
         </p>
-        <input type="password" id="resetCode" placeholder="Enter code" style="width:200px; padding:10px; margin:10px auto; display:block; border:1px solid var(--border); border-radius:8px; text-align:center;" />
-        <button id="resetBtn" style="display:block; margin:0 auto; padding:10px 20px; background:#e74c3c; color:white; border:none; border-radius:8px; cursor:pointer;">Reset Progress</button>
-        <p id="resetFeedback" style="text-align:center; margin-top:10px; font-size:0.9rem; color:var(--text-light);"></p>
+        <input type="password" id="resetCode" placeholder="Enter code" style="padding:10px; width:200px; border-radius:8px; border:1px solid var(--border); margin-right:10px;">
+        <button id="resetBtn" style="padding:10px 20px; background:#e74c3c; color:white; border:none; border-radius:8px; cursor:pointer;">Reset Progress</button>
+        <p id="resetMessage" style="margin-top:10px; font-size:0.9rem; color:#27ae60;"></p>
       </div>
     </div>
 
@@ -104,21 +105,8 @@
             <p>Coming soon...</p>
           </a>
 
-          <!-- Add more subjects as needed -->
+          <!-- Add more subjects later -->
         </div>
-      </div>
-    </div>
-
-    <!-- Activity / Quiz Tab -->
-    <div id="activity" class="tab-content">
-      <div class="card">
-        <h2>Activities & Quizzes</h2>
-        <p style="color:var(--text-light); margin-top:10px;">
-          Practice with quizzes. They unlock after completing lessons.
-        </p>
-        <p style="margin-top:20px; text-align:center; color:var(--text-light);">
-          Quiz page coming soon in dedicated section.
-        </p>
       </div>
     </div>
 
@@ -155,12 +143,16 @@
 
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
+        if (link.getAttribute('href') === '#') {
+          e.preventDefault();
+        }
         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         const tabId = link.getAttribute('data-tab');
-        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-        document.getElementById(tabId).classList.add('active');
+        if (tabId) {
+          document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+          document.getElementById(tabId).classList.add('active');
+        }
         if (window.innerWidth <= 768) {
           sidebar.classList.remove('open');
           overlay.classList.remove('active');
@@ -168,36 +160,29 @@
       });
     });
 
-    // Secret Reset Feature
-    const resetBtn = document.getElementById('resetBtn');
-    const resetCode = document.getElementById('resetCode');
-    const feedback = document.getElementById('resetFeedback');
-
-    resetBtn.addEventListener('click', () => {
-      if (resetCode.value === '112499') {
+    // Secret Reset Feature (for prototype testing)
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      const code = document.getElementById('resetCode').value;
+      if (code === '112499') {
         // Wipe all data
-        localStorage.clear(); // Clears everything: lessons, time, memos, quizzes
+        localStorage.removeItem('completedLessons');
+        localStorage.removeItem('onlineSHS_data');
+        localStorage.removeItem('onlineSHS_quizzes');
+        localStorage.removeItem('onlineSHS_memos');
 
-        // Reset displays
+        // Reset study time display
         document.getElementById('studyTimeDisplay').textContent = '00:00:00';
+
+        // Clear memos
         document.getElementById('memosTextarea').value = '';
 
-        feedback.textContent = 'All progress reset successfully!';
-        feedback.style.color = '#27ae60';
-        resetCode.value = '';
+        document.getElementById('resetMessage').textContent = 'All progress reset successfully!';
+        document.getElementById('resetMessage').style.color = '#27ae60';
 
-        // Reload to refresh lesson buttons
-        setTimeout(() => location.reload(), 2000);
+        setTimeout(() => location.reload(), 2000); // Reload to reflect changes
       } else {
-        feedback.textContent = 'Incorrect code.';
-        feedback.style.color = '#e74c3c';
-      }
-    });
-
-    // Allow Enter key
-    resetCode.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        resetBtn.click();
+        document.getElementById('resetMessage').textContent = 'Incorrect code';
+        document.getElementById('resetMessage').style.color = '#e74c3c';
       }
     });
   </script>
