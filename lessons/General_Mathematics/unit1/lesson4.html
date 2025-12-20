@@ -221,16 +221,53 @@
     </div>
 
     <div class="card" style="text-align:center;">
-      <button class="complete-btn" onclick="alert('Awesome! Inverse functions mastered.')">
-        Mark as Complete
-      </button>
-    </div>
-  </div>
+  <button class="complete-btn" id="completeBtn">
+    Mark as Complete
+  </button>
+</div>
 
-  <script>
-    document.querySelector('.show-answer').addEventListener('click', function() {
-      this.style.display = 'none';
-      this.nextElementSibling.style.display = 'block';
+<script>
+  // CHANGE THESE FOR EACH LESSON FILE
+  const lessonKey = 'gm_unit1_lesson1';  // Unique key
+  const lessonNumber = 1;  // 1 for lesson1.html, 2 for lesson2.html, etc.
+
+  const btn = document.getElementById('completeBtn');
+
+  // Load completion status
+  const completed = JSON.parse(localStorage.getItem('completedLessons') || '{}');
+
+  if (completed[lessonKey]) {
+    btn.textContent = 'COMPLETED';
+    btn.disabled = true;
+    btn.style.background = '#27ae60';
+    btn.style.cursor = 'default';
+  } else {
+    btn.textContent = 'Mark as Complete';
+    btn.disabled = false;
+    btn.style.background = 'var(--accent)';
+    btn.style.cursor = 'pointer';
+  }
+
+  // Click to complete
+  btn.addEventListener('click', () => {
+    if (!completed[lessonKey]) {
+      completed[lessonKey] = true;
+      localStorage.setItem('completedLessons', JSON.stringify(completed));
+
+      // Update total completed count
+      let progress = JSON.parse(localStorage.getItem('unit1Progress') || '{"completed":0,"total":5}');
+      progress.completed += 1;
+      localStorage.setItem('unit1Progress', JSON.stringify(progress));
+
+      btn.textContent = 'COMPLETED';
+      btn.disabled = true;
+      btn.style.background = '#27ae60';
+      btn.style.cursor = 'default';
+
+      alert('Lesson ' + lessonNumber + ' marked as complete! Progress updated.');
+    }
+  });
+</script>
     });
   </script>
   <script src="../../../script.js"></script>
