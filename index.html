@@ -73,11 +73,20 @@
           Progress charts, scores, study time, and personal memos will appear here as you start learning.
         </p>
       </div>
+
+      <!-- Secret Reset Feature (for prototyping) -->
+      <div class="card" style="margin-top:40px; padding:20px; background:#f8f9fa; border:1px solid var(--border);">
+        <p style="color:var(--text-light); font-size:0.9rem; text-align:center;">
+          Prototype Reset Tool (type code to wipe all progress)
+        </p>
+        <input type="password" id="resetCode" placeholder="Enter code" style="width:200px; padding:10px; margin:10px auto; display:block; border:1px solid var(--border); border-radius:8px; text-align:center;" />
+        <button id="resetBtn" style="display:block; margin:0 auto; padding:10px 20px; background:#e74c3c; color:white; border:none; border-radius:8px; cursor:pointer;">Reset Progress</button>
+        <p id="resetFeedback" style="text-align:center; margin-top:10px; font-size:0.9rem; color:var(--text-light);"></p>
+      </div>
     </div>
 
     <!-- Lessons Tab -->
     <div id="lessons" class="tab-content">
-      <!-- [Your existing Lessons tab content with subject cards] -->
       <div class="card">
         <h2>Select a Subject</h2>
         <p style="color:var(--text-light); margin-top:10px; text-align:center;">
@@ -90,13 +99,12 @@
             <p>Functions, rational equations, exponential & logarithmic functions, business math, logic</p>
           </a>
 
-          <!-- Other subjects as before, opacity 0.6 if not ready -->
           <a href="#" class="subject-card" style="opacity:0.6;">
             <h3>Statistics and Probability</h3>
             <p>Coming soon...</p>
           </a>
 
-          <!-- Repeat for other subjects -->
+          <!-- Add more subjects as needed -->
         </div>
       </div>
     </div>
@@ -106,48 +114,11 @@
       <div class="card">
         <h2>Activities & Quizzes</h2>
         <p style="color:var(--text-light); margin-top:10px;">
-          Practice with short quizzes for each lesson. Quizzes unlock after you mark the lesson as complete.
+          Practice with quizzes. They unlock after completing lessons.
         </p>
-
-        <div class="card" style="margin-top:30px;">
-          <h3>General Mathematics - Unit 1</h3>
-          <div style="display:grid; gap:20px; margin-top:20px;">
-            <div class="lesson-card" style="padding:20px; background:var(--surface); border-radius:12px; box-shadow:var(--shadow);">
-              <h4>Lesson 1 Quiz: Review of Functions</h4>
-              <p style="color:var(--text-light);">10 questions • 15 minutes</p>
-              <button id="l1quizBtn" class="quiz-btn" data-quiz="quizzes/General_Mathematics/unit1/lesson1-quiz.html">Take Quiz</button>
-              <p id="l1status" class="quiz-status">Status: Locked</p>
-            </div>
-
-            <div class="lesson-card" style="padding:20px; background:var(--surface); border-radius:12px; box-shadow:var(--shadow);">
-              <h4>Lesson 2 Quiz: Representations of Functions</h4>
-              <p style="color:var(--text-light);">10 questions • 15 minutes</p>
-              <button id="l2quizBtn" class="quiz-btn" data-quiz="quizzes/General_Mathematics/unit1/lesson2-quiz.html">Take Quiz</button>
-              <p id="l2status" class="quiz-status">Status: Locked</p>
-            </div>
-
-            <div class="lesson-card" style="padding:20px; background:var(--surface); border-radius:12px; box-shadow:var(--shadow);">
-              <h4>Lesson 3 Quiz: Operations on Functions</h4>
-              <p style="color:var(--text-light);">10 questions • 15 minutes</p>
-              <button id="l3quizBtn" class="quiz-btn" data-quiz="quizzes/General_Mathematics/unit1/lesson3-quiz.html">Take Quiz</button>
-              <p id="l3status" class="quiz-status">Status: Locked</p>
-            </div>
-
-            <div class="lesson-card" style="padding:20px; background:var(--surface); border-radius:12px; box-shadow:var(--shadow);">
-              <h4>Lesson 4 Quiz: Inverse Functions</h4>
-              <p style="color:var(--text-light);">10 questions • 15 minutes</p>
-              <button id="l4quizBtn" class="quiz-btn" data-quiz="quizzes/General_Mathematics/unit1/lesson4-quiz.html">Take Quiz</button>
-              <p id="l4status" class="quiz-status">Status: Locked</p>
-            </div>
-
-            <div class="lesson-card" style="padding:20px; background:var(--surface); border-radius:12px; box-shadow:var(--shadow);">
-              <h4>Lesson 5 Quiz: Piecewise & Special Functions</h4>
-              <p style="color:var(--text-light);">10 questions • 15 minutes</p>
-              <button id="l5quizBtn" class="quiz-btn" data-quiz="quizzes/General_Mathematics/unit1/lesson5-quiz.html">Take Quiz</button>
-              <p id="l5status" class="quiz-status">Status: Locked</p>
-            </div>
-          </div>
-        </div>
+        <p style="margin-top:20px; text-align:center; color:var(--text-light);">
+          Quiz page coming soon in dedicated section.
+        </p>
       </div>
     </div>
 
@@ -167,6 +138,7 @@
 
   <script src="script.js"></script>
   <script>
+    // Sidebar and tab navigation
     const menuBtn = document.getElementById('menuBtn');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -181,7 +153,6 @@
       overlay.classList.remove('active');
     });
 
-    // Tab navigation
     document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -197,29 +168,36 @@
       });
     });
 
-    // Quiz unlock system
-    const completed = JSON.parse(localStorage.getItem('completedLessons') || '{}');
+    // Secret Reset Feature
+    const resetBtn = document.getElementById('resetBtn');
+    const resetCode = document.getElementById('resetCode');
+    const feedback = document.getElementById('resetFeedback');
 
-    const quizzes = ['l1', 'l2', 'l3', 'l4', 'l5'];
-    quizzes.forEach((id, index) => {
-      const btn = document.getElementById(id + 'quizBtn');
-      const status = document.getElementById(id + 'status');
-      const lessonKey = 'gm_unit1_lesson' + (index + 1);
-      if (btn && status) {
-        if (completed[lessonKey]) {
-          btn.disabled = false;
-          btn.style.background = 'var(--accent)';
-          btn.style.cursor = 'pointer';
-          btn.onclick = () => window.location.href = btn.getAttribute('data-quiz');
-          status.textContent = 'Status: Unlocked';
-          status.style.color = '#27ae60';
-        } else {
-          btn.disabled = true;
-          btn.style.background = '#95a5a6';
-          btn.style.cursor = 'not-allowed';
-          status.textContent = 'Status: Locked (complete Lesson ' + (index + 1) + ' first)';
-          status.style.color = '#e74c3c';
-        }
+    resetBtn.addEventListener('click', () => {
+      if (resetCode.value === '112499') {
+        // Wipe all data
+        localStorage.clear(); // Clears everything: lessons, time, memos, quizzes
+
+        // Reset displays
+        document.getElementById('studyTimeDisplay').textContent = '00:00:00';
+        document.getElementById('memosTextarea').value = '';
+
+        feedback.textContent = 'All progress reset successfully!';
+        feedback.style.color = '#27ae60';
+        resetCode.value = '';
+
+        // Reload to refresh lesson buttons
+        setTimeout(() => location.reload(), 2000);
+      } else {
+        feedback.textContent = 'Incorrect code.';
+        feedback.style.color = '#e74c3c';
+      }
+    });
+
+    // Allow Enter key
+    resetCode.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        resetBtn.click();
       }
     });
   </script>
