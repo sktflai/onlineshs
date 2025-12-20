@@ -34,12 +34,12 @@
       color: var(--text-light);
       font-size: 0.95rem;
     }
-    /* Circular Progress Meter Style */
+    /* Circular Progress Meter - Perfectly fitted text inside */
     .progress-circle {
       position: relative;
-      width: 180px;
-      height: 180px;
-      margin: 30px auto;
+      width: 220px;
+      height: 220px;
+      margin: 40px auto;
     }
     .progress-circle svg {
       width: 100%;
@@ -48,7 +48,7 @@
     }
     .progress-circle circle {
       fill: none;
-      stroke-width: 12;
+      stroke-width: 18;
       stroke-linecap: round;
     }
     .progress-circle .bg {
@@ -56,25 +56,32 @@
     }
     .progress-circle .fill {
       stroke: var(--accent);
-      stroke-dasharray: 0 502;
-      transition: stroke-dasharray 1s ease;
+      stroke-dasharray: 0 565;
+      transition: stroke-dasharray 1.2s ease;
     }
-    .progress-circle .percent {
+    .progress-circle .inner-content {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--accent);
+      text-align: center;
+      width: 80%;
     }
-    .progress-circle .label {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+    .progress-circle .percent {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .progress-circle .subject-name {
       font-size: 1.1rem;
       color: var(--text);
+      margin-top: 8px;
+    }
+    .progress-circle .lessons-count {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-top: 5px;
     }
   </style>
 </head>
@@ -142,35 +149,35 @@
       <!-- Subject Progress Meters -->
       <div class="card">
         <h3>Subject Progress</h3>
-        <p style="color:var(--text-light); text-align:center; margin-bottom:30px;">
-          Your completion across subjects
+        <p style="color:var(--text-light); text-align:center; margin-bottom:40px;">
+          Your completion across subjects and units
         </p>
 
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:30px;">
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:40px;">
           <!-- General Mathematics -->
-          <div>
-            <div class="progress-circle">
-              <svg>
-                <circle class="bg" cx="90" cy="90" r="80"></circle>
-                <circle class="fill" cx="90" cy="90" r="80" id="gmFill"></circle>
-              </svg>
+          <div class="progress-circle">
+            <svg>
+              <circle class="bg" cx="110" cy="110" r="100"></circle>
+              <circle class="fill" cx="110" cy="110" r="100" id="gmFill"></circle>
+            </svg>
+            <div class="inner-content">
               <div class="percent" id="gmPercent">0%</div>
-              <div class="label">General Mathematics</div>
+              <div class="subject-name">General Mathematics</div>
+              <div class="lessons-count" id="gmLessons">0 / 5 lessons</div>
             </div>
-            <p style="text-align:center; margin-top:10px;" id="gmText">0 / 5 lessons</p>
           </div>
 
-          <!-- Future subjects (0% by default) -->
-          <div>
-            <div class="progress-circle">
-              <svg>
-                <circle class="bg" cx="90" cy="90" r="80"></circle>
-                <circle class="fill" cx="90" cy="90" r="80"></circle>
-              </svg>
+          <!-- Future subjects -->
+          <div class="progress-circle">
+            <svg>
+              <circle class="bg" cx="110" cy="110" r="100"></circle>
+              <circle class="fill" cx="110" cy="110" r="100"></circle>
+            </svg>
+            <div class="inner-content">
               <div class="percent">0%</div>
-              <div class="label">Statistics & Probability</div>
+              <div class="subject-name">Statistics & Probability</div>
+              <div class="lessons-count">Coming soon</div>
             </div>
-            <p style="text-align:center; margin-top:10px;">Coming soon</p>
           </div>
 
           <!-- Add more subject meters here later -->
@@ -229,7 +236,7 @@
 
   <script src="script.js"></script>
   <script>
-    // Sidebar and tab navigation (same as before)
+    // Sidebar and tab navigation
     const menuBtn = document.getElementById('menuBtn');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -267,17 +274,17 @@
     function updateGMProgress() {
       const progress = JSON.parse(localStorage.getItem('unit1Progress') || '{"completed":0,"total":5}');
       const percent = Math.round((progress.completed / progress.total) * 100);
-      const circumference = 502; // 2 * π * 80
+      const circumference = 628; // 2 * π * 100
       const dasharray = (percent / 100) * circumference;
 
       const fill = document.getElementById('gmFill');
       const percentText = document.getElementById('gmPercent');
-      const text = document.getElementById('gmText');
+      const lessonsText = document.getElementById('gmLessons');
 
-      if (fill && percentText && text) {
+      if (fill && percentText && lessonsText) {
         fill.style.strokeDasharray = dasharray + ' ' + circumference;
         percentText.textContent = percent + '%';
-        text.textContent = progress.completed + ' / 5 lessons';
+        lessonsText.textContent = progress.completed + ' / 5 lessons';
       }
     }
 
