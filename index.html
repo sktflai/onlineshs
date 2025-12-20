@@ -230,15 +230,11 @@
         // Clear all localStorage data
         localStorage.clear();
 
-        // Reset display elements
-        document.getElementById('studyTimeDisplay').textContent = '00:00:00';
-        document.getElementById('memosTextarea').value = '';
-
-        document.getElementById('resetMessage').textContent = 'All progress reset successfully! Page reloading...';
+        document.getElementById('resetMessage').textContent = 'All progress reset successfully! Reloading...';
         document.getElementById('resetMessage').style.color = '#27ae60';
 
-        // Reload after short delay to ensure clear
-        setTimeout(() => location.reload(), 1500);
+        // Force reload to apply fresh data from script.js
+        location.reload();
       } else {
         document.getElementById('resetMessage').textContent = 'Incorrect code';
         document.getElementById('resetMessage').style.color = '#e74c3c';
