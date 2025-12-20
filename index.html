@@ -116,7 +116,7 @@
       </div>
     </div>
 
-    <!-- Lessons Tab - Restored -->
+    <!-- Lessons Tab -->
     <div id="lessons" class="tab-content">
       <div class="card">
         <h2>Select a Subject</h2>
@@ -223,23 +223,22 @@
       });
     });
 
-    // Secret Reset Feature
+    // Secret Reset Feature - Fixed to fully reset timer
     document.getElementById('resetBtn').addEventListener('click', () => {
       const code = document.getElementById('resetCode').value;
       if (code === '112499') {
-        // Wipe all data
-        localStorage.clear(); // Clears everything: lessons, time, memos, quizzes
+        // Clear all localStorage data
+        localStorage.clear();
 
-        // Reset timer display
+        // Reset display elements
         document.getElementById('studyTimeDisplay').textContent = '00:00:00';
-
-        // Clear memos
         document.getElementById('memosTextarea').value = '';
 
-        document.getElementById('resetMessage').textContent = 'All progress reset successfully!';
+        document.getElementById('resetMessage').textContent = 'All progress reset successfully! Page reloading...';
         document.getElementById('resetMessage').style.color = '#27ae60';
 
-        setTimeout(() => location.reload(), 2000);
+        // Reload after short delay to ensure clear
+        setTimeout(() => location.reload(), 1500);
       } else {
         document.getElementById('resetMessage').textContent = 'Incorrect code';
         document.getElementById('resetMessage').style.color = '#e74c3c';
