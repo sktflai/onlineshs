@@ -233,17 +233,52 @@
     </div>
 
     <div class="card" style="text-align:center;">
-      <button class="complete-btn" onclick="alert('Excellent work! Progress will update soon.')">
-        Mark as Complete
-      </button>
-    </div>
-  </div>
+  <button class="complete-btn" id="completeBtn">
+    Mark as Complete
+  </button>
+</div>
 
-  <script>
-    // Show answer button functionality
-    document.querySelector('.show-answer').addEventListener('click', function() {
-      this.style.display = 'none';
-      this.nextElementSibling.style.display = 'block';
+<script>
+  // CHANGE THIS FOR EACH LESSON FILE
+  const lessonKey = 'gm_unit1_lesson1';  // Change number for each lesson
+  // lesson1.html → 'gm_unit1_lesson1'
+  // lesson2.html → 'gm_unit1_lesson2'
+  // lesson3.html → 'gm_unit1_lesson3'
+  // lesson4.html → 'gm_unit1_lesson4'
+  // lesson5.html → 'gm_unit1_lesson5'
+
+  const btn = document.getElementById('completeBtn');
+
+  // Load completion status
+  const completed = JSON.parse(localStorage.getItem('completedLessons') || '{}');
+
+  if (completed[lessonKey]) {
+    btn.textContent = 'COMPLETED';
+    btn.disabled = true;
+    btn.style.background = '#27ae60'; // Green
+    btn.style.cursor = 'default';
+  } else {
+    btn.textContent = 'Mark as Complete';
+    btn.disabled = false;
+    btn.style.background = 'var(--accent)';
+    btn.style.cursor = 'pointer';
+  }
+
+  // Click to complete
+  btn.addEventListener('click', () => {
+    if (!completed[lessonKey]) {
+      completed[lessonKey] = true;
+      localStorage.setItem('completedLessons', JSON.stringify(completed));
+
+      btn.textContent = 'COMPLETED';
+      btn.disabled = true;
+      btn.style.background = '#27ae60';
+      btn.style.cursor = 'default';
+
+      alert('Lesson marked as complete! Quiz unlocked in Activity / Quiz tab.');
+    }
+  });
+</script>
     });
   </script>
   <script src="../../../script.js"></script>
