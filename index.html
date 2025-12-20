@@ -98,11 +98,31 @@
       </div>
 
       <div class="card">
-        <h3>Your Progress Overview</h3>
-        <p style="color:var(--text-light); margin-top:10px;">
-          Progress charts, scores, study time, and personal memos will appear here as you start learning.
-        </p>
-      </div>
+  <h3>Unit 1 Progress: Functions and Their Graphs</h3>
+  <div style="background:#dfe6e9; border-radius:8px; height:30px; margin:20px 0; overflow:hidden;">
+    <div id="unit1ProgressBar" style="background:var(--accent); height:100%; width:0%; transition:width 0.5s;"></div>
+  </div>
+  <p style="text-align:center;" id="unit1ProgressText">0% Complete (0/5 lessons)</p>
+</div>
+
+<script>
+  // Update Unit 1 progress bar on My Page
+  function updateUnit1Progress() {
+    const progress = JSON.parse(localStorage.getItem('unit1Progress') || '{"completed":0,"total":5}');
+    const percent = Math.round((progress.completed / progress.total) * 100);
+    const bar = document.getElementById('unit1ProgressBar');
+    const text = document.getElementById('unit1ProgressText');
+    if (bar && text) {
+      bar.style.width = percent + '%';
+      text.textContent = percent + '% Complete (' + progress.completed + '/5 lessons)';
+    }
+  }
+
+  // Run on load and when tab is shown
+  if (document.getElementById('my-page')) {
+    updateUnit1Progress();
+  }
+</script>
 
       <!-- Secret Reset Panel -->
       <div class="card" style="margin-top:40px; border:1px solid #e74c3c;">
